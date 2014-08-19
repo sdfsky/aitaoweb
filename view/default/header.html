@@ -2,7 +2,7 @@
 <html>
     <!--{eval global $starttime,$querynum;$mtime = explode(' ', microtime());$runtime=number_format($mtime[1] + $mtime[0] - $starttime,6); $setting=$this->setting;$user=$this->user;$headernavlist=$this->nav;$regular=$this->regular;$toolbars="'".str_replace(",", "','", $setting['editor_toolbars'])."'";}-->
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset={TIPASK_CHARSET}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <!--{if isset($seo_title)}-->
         <title>{$seo_title}</title>
         <!--{else}-->
@@ -36,13 +36,13 @@
                 <div class="wrapper clearfix">
                     <ul class="tnav">
                         <!--{eval $headernavlist = $this->fromcache("headernavlist");}-->
-                        <!--{loop $headernavlist $nav}-->
-                        <!--{if $nav['type']==2 && $nav['available']}-->
-                        <li>                            
-                            <a title="{$nav['title']}" href="{$nav['url']}"  {if $nav['target']}target="_blank"{/if}><span text="hd-home" >{$nav['name']}</span></a>
+                        <li><a href="http://www.aitaocn.com" title="http://www.aitaocn.com"><span text="hd-home">网站首页</span></a></li>
+                        <li>关注我们</li>
+                        <li>
+                            <a href="#" class="attention"><img src="{SITE_URL}css/default/attention_sina.png" height="18px;"/></a>
+                            <a href="#" class="attention"><img src="{SITE_URL}css/default/attention_weixin.png" height="18px;"/></a>
+                            <a href="#" class="attention"><img src="{SITE_URL}css/default/attention_qqzone.png" height="18px;"/></a>
                         </li>
-                        <!--{/if}-->
-                        <!--{/loop}-->
                     </ul>
                     <div class="tuser-top-inner">
                         <!--{if 0!=$user['uid']}-->
@@ -82,8 +82,7 @@
                         <!--{else}-->
                         <ul class="tuser-login">
                             <li class="tuser-bar">
-                                <span>您好，欢迎来到{$setting['site_name']}!&nbsp;&nbsp;[<a  href="javascript:void(0);" onclick="login();">请登录</a>]</span>|<span>[<a href="{url user/register}">免费注册</a>]</span>
-                                <p style="display:none;" class="pub-login-tips">登录体验更流畅的互动沟通 <i></i><span class="top-close"></span></p>
+                                <span><a  href="javascript:void(0);" onclick="login();">登录</a></span>|<span><a href="{url user/register}">注册</a></span>
                             </li>
                         </ul>
                         <!--{/if}-->
@@ -98,14 +97,14 @@
                     <div class="searchbox">
                         <form name="searchform"  action="{url question/search}" method="post">
                             <span class="round"><input autocomplete="off" maxlength="100" placeholder="{$setting['search_placeholder']}" class="js-sh-ipt input_key" tabindex="1" name="word" id="search-kw" value="{$word}" /></span>
-                            <span class="button"><input type="button" id="search_btn" class="js-search-bt s_btn" value="搜索答案" /></span>
-                            <span class="button"><input type="button" id="ask_btn" class="js-ask-bt s_btn" value="我要提问" /></span>
+                            <span class="button"><input type="button" id="search_btn" class="s_btn" value="搜索答案" /></span>
+                            <span class="button"><input type="button" id="ask_btn" class="s_ask_btn" value="+我要提问" /></span>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="height:92px;"></div>
+        <div style="height:130px;"></div>
         <div id="navbox">
             <div class="main-nav clearfix">
                 <ul class="navlist">

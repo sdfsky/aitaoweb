@@ -1,6 +1,6 @@
 /* CSS Document */
 body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0;padding:0;}
-body {font:12px/1.5 'Helvetica Neue',Helvetica,Arial,Sans-serif; color:#333;_height:100%; background-attachment:fixed;}
+body {font:13px/1.8 'Hiragino Sans GB','Microsoft Yahei','微软雅黑','宋体'; color:#333;}
 select,input,button {vertical-align:middle;font-size:100%;}
 .clearfix:after {clear: both;content: ".";display: block;height: 0;visibility: hidden;}
 .clearfix {*zoom:1}
@@ -24,8 +24,8 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .flright{float: right;}
 ul,ol {list-style:none;}
 img{border:none;}
-a{ color:#134ba0; text-decoration:none;}
-a:hover{text-decoration:underline;}
+a:hover{color:#fd5b78;text-decoration:none}
+a{color:#333;text-decoration:none;}
 em {font-style: normal;color:#E63A00;}
 .share-content{border: 1px solid #E4E4E4;border-top:none;overflow: hidden;padding: 4px 0 4px 5px;}
 /*全局按钮*/
@@ -37,10 +37,11 @@ em {font-style: normal;color:#E63A00;}
 .js-fixed {background: none repeat scroll 0 0 #FFFFFF;position: fixed;top: 0;width: 100%;z-index: 1002;}
 .fixed-theme .search_mod {border-bottom: 1px solid #C5C5C5;}
 /*top-bar 顶部导航*/
-.top-bar{ height:35px; background: none repeat scroll 0 0 #F5F5F5;border-bottom: 1px solid #EEEEEE;}
+.top-bar{ height:40px;line-height:40px; background: none repeat scroll 0 0 #fff;border-bottom: 1px solid #E4E4E4;}
 .goback{float: left;height: 32px;line-height: 32px;padding: 2px 0;margin-left: 10px;}
 .tnav{ float:left; height:32px; line-height:32px; padding:2px 0 0; margin:0 0 0 -10px;}
-.tnav li{ float:left; padding:1px 10px 0; background-position:100% -157px;}
+.tnav li{ float:left; padding:1px 10px 0;}
+.tnav .attention{margin:3px 5px 3px 0;line-height: 38px;}
 .tnav .more{ position:relative; padding:0; background:none; z-index:2;}
 .tnav .more span{ display:inline-block; padding:1px 24px 0 10px; background-position:100% -132px; cursor:pointer;}
 .tnav .more-list{ position:absolute; top:32px; left:0; width:80px; padding:2px; border:1px solid #999; background:#fff;}
@@ -68,11 +69,9 @@ em {font-style: normal;color:#E63A00;}
 .tuser-nav li,.tuser-login li {float:left;padding:0 10px 0 11px; line-height:28px; background-position:-99px -60px}
 .tuser-login li {padding:0 0 0 11px;}
 .tuser-nav .tuser_nav-home {padding-left:0; background:none}
-.tuser-nav a,.tuser-login a {color:#666;}
 
-.tuser-login .tuser-bar {padding:0 3px 0 0; position:relative; font-family:"宋体",simsun; color:#ccc; background:none}
-.tuser-bar span {color:#666; margin:0 6px}
-.tuser-bar a {margin-right:7px; font-family:arial; color:#01439a;}
+.tuser-login .tuser-bar {padding:0 3px 0 0; position:relative; color:#ccc; background:none;line-height: 38px;}
+.tuser-bar span {color:#666; margin:0 6px;}
 .tuser-bar span a {margin:0}
 .tuser_login-tips {position:absolute; top:28px; left:65px; z-index:8; margin:0; padding-left:36px; width:212px; height:36px; line-height:36px; border:1px solid #fadf9c; background-color:#fff9d9; background-position:-75px 7px; color:#cc6600}
 .tuser_login-tips i {position:absolute; left:25px; top:-6px; width:11px; height:6px; background-position:0 -18px; font:0/0 arial}
@@ -107,16 +106,17 @@ em {font-style: normal;color:#E63A00;}
 /*header 头部*/
 .header{ width:980px;margin:0 auto; padding:10px 0;background: #fff repeat;}
 .logo{ float:left; padding:0 3px 0 13px;}
-.logo a{ display:block; width:185px; height:49px; background:url(logo.png) no-repeat; line-height:50px; text-indent:-9999em;}
-.header .searchbox{ float:left; padding:15px 10px 0 0;padding-left: 10px;}
+.logo a{ display:block; width:212px; height:78px; background:url(logo.png) no-repeat; line-height:50px; text-indent:-9999em;}
+.header .searchbox{ float:left; padding:25px 10px 0;padding-left: 10px;margin-left: 65px;}
 #header{background: none repeat scroll 0 0 #FFFFFF;}
 #warper {min-width: 880px;text-align: left;}
 #container .resultinfo{color:#777777;width: 570px;font-size: 14px;font-weight: lighter;line-height: 24px;font-family: "microsoft yahei";}
 .resultinfo a{margin-left: 5px;text-decoration:underline;}
 #searchmod{font-size: 12px;margin-top: 23px;padding-bottom: 1.5em;}
-.round{background:url('search-bg.png') no-repeat -304px 0;border:1px solid #b6b6b6;border-color:#7b7b7b #b6b6b6 #b6b6b6 #7b7b7b;display:inline-block;height:30px;margin-right:3px;vertical-align:top;width:430px}
-.input_key{-webkit-appearance:none;background:#fff;border:0;font:16px/22px arial;height:22px;margin:5px 0 0 7px;outline:0;padding:0;width:390px}
-.s_btn {background: url("search-bg.png") repeat scroll 0 0 #DDDDDD;border: 0 none;cursor: pointer;font-size: 14px;height: 32px;padding: 0;width: 95px;}
+.round{background:url('search_input.png') no-repeat;border:none;display:inline-block;height:48px;vertical-align:top;width:270px;margin-right: -8px;margin-top:1px;}
+.input_key{-webkit-appearance:none;background:#fff;border:0;font:16px/22px arial;height:35px;margin:5px 0 0 7px;outline:0;padding:0;width:260px}
+.s_ask_btn {background: url("s_ask_btn.png") no-repeat;border: 0 none;cursor: pointer;font-size: 17px;height: 48px;padding: 0;width: 129px;color:#fff;}
+.s_btn {background: url("search-bg.png") no-repeat;border: 0 none;cursor: pointer;font-size: 17px;height: 48px;padding: 0;width: 129px;color:#fff;}
 #qa-tabcard {background: url("ctab.png") repeat-x scroll 0 0 transparent;margin-top: 1.87em;}
 #qa-tabcard ul {height: 35px;overflow: hidden;}
 #qa-tabcard ul li {background: url("ctab_li.png") no-repeat scroll 0 center transparent;float: left;font-size: 14px;height: 35px;line-height: 35px;margin-left: -2px;padding: 0 15px;}
