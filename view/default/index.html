@@ -1,27 +1,15 @@
 <!--{template header}-->
 <!--{eval $adlist = $this->fromcache("adlist");}-->
-<!--{eval $statistics=$this->fromcache('statistics');}-->
-<!--{eval $onlineusernum=$this->fromcache('onlineusernum');}-->
-<div class="nav-line">
-    <div class="count_info">
-        <span class="icon_count"/></span><span>已解决问题：{$statistics['solves']}</span><span>待解决问题：{$statistics['nosolves']}</span><span>当前在线：{if $this->user['grouptype']==1}<a href="{url index/online}">{$onlineusernum}</a>{else}{$onlineusernum}{/if}人</span>
-    </div>
-<div id="scoll-note">
-    <ul>
-        <!--{eval $notelist=$this->fromcache('notelist');}-->
-        <!--{loop $notelist $nindex $note}-->
-        <!--{eval $nindex++}-->
-        <!--{if $nindex<=3}-->
-        <li><a target="_blank" title="{$note['title']}" {if $note['url']}href="{$note['url']}"{else}href="{url note/view/$note['id']}"{/if}>{eval echo cutstr({$note['title']},40,'');}</a><span>( {eval echo cutstr($note['format_time'],10,'')} )</span></li>
-        <!--{/if}-->
-        <!--{/loop}-->
-    </ul>
-</div>
-</div>
-<div class="wrapper clearfix">
+
+<div class="wrapper bordered mt10 clearfix">
     <div class="aside">
-        <div class="modbox mt10">
-            <h3 class="title">问题分类</h3>
+        <div class="register_ad">
+            <a href="{url user/register}">
+                <img src="{SITE_URL}css/default/register_ad.png" />
+            </a>
+        </div>
+        <div class="category-mod">
+            <h3 class="category-title">问题分类</h3>
             <div class="category-nav">
                 <!--{eval $categorylist=$this->fromcache('categorylist');}-->
                 <!--{loop $categorylist  $category1}-->
