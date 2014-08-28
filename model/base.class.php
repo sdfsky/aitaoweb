@@ -100,8 +100,9 @@ class base {
             case 'statistics'://首页统计，包含已解决、待解决
                 $this->load('question');
                 $cachedata = array();
+                $cachedata['totalnum'] = $this->db->fetch_total('question', ' 1=1 ');   //已解决问题数
                 $cachedata['solves'] = $this->db->fetch_total('question', 'status IN (2,6)');   //已解决问题数
-                $cachedata['nosolves'] = $this->db->fetch_total('question', 'status=1'); //待解决问题数
+                //$cachedata['nosolves'] = $this->db->fetch_total('question', 'status=1'); //待解决问题数
                 break;
             case 'topiclist':
                 $this->load('topic');

@@ -1,6 +1,5 @@
 <!--{template header}-->
 <!--{eval $adlist = $this->fromcache("adlist");}-->
-
 <div class="wrapper bordered mt10 clearfix">
     <div class="aside">
         <div class="register_ad">
@@ -9,7 +8,20 @@
             </a>
         </div>
         <div class="category-mod">
-            <h3 class="category-title">问题分类</h3>
+            <h3 class="category-title">育儿问答</h3>
+            <div class="count">
+                <!--{eval $statistics=$this->fromcache('statistics');}-->
+                <p>
+                    <span class="arrow_right">></span>
+                    <span class="count_text">共提问问题数：</span>
+                    <span class="count_num">{$statistics['totalnum']}</span>
+                </p>
+                <p>
+                    <span class="arrow_right">></span>
+                    <span class="count_text">已解决问题数：</span>
+                    <span class="count_num">{$statistics['solves']}</span>
+                </p>
+            </div>
             <div class="category-nav">
                 <!--{eval $categorylist=$this->fromcache('categorylist');}-->
                 <!--{loop $categorylist  $category1}-->
@@ -18,90 +30,43 @@
                         <h3><a target="_blank" title="{$category1['name']}" href="{url category/view/$category1['id']}">{$category1['name']}</a></h3>
                         <p>
                             <!--{loop $category1['sublist'] $index $category2}-->
-                            <!--{if $index<3}-->
                             <a href="{url category/view/$category2['id']}">{$category2['name']}</a>
-                            <!--{/if}-->
                             <!--{/loop}-->
                         </p>
                     </div>
-                    <ul class="subcate clearfix">
-                        <!--{loop $category1['sublist'] $index $category2}-->
-                        <li><a href="{url category/view/$category2['id']}">{$category2['name']}</a></li>
-                        <!--{/loop}-->
-                    </ul>
                 </div>
                 <!--{/loop}--> 
             </div>
+
         </div>
-        <div class="modbox mt10">
-            <h3 class="title">财富榜</h3>
-            <div class="usertabbox">
-                <a target="_blank" class="select" href="{url user/scorelist/1}" id="weektab">本周排行</a>
-                <a target="_blank" class="not-selected" href="{url user/scorelist/0}" id="alltab">总排行</a>
-            </div>
-            <ul class="right-list" id="weektop">
-                <!--{eval $weekuserlist=$this->fromcache('weekuserlist');}-->
-                <!--{loop $weekuserlist $index $weekuser}-->
-                <!--{eval $index++;}-->
-                <li>
-                    <!--{if $index<4}-->
-                    <em class="n1">{$index}</em>
-                    <!--{else}-->
-                    <em class="n2">{$index}</em>
-                    <!--{/if}-->
-                    <a href="{url user/space/$weekuser['uid']}" target="_blank" onmouseover="pop_user_on(this, '{$weekuser[uid]}', 'text');"  onmouseout="pop_user_out();">{$weekuser['username']}</a>
-                    <span class="credit">{$weekuser['credit2']}</span>
-                </li>
+        <div class="clr"></div>
+        <div class="category-mod mt10">
+            <h3 class="category-title">最新公告</h3>
+            <ul class="leftlist">
+                <!--{eval $notelist=$this->fromcache('notelist');}-->
+                <!--{loop $notelist $nindex $note}-->
+                <!--{eval $nindex++}-->
+                <!--{if $nindex<=3}-->
+                <li><a target="_blank" title="{$note['title']}" {if $note['url']}href="{$note['url']}"{else}href="{url note/view/$note['id']}"{/if}>· {eval echo cutstr({$note['title']},40,'');}</a></li>
+                <!--{/if}-->
                 <!--{/loop}-->
             </ul>
-            <ul class="right-list" id="alltop" style="display: none;">
-                <!--{eval $weekuserlist=$this->fromcache('alluserlist');}-->
-                <!--{loop $weekuserlist $index $alluser}-->
-                <!--{eval $index++;}-->
-                <li>
-                    <!--{if $index<4}-->
-                    <em class="n1">{$index}</em>
-                    <!--{else}-->
-                    <em class="n2">{$index}</em>
-                    <!--{/if}-->
-                    <a href="{url user/space/$alluser['uid']}" target="_blank" onmouseover="pop_user_on(this, '{$alluser[uid]}', 'text');"  onmouseout="pop_user_out();">{$alluser['username']}</a>
-                    <span class="credit">{$alluser['credit2']}</span>
-                </li>
-                <!--{/loop}-->
+        </div>
+        <div class="clr"></div>
+        <div class="category-mod mt10 mb10">
+            <h3 class="category-title">帮助</h3>
+            <ul class="leftlist">
+                <li><a href="#">· 如何提问!</a></li>
+                <li><a href="#">· 如何赚取健康币!</a></li>
+                <li><a href="#">· 如何处理问题!</a></li>
             </ul>
         </div>
     </div>
     <div class="content">
+        <div class="slider-box">
+            <img src="css/default/u133_normal.png" width="740px" height="230px"/>
+        </div>
         <div class="main">
-            <!--{eval $topiclist=$this->fromcache('topiclist');}-->
-            <!--{if $topiclist}-->
-            <div class="focusbox mt10">
-                <div class="slidermod" >
-                    <div class="slider-box clearfix">
-
-                        <!--{loop $topiclist $index $topic}-->
-                        <div class="topic" id="{$topic['id']}" <!--{if $index!=0}-->style="display:none"<!--{/if}-->>
-                             <img width="228" height="170" src="{SITE_URL}{$topic['image']}"/>
-                            <h4>{eval echo cutstr($topic['title'],14,'');}</h4>
-                            <p>{eval echo cutstr($topic['describtion'],60,'');}</p>
-                            <ul class="list">
-                                <!--{loop $topic['questionlist'] $question}-->
-                                <li><a  title="{$question['title']}" target="_blank" href="{url question/view/$question['id']}">{eval echo cutstr($question['title'],26,'');}</a> </li>
-                                <!--{/loop}--> 
-                            </ul>
-                        </div>
-                        <!--{/loop}-->
-                        <div class="clr"></div>
-                        <ul class="pagination">
-                            <!--{loop $topiclist $index $topic}-->
-                            <li <!--{if $index==0}-->class="spanhover"<!--{/if}--> topicid="{$topic['id']}"><span>{eval echo cutstr($topic['title'],14,'');}</span></li>
-                            <!--{/loop}-->
-                        </ul>
-                        <div class="more"><a href="{url topic/default}" target="_blank">更多</a></div>
-                    </div>
-                </div>
-            </div>
-            <!--{/if}-->
             <!--广告位1-->
             <!--{if (isset($adlist['index']['middle1']) && trim($adlist['index']['middle1']))}-->
             <div class="question-mod mt10">{$adlist['index']['middle1']}</div>
@@ -248,44 +213,5 @@
 </div>
 <!--{/if}-->
 <script type="text/javascript">
-    var timer;
-    $(document).ready(function() {
-        $(".curr_menu").hover(function() {
-            $(this).addClass("categorybox-hover");
-        }, function() {
-            $(this).removeClass("categorybox-hover");
-        });
-        //note scroll
-        setInterval(function() {
-            $("#scoll-note ul:first").animate({
-                marginTop: "-29px"
-            }, 400, function() {
-                $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
-            });
-            $(".pagination ul:first").animate();
-        }, 3000);
-        //slider
-        $(".pagination li").hover(function() {
-            $(".pagination li[class='spanhover']").removeClass("spanhover");
-            var topicid = $(this).attr("topicid");
-            $(this).addClass("spanhover");
-            timer = setTimeout(function() {
-                $(".topic").hide();
-                $("#" + topicid).show();
-            }, 100);
-        });
-        $("#weektab").hover(function() {
-            $(this).attr("class", "select");
-            $("#alltab").attr("class", "not-selected");
-            $("#weektop").show();
-            $("#alltop").hide();
-        });
-        $("#alltab").hover(function() {
-            $(this).attr("class", "select");
-            $("#weektab").attr("class", "not-selected");
-            $("#alltop").show();
-            $("#weektop").hide();
-        });
-    });
 </script>
 <!--{template footer}-->

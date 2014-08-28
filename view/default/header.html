@@ -110,7 +110,7 @@
                 <ul class="navlist">
                     <!--{loop $headernavlist $headernav}-->
                     <!--{if $headernav['type']==1 && $headernav['available']}-->
-                    <li  <!--{if strstr($headernav['url'],$regular)}-->class="on"<!--{/if}-->>
+                    <li  <!--{if strstr($headernav['url'],$regular) && $regular!='index/default'}-->class="on"<!--{/if}-->>
                         <a title="{$headernav['title']}" href="{$headernav['format_url']}"><span text="hd-home" >{$headernav['name']}</span></a>
                     </li>
                     <!--{/if}-->
