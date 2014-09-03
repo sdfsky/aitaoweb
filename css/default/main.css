@@ -12,7 +12,8 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .content{ width:750px; float:right;}
 .tipcontent{width:650px;margin: 0 auto;border:1px solid #D5D5D5;text-align: center;}
 .user-content{ width:750px; float:right;}
-.main{ width:480px; float:left;}
+.main{ width:480px; float:left;margin-left: 3px;}
+.main a{color:#1abdc4;}
 .side{ width:250px; float:right;}
 .srsite{width: 570px;float: left;}
 .content-left{ width:720px; float:left;}
@@ -195,16 +196,57 @@ em {font-style: normal;color:#E63A00;}
 .hot-tags a{ display:inline-block; padding:2px 8px 1px; margin:0 4px 4px 0; height:18px; line-height:14px; color:#666; background:#E7F3F9; }
 .hot-tags a:hover{background:#68B2FC; color:#fff; text-decoration:none;}
 
-.list{ padding:0 10px;}
-.list li{background: url("lidot.gif") no-repeat scroll 1px 10px transparent;padding:0 0 0 10px; height:26px; font-size:14px; line-height:26px;overflow:hidden;}
+.list li{height:35px; font-size:15px; line-height:35px;overflow:hidden;border-bottom: 1px dashed #D7D7D7;color:#1abdc4;}
 .modbox .list li{font-size: 12px;background: url("lidot.gif") no-repeat scroll 1px 12px transparent;padding:0 0 0 10px;}
 .list .answer-number{ float:right; color:#999; font-size:12px;}
 .list .answer-number a{ color:#333;}
 .list .answer-number a:hover{ color:#f60; text-decoration:none;}
-.list .type{ margin:0 0 0 5px; font-size:12px; color:#999;}
+.list .type{font-size:15px; color:#999;}
 .list .answer{ float:right; font-size:12px;}
 .list .time{ float:right; font-size:12px; color:#999;}
 .list .gold {color: #FF6600;}
+
+
+/*首页提问框*/
+#menu, #menu .list li, #menu .list .drop, .qaZone a, .idxMain .side .recent dt, .idxMain .side .reward span, .index_ask_mod .counter, .idxMain .askUser .id .btn, p.toTa .btn, .idxMain .side h3 .city, .btnGreen, .btnRed, .tips .succeed p, .aFilter .aCon .from .stat, .qaSide .reward span, .qaMain div.q span a.fav, .qaCon .content .info .reward, .qaCon .content .tags span, .qaMain h2.expert, .askZone dt.title, .zan a, .zan strong {
+    background: url("ask_compress.png") no-repeat scroll 0 0 transparent;
+}
+.index_ask_mod{    background: none repeat scroll 0 0 #e7f3f3;
+    border: 1px solid #d6f2f2;
+    height: 155px;
+    padding: 10px;
+    width: 460px;
+}
+.index_ask_mod .counter {
+    background-position: 0 -123px;
+    line-height: 30px;
+    padding-right: 5px;
+    text-align: right;
+}
+.index_ask_mod textarea {
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 16px;
+    height: 65px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 436px;
+}
+.index_ask_mod .counter span {
+    color: #ff7f05;
+    font: 24px Constantia;
+    padding: 0 3px;
+}
+.index_ask_mod .type select {
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+.index_ask_mod .type {
+    line-height: 20px;
+}
+.index_ask_mod .type .btn {
+    float: right;
+}
 
 /*专题模块*/
 .topic img{float: left; margin: 3px; padding: 0 15px 0 0;text-align: center;width: 230px;}
@@ -264,7 +306,7 @@ em {font-style: normal;color:#E63A00;}
 .switc-tab{ padding:0 0 0 15px; border-bottom:1px solid #b2cce7;}
 .switc-tab li{ float:left; margin:0 5px 0 0; width:120px; height:31px; font-size:14px; line-height:31px; text-align:center; background:#d9e7f8; cursor:pointer;}
 .switc-tab .cur{ width:118px; margin:0 5px -1px 0; position:relative; border:1px solid #b2cce7; border-bottom:0 none; background:#fff; font-weight:bold; text-decoration:none;}
-.question-mod .title{ padding:0 0 0 10px;margin-bottom: 8px; height:36px; font:16px/36px "Microsoft YaHei"; border-bottom:1px solid #e3e3e3;}
+.question-mod .title{ font-family:微软雅黑;font-size:15px;font-weight:bold;font-style:normal; border-bottom:2px solid #1abdc4;}
 .question-mod .more{float: right;margin-top:-33px;}
 .question-mod .news-list{ padding:0 10px;}
 /*category-question*/
@@ -746,8 +788,8 @@ input:hover{border-color:#3EA201;}
 .tipcontent .tipbox{padding: 20px;font-size:14px;}
 .tipcontent .redirect{margin-bottom:30px;}
 /*友情链接*/
-.links {clear:both;border: 1px solid #E3E3E3;}
-.links .title { font: 14px/24px "Microsoft YaHei";height: 24px;padding: 0 0 0 10px;}
+.links {clear:both;border: 1px solid #E3E3E3;border-radius: 4px 4px 0 0;}
+.links .title { font: 16px/20px "Microsoft YaHei";font-weight:bold; height: 24px;padding: 0 0 0 10px;background-color:#f8f6f6;height: 35px;line-height: 35px;}
 .links .friendlink {padding: 0 10px 5px 8px;}
 .links .friendlink a {margin: 0 2px; line-height:28px;}
 
