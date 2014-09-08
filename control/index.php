@@ -9,6 +9,8 @@ class indexcontrol extends base {
     }
 
     function ondefault() {
+        $this->load("expert");
+        $questionlist = $_ENV['expert']->get_solves(0, 10);
         $linklist = $this->cache->load('link', 'id', 'displayorder');
         /* SEO */
         $this->setting['seo_index_title'] && $seo_title = str_replace("{wzmc}", $this->setting['site_name'], $this->setting['seo_index_title']);

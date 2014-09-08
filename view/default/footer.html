@@ -1,9 +1,10 @@
 <div class="wrapper">
     <div class="footer">
         <div class="bottom">
-            <a href="{SITE_URL}" target="_blank">{$setting['site_name']}</a><span class="span-line">|</span>
-            <a href="mailto:{$setting['admin_email']}" target="_blank">联系我们</a><span class="span-line">|</span>
-            <a href="{url index/help}" target="_blank">使用帮助</a>
+            <a href="{SITE_URL}" target="_blank">关于我们</a><span class="span-line">|</span>
+            <a href="mailto:{$setting['admin_email']}" target="_blank">公司简介</a><span class="span-line">|</span>
+            <a href="{url index/help}" target="_blank">服务声明</a><span class="span-line">|</span>
+            <a href="{url index/help}" target="_blank">联系我们</a>
             <!--{if $setting['site_icp']}-->
             <span class="span-line">|</span><a href="http://www.miibeian.gov.cn" target="_blank">{$setting['site_icp']}</a>
             <!--{/if}-->
@@ -11,7 +12,12 @@
             {$setting['site_statcode']}
             <!--{/if}-->
         </div>
-        <p>Powered by <a rel="nofollow" target="_blank" href="http://www.tipask.com/">Tipask v{TIPASK_VERSION}</a> &copy;2009-2014 <a rel="nofollow" target="_blank" href="http://www.tipask.com">tipask.com</a>，Processed in {$runtime} second(s), {$querynum} queries.</p>
+        <div class="bottom">
+            <p>Copyright © 2013-2014 Aitaocn Corporation, All Rights Reserved</p>
+            <p>本站所有信息仅供参考_不能作为诊断及医疗的依据 ┊ 本站如有转载或引用文章涉及版权问题_请速与我们联系！</p>
+            <p>艾在呵护，桃出精彩！ 全国统一客服热线：400-600-0539</p>
+            <p>艾桃母婴健康网 · 版权所有</p>
+        </div>
     </div>
 </div>
 <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: block;"></a>

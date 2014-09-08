@@ -15,7 +15,8 @@ class questionmodel {
         '2' => ' AND status=2',
         '6' => ' AND status=6',
         '4' => ' AND status=1 AND price>0',
-        '9' => ' AND status=9'
+        '9' => ' AND status=9',
+        '-1'=>' AND answers=0'
     );
     var $ordertable = array(
         'all' => 'AND status!=0 ORDER BY time DESC',
@@ -24,7 +25,8 @@ class questionmodel {
         '2' => ' AND status=2  ORDER BY time DESC',
         '6' => ' AND status=6  ORDER BY time DESC',
         '4' => ' AND status=1 AND price>0 ORDER BY price DESC,time DESC',
-        '9' => ' AND status=9  ORDER BY time DESC'
+        '9' => ' AND status=9  ORDER BY time DESC',
+        '-1'=>' AND answers=0 ORDER BY time DESC '
     );
 
     function questionmodel(&$base) {
