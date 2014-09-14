@@ -2,13 +2,13 @@
 <!--{eval $adlist = $this->fromcache("adlist");}-->
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.config.js"></script> 
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.all.js"></script> 
-<div class="nav-line">
-    <a class="first" href="{url category/view/all}">全部分类</a>
-    <!--{loop $navlist $nav}-->
-    &gt; <a href="{url category/view/$nav['id']}">{$nav['name']}</a> 
-    <!--{/loop}-->
-</div>
-<div class="wrapper clearfix">
+<div class="wrapper clearfix bordered mt10">
+    <div class="nav-line">
+        <a class="first" href="{url category/view/all}">全部分类</a>
+        <!--{loop $navlist $nav}-->
+        &gt; <a href="{url category/view/$nav['id']}">{$nav['name']}</a> 
+        <!--{/loop}-->
+    </div>
     <div class="content-left">
         <div class="questionbox">
             <div class="title pd40">

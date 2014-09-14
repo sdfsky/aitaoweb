@@ -3,8 +3,9 @@
 
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.config.js"></script> 
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.all.js"></script> 
-<div class="nav-line"><a class="first" href="{SITE_URL}">{$setting['site_name']}</a> &gt; <a href="{url question/view/$question['id']}">{$question['title']}</a> &gt; <span>编辑回答</span></div>
-<div class="wrapper clearfix">
+<div class="wrapper clearfix bordered mt10">
+	<div class="nav-line"><a class="first" href="{SITE_URL}">{$setting['site_name']}</a> &gt; <a href="{url question/view/$question['id']}">{$question['title']}</a> &gt; <span>编辑回答</span></div>
+
     <div class="content-left">
         <form name="answerform" onsubmit="return check_form();" action="{url question/editanswer}" method="post" >
             <div class="askbox">

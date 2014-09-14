@@ -1,8 +1,9 @@
 <!--{template header}-->
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.config.js"></script> 
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.all.js"></script> 
+<div class="wrapper clearfix bordered mt10">
 <div class="nav-line"><a class="first" href="{SITE_URL}">{$setting['site_name']}</a> &gt; <a href="{url question/view/$question['id']}">{$question['title']}</a> &gt; <span>问题补充</span></div>
-<div class="wrapper clearfix">
+
     <div class="content-left">
         <form name="askform" onsubmit="return check_form();" action="{url question/supply}" method="post">
             <input type="hidden" value="{$qid}" name="qid" />

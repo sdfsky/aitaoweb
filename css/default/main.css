@@ -501,7 +501,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 
 
 /*公告查看*/
-.notebox{ padding:15px 25px 20px; border:1px solid #E4E4E4;}
+.notebox{ padding:15px 25px 20px; }
 .notebox .title h1{font-size:16px; line-height:26px;text-align: center;}
 .notebox .time{font-size:12px; line-height:26px;text-align: center;border-top: 1px dashed #E0E0E0;color:#666;margin-top: 10px;padding-bottom: 10px;}
 
