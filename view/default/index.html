@@ -2,11 +2,32 @@
 <!--{eval $adlist = $this->fromcache("adlist");}-->
 <div class="wrapper bordered mt10 clearfix">
     <div class="aside">
+        <!--{if $user['uid']}-->
+        <div class="userinfo-box">
+            <div class="userinfo clearfix">
+                <div class="pic">
+                    <a target="_blank" href="{url user/default}" ><img  src="{$user['avatar']}"></a>
+                </div>
+                <div class="user_right">
+                    <h3><a target="_blank" href="{url user/default}">{$user['username']}</a></h3>
+                    <p>用户组：{$user['grouptitle']}</p>
+                    <p>健康币：{$user['credit2']}</p>
+                </div>
+            </div>
+            <ul class="menu clearfix">
+                <li>{$user['questions']}<a href="{url user/ask/1}">我的提问</a></li>
+                <li>{$user['answers']}<a href="{url favorite/default}">我的收藏</a></li>
+            </ul>
+            <div class="goask"><p>go<a href="{url question/add}">去提问题</a></p></div>
+        </div>
+        <!--{else}-->
         <div class="register_ad">
             <a href="{url user/register}">
                 <img src="{SITE_URL}css/default/register_ad.png" />
             </a>
         </div>
+        <!--{/if}-->
+
         <div class="category-mod">
             <h3 class="category-title">育儿问答</h3>
             <div class="count">

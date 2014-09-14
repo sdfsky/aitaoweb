@@ -3,8 +3,10 @@
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.config.js"></script> 
 <script type="text/javascript" src="{SITE_URL}js/editor/ueditor.all.js"></script> 
 <div class="wrapper clearfix bordered mt10">
-<div class="nav-line"><a class="first" href="{SITE_URL}">{$setting['site_name']}</a> &gt; <span>提问</span></div>
-    <div class="content-left">
+    <div class="ask_left">
+        <div class="ask-tips"><img src="{SITE_URL}css/default/ask_left_tips.png" /></div>
+    </div>    
+    <div class="ask_right">
         <form enctype="multipart/form-data" method="POST" action="{url question/add}" name="askform" id="askform" onsubmit="return check_form();" >
             <div class="askbox">
                 <div class="title"><div id="limitNum" class="tips">还可输入 <span>50</span> 字</div>{if isset($touser)}您正在向<a href="{url user/space/$touser['uid']}">{$touser['username']}</a>提问{else}请将您的问题告诉我们{/if}：</div>
@@ -46,24 +48,7 @@
             </div>	
         </form>
     </div>
-    <div class="aside-right">
-        <!--{if $touser}-->
-        <div class="modbox">
-            <div class="userinfo-box">
-                <div class="userinfo clearfix">
-                    <a class="pic" href="{url user/space/$touser['uid']}" target="_blank"><img width="50" height="50" src="{$touser['avatar']}"></a>
-                    <h3><a href="{url user/space/$touser['uid']}" target="_blank" title="{$touser['username']}">{eval echo cutstr($touser['username'],20,'')}</a></h3>
-                    <p>{$touser['grouptitle']}</p>
-                    <p>{$touser['answers']}回答<span>{$touser['supports']}赞同</span></p>
-                </div>
-            </div>
-        </div>
-        <!--{/if}-->
-        <!--广告位5-->
-        <!--{if (isset($adlist['question_view']['right1']) && trim($adlist['question_view']['right1']))}-->
-        <div>{$adlist['question_view']['right1']}</div>
-        <!--{/if}-->
-    </div>
+
 </div>
 <div id="catedialog" title="选择分类" style="display: none">
     <div id="dialogcate">
@@ -89,9 +74,9 @@
 </div>
 <script type="text/javascript">
     var category1 = {$categoryjs[category1]};
-    var category2 = {$categoryjs[category2]};
-    var category3 = {$categoryjs[category3]};
-        $(document).ready(function() {
+            var category2 = {$categoryjs[category2]};
+            var category3 = {$categoryjs[category3]};
+    $(document).ready(function() {
         initcategory(category1);
         $("#qtitle").keyup(function() {
             var qbyte = bytes($.trim($(this).val()));

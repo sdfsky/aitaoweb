@@ -19,6 +19,8 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .srsite{width: 570px;float: left;}
 .content-left{ width:720px; float:left;}
 .aside-right{ width:250px; float:right;}
+.ask_right{width:720px; float:right;}
+.ask_left{width:250px; float:left;}
 .mb10{ margin-bottom:10px;}
 .mb15{ margin-bottom:15px;}
 .mt10{ margin-top:10px;}
@@ -171,7 +173,7 @@ em {font-style: normal;color:#E63A00;}
 .category-mod .count .arrow_right{font-family:"microsoft yahei";font-size:13px;font-weight:normal;font-style:normal;text-decoration:none;color:#1ABDC4;}
 .category-mod .count .count_text{font-family:"microsoft yahei";font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#434343;}
 .category-mod .count .count_num{font-family:"microsoft yahei";font-size:13px;font-weight:bold;font-style:normal;text-decoration:none;color:#1ABDC4;}
- .leftlist{margin:10px 15px;line-height: 25px;font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;}
+.leftlist{margin:10px 15px;line-height: 25px;font-family:微软雅黑;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;}
 .category-title{background-color:#1ABDC4;background-repeat: repeat-x;height:36px;line-height: 36px;font-size:15px;padding-left:15px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;}
 .categorybox .cate-item{padding:10px 0 10px 10px; border-top:1px solid #D5D5D5;}
 .categorybox .first{ border-top:0 none;}
@@ -200,7 +202,7 @@ em {font-style: normal;color:#E63A00;}
 .hot-tags a{ margin:0 10px 0px 0; height:18px; line-height:14px; color:#1abdc4;font-size: 15px;}
 
 .list li{height:35px; font-size:15px; line-height:35px;overflow:hidden;border-bottom: 1px dashed #D7D7D7;}
-.modbox .list li{font-size: 12px;background: url("lidot.gif") no-repeat scroll 1px 12px transparent;padding:0 0 0 10px;}
+.modbox .list li{padding:0 0 0 10px;}
 .list .answer-number{ float:right; color:#999;margin-left: 15px;}
 .list .answer-number a{ color:#333;}
 .list .answer-number a:hover{ color:#f60; text-decoration:none;}
@@ -215,10 +217,10 @@ em {font-style: normal;color:#E63A00;}
     background: url("ask_compress.png") no-repeat scroll 0 0 transparent;
 }
 .index_ask_mod{    background: none repeat scroll 0 0 #e7f3f3;
-    border: 1px solid #d6f2f2;
-    height: 155px;
-    padding: 10px;
-    width: 460px;
+                   border: 1px solid #d6f2f2;
+                   height: 155px;
+                   padding: 10px;
+                   width: 460px;
 }
 .index_ask_mod .counter {
     background-position: 0 -123px;
@@ -351,15 +353,21 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .recommand{color: #E63A00;}
 
 /*用户信息*/
-.userinfo-box{ background:none repeat scroll 0 0 #FCFCFC;}
-.userinfo{ padding:10px;}
+.userinfo-box{ background:none repeat scroll 0 0 #FCFCFC;border: 3px solid #EBEBEB;margin:6px 0 10px 6px;}
+.userinfo{ padding:8px 0 10px 8px;border-bottom: 1px dashed #d7d7d7;}
 .userinfo .control{width:250px;}
 .userinfo .control span{line-height:30px;margin-left: 10px;}
-.userinfo .pic{ float:left; width:50px; height:50px; margin:0 10px 0 0;}
-.userinfo .pic img{width:52px;height:52px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-.userinfo h3{ float:left; width:142px;font-size:12px;color:#666; }
-.userinfo p{ float:left; width:142px;color:#888; overflow:hidden;}
-.userinfo p span{margin-left: 20px;}
+.userinfo .pic{ float:left; width:70px; height:70px; margin:0 10px 0 0;}
+.userinfo .pic img{width:70px;height:70px;}
+.userinfo h3{ float:left; font-size:13px;color:#666;font-weight:normal;}
+.userinfo p{ float:left;color:#888; overflow:hidden;}
+.user_right{width: 118px;float: left;line-height: 25px;}
+.userinfo-box .menu{border: 1px solid #EBEBEB;padding: 5px 0 5px;margin:8px 3px;overflow: hidden;position: relative;}
+.userinfo-box .menu li{ float:left; margin:0 0 0 -1px; width:100px; height:42px; border-left:1px solid #ccc; text-align:center;color:#1ABDC4;}
+.userinfo-box .menu li a{ display:block; margin:0 0 5px; line-height:18px; color:#777;}
+.userinfo-box .goask{text-align: center;margin:10px 0; }
+.userinfo-box .goask p{background:url(go.png) no-repeat scroll 60px -2px transparent;color:#fff;height: 26px;line-height: 18px;}
+.userinfo-box .goask a{color:#1abdc4;text-decoration:underline;padding-left: 10px;}
 
 
 /*左边的问题列表*/
@@ -399,16 +407,18 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .rcontent span{float: left;line-height: 22px;width: 230px;margin-top:6px;}
 
 /*提问页面div布局*/
-.askbox{ padding:0 25px 40px; border:1px solid #D5D5D5; background:#FCFCFC;}
-.askbox .title{ height:61px; font:20px/50px "Microsoft YaHei";}
-.askbox .tips{ float:right; font:16px/61px "Microsoft YaHei"; color:#999;}
+.ask-tips{margin: 10px;border-right: 1px solid #E4E4E4;}
+.askbox{ padding:0 25px 40px;}
+.askbox .title{ background: url("addask.png") no-repeat scroll 0px 31px transparent;height:61px; font:17px/80px "Microsoft YaHei";padding-left: 35px;}
+.askbox .tips{ float:right; font:16px/60px  "Microsoft YaHei"; color:#999;}
 .askbox .tips span{ padding:0 5px; color:#666; font-size:22px;}
+
 
 
 /*提问框*/
 .inputbox .qtitle {height:20px;background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;height: 22px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width: 644px;}
 .inputbox .adopt_text {height:20px;background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;height: 22px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width:430px;}
-.inputbox .qtitle:hover,.inputbox .adopt_text  {border: 2px solid #50B30E;padding:11px;}
+.inputbox .qtitle:hover,.inputbox .adopt_text  {border: 2px solid #1abdc4;padding:11px;}
 .inputbox h3{margin-top:20px;}
 .ask-input-bar{padding-top: 10px;padding-bottom: 10px;font-size: 14px;}
 .ask-input-bar h2{float: left;font-size: 12px;font-weight: normal;height: 28px;margin-top: 5px;text-align: right;}
@@ -636,7 +646,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .exchange p{color: #333333;margin: 8px 10px 0;padding-bottom: 6px;}
 
 /*用户空间*/
-.usermenu{padding:15px 5px 5px; border:1px solid #F2E4A4; background:#FFFEF1;}
+.usermenu{padding:15px 5px 5px; border:1px solid #E4E4E4; background:none repeat scroll 0 0 #f8f6f6;}
 .usermenu .menu{ position:relative; overflow:hidden; zoom:1;}
 .usermenu .menu li{ float:left; margin:0 0 0 -1px; width:70px; height:42px; border-left:1px solid #ccc; text-align:center; color:#666;}
 .usermenu .menu li a{ display:block; margin:0 0 5px; line-height:18px; color:#777;}
@@ -649,8 +659,8 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .userbox h3{overflow:hidden;font-size: 12px;}
 .userbox span{ line-height:18px; color:#666;font-size: 12px;float: left;width: 115px;}
 .userbox span a{color:#FF8100;}
-.usermenu .menu{ padding:18px 0 15px;border-top:1px dotted #F2E5AA;}
-.usermenu .menu li{ width:66px;color:#FF8100;}
+.usermenu .menu{ padding:18px 0 15px;border-top:1px dotted #E4E4E4;}
+.usermenu .menu li{ width:66px;color:#1abdc4;}
 .userbox .user-level,.user-level{font-weight: 700;color:#FF7800;font-size: 12px;}
 .userprogress{width:110px;position: relative;}
 .userprogress span{position: absolute;text-align: center;top: 4px;font-size: 10px;line-height: 10px;top:0px;}
@@ -658,7 +668,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .mod-status-info {color: #666;padding-bottom: 10px;}
 .mod-status-info .hd {border-bottom: 1px solid #EBEBEB;height: 18px;padding: 10px 0;}
 
-.mod-status-info .hd h3 {border-bottom: 3px solid #40B50E;padding-bottom: 3px;color: #333333;display: inline;font-family: 'Microsoft YaHei';font-size: 16px;}
+.mod-status-info .hd h3 {border-bottom: 3px solid #1abdc4;padding-bottom: 3px;color: #333333;display: inline;font-family: 'Microsoft YaHei';font-size: 16px;}
 .mod-status-info .bd {padding: 10px 0;}
 .mod-status-info .exchange{margin-top: 10px;margin-bottom: 10px;padding-bottom: 15px;}
 .mod-status-info .ask-box{margin-top: 15px;padding-top: 15px;}
@@ -683,7 +693,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .user-nav{ position:relative; overflow:hidden; zoom:1;}
 .user-nav li{ padding:7px 25px; height:20px; font-size:14px; line-height:20px; border-top:1px solid #F5F5F5;}
 .user-nav li a{ margin:0 0 0 10px; padding:0 4px; color:#444;}
-.user-nav li.on {background-color: #FFFFFF;padding:7px 39px;color:#60A506;}
+.user-nav li.on {background-color: #FFFFFF;padding:7px 39px;color:#1abdc4;}
 
 /*我的提问*/
 .my-answerbox{ padding:10px 30px 10px 20px; border:1px solid #D5D5D5;}
@@ -744,7 +754,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 
 
 /*表单元素样式*/
-input:hover{border-color:#3EA201;}
+input:hover{border-color:#1abdc4;}
 .input-bar{ margin-left:40px;padding-top: 25px;font-size: 14px;}
 .input-bar h2{float: left;font-size: 14px;font-weight: normal;height: 24px;margin-top: 6px;margin-right: 10px;width:60px;text-align: right;}
 .input-bar .text{float: left;font-size: 14px;height: 30px;line-height: 30px;margin: 0 5px 0 6px;}
