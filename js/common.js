@@ -244,14 +244,14 @@ function attentto_user(uid) {
     }
     $.post(g_site_url + "index.php?user/attentto", {uid: uid}, function(msg) {
         if (msg == 'ok') {
-            if ($("#attenttouser_"+uid).hasClass("button_attention")) {
-                $("#attenttouser_"+uid).removeClass("button_attention");
-                $("#attenttouser_"+uid).addClass("button_followed");
-                $("#attenttouser_"+uid).val("取消关注");
+            if ($("#attenttouser_" + uid).hasClass("button_attention")) {
+                $("#attenttouser_" + uid).removeClass("button_attention");
+                $("#attenttouser_" + uid).addClass("button_followed");
+                $("#attenttouser_" + uid).val("取消关注");
             } else {
-                $("#attenttouser_"+uid).removeClass("button_followed");
-                $("#attenttouser_"+uid).addClass("button_attention");
-                $("#attenttouser_"+uid).val("关注");
+                $("#attenttouser_" + uid).removeClass("button_followed");
+                $("#attenttouser_" + uid).addClass("button_attention");
+                $("#attenttouser_" + uid).val("关注");
             }
         }
     });
@@ -268,4 +268,68 @@ function checkall(checkname) {
             $(this).removeProp("checked");
         });
     }
+}
+
+function show_sidebar(h) {
+    var a = h;
+    var d = $(a + ">ul li");
+    var e = false;
+    var g;
+    $(d).css({position: "absolute"}).hide().eq(0).show();
+    if (d.length <= 1) {
+        return;
+    }
+    for (var b = 0; b < d.length; b++) {
+        $(a + " div.switch").append("<span>" + (b + 1) + "</span>");
+    }
+    $(a + ">ul").add(a + " a.next").hover(function() {
+        e = true;
+        clearInterval(g);
+    }, function() {
+        e = false;
+        clearInterval(g);
+        g = setTimeout(function() {
+            c(f($(a + " div.switch span[class=curr]").index()));
+        }, 500);
+    });
+    $(a + " a.next").click(function() {
+        c(f($(a + " div.switch span[class=curr]").index()));
+        return false;
+    });
+    $(a + " div.switch span").hover(function() {
+        if ($(this).hasClass("curr")) {
+            return;
+        }
+        e = true;
+        clearInterval(g);
+        c($(this).index());
+    }, function() {
+        e = false;
+        clearInterval(g);
+        var j = this;
+        g = setTimeout(function() {
+            c(f($(j).index()));
+        }, 5000);
+    });
+    function f(j) {
+        if (j == d.length - 1) {
+            j = -1;
+        }
+        j++;
+        return j;
+    }
+    function c(j) {
+        if (j != -1) {
+            $(a + " >ul li:visible").stop(true, true).fadeOut(500).parent().children().eq(j).stop(true, true).fadeIn(500);
+        } else {
+            j = 0;
+        }
+        $(a + " div.switch span").removeClass("curr").eq(j).addClass("curr");
+        if (!e) {
+            g = setTimeout(function() {
+                c(f(j));
+            }, 5000);
+        }
+    }
+    c(-1);
 }

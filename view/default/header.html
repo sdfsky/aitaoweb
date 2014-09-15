@@ -47,9 +47,9 @@
                     <div class="tuser-top-inner">
                         <!--{if 0!=$user['uid']}-->
                         <ul class="tuser-login">
-                            <li class="tuser-bar"><span class="ismore"><a href="{url user/default}">{$user['username']}</a></span></li>
+                            <li class="tuser-bar"><div class="user_avatar"><img src="{$user['avatar']}" /></div> </li>
                             <li id="myqa" class="tuser_menu">
-                                <span class="ismore"><a target="_blank" href="{url user/ask/2}">我的问答</a><i class="ar-ico"></i></span>
+                                <span class="ismore"><a target="_blank" href="{url user/score}">{$user['username']}</a><i class="ar-ico"></i></span>
                                 <div class="tuser-more-list">
                                     <a target="_blank" href="{url user/ask/2}">我的提问</a> 
                                     <a target="_blank" href="{url user/answer/1}">我的回答</a> 
@@ -82,7 +82,7 @@
                         <!--{else}-->
                         <ul class="tuser-login">
                             <li class="tuser-bar">
-                                <span><a  href="javascript:void(0);" onclick="login();">登录</a></span>|<span><a href="{url user/register}">注册</a></span>
+                                <span class="login"><a  href="javascript:void(0);" onclick="login();">登录</a></span>|<span class="login"><a href="{url user/register}">注册</a></span>
                             </li>
                         </ul>
                         <!--{/if}-->

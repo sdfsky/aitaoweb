@@ -69,7 +69,7 @@ em {font-style: normal;color:#E63A00;}
 .tuser-top-inner { position:relative; z-index:99; height:28px; padding:2px 0 0; margin:0 auto; float:right;}
 .tuser-top a {text-decoration:none}
 .tuser-top a:hover {color:#f60; text-decoration:underline}
-.tuser-nav li,.tuser-login li,.ar-ico,.msg-ico,.tuser_login-tips i,.quick-login a,.tuser_login-tips,.top-close{background:url(top-nav-bg.png) no-repeat}
+.msg-ico,.tuser_login-tips i,.quick-login a,.tuser_login-tips,.top-close{background:url(top-nav-bg.png) no-repeat}
 .tuser-nav,.tuser-login {padding:0; margin:0; list-style:none}
 .tuser-nav {float:left;}
 .tuser-login {float:right;}
@@ -78,8 +78,10 @@ em {font-style: normal;color:#E63A00;}
 .tuser-nav .tuser_nav-home {padding-left:0; background:none}
 
 .tuser-login .tuser-bar {padding:0 3px 0 0; position:relative; color:#ccc; background:none;line-height: 38px;}
-.tuser-bar span {color:#666; margin:0 6px;}
+.tuser-bar .login {color:#666; margin:0 10px;}
 .tuser-bar span a {margin:0}
+.tuser-bar .user_avatar{padding-top: 3px;}
+.tuser-bar .user_avatar img{width: 30px;height: 30px;}
 .tuser_login-tips {position:absolute; top:28px; left:65px; z-index:8; margin:0; padding-left:36px; width:212px; height:36px; line-height:36px; border:1px solid #fadf9c; background-color:#fff9d9; background-position:-75px 7px; color:#cc6600}
 .tuser_login-tips i {position:absolute; left:25px; top:-6px; width:11px; height:6px; background-position:0 -18px; font:0/0 arial}
 .tuser-login .quick-login {padding-right:3px}
@@ -88,18 +90,17 @@ em {font-style: normal;color:#E63A00;}
 .quick-login .ql-sina {background-position:-25px -28px}
 .quick-login .ql-qq {background-position:0 -28px}
 
-.msg-ico {float:left; width:15px; height:12px; margin-top:8px; background-position:0 -2px; overflow:hidden; font:0/0 arial}
+.msg-ico {float:left; width:15px; height:12px; margin-top:10px; background-position:0 -2px; overflow:hidden; font:0/0 arial}
 .msg-null {background-position:-20px -2px}
 .tuser_logout {border-top:1px dotted #ccc}
 .msg-num {right:2px; height:16px; line-height:16px; padding:2px 5px; background:#f60; font-family:verdana; font-size:10px;color:#fff; font-weight:bold;display: none;}
 .top-close {position:absolute;right:3px; top:3px; width:19px; height:18px; background-position:-41px 0; cursor:pointer;}
 
 .tuser-nav .tuser_menu,.tuser-login .tuser_menu {padding:0; position:relative; z-index:9; line-height:26px;}
-.ismore {float:left;height:26px; padding:1px 22px 1px 11px; line-height:26px; color:#666; cursor:default}
+.ismore {float:left;height:30px; padding:1px 32px 1px 11px; line-height:30px; color:#666; cursor:default;}
 .tuser-login .tuser-more-on {z-index:10}
 .tuser-more-on .ismore {position:relative; z-index:2; line-height:26px; padding:0 22px 2px 10px; margin:0 -1px -2px 0; border:1px solid #999; border-bottom:0 none; background:#fff}
-.ar-ico {position:absolute; top:12px; right:9px; width:7px; height:4px; font:0/0 arial; background-position:-67px -4px}
-.tuser-more-on .ar-ico {top:11px; background-position:-67px -11px}
+.ar-ico {position:absolute; top:9px; right:12px; width:15px; height:15px; background:url(user_arrow-ico.png) no-repeat scroll 0 0 transparent;}
 .tuser-more-list {display:none; position:absolute; top:28px;padding:2px; min-width:76px; max-widht:150px; _width:76px; border:1px solid #999; background:#fff;}
 .tuser-more-on .tuser-more-list {visibility: visible;}
 .tuser-more-list a {display:block; height:24px; line-height:24px; padding:0 8px; white-space:nowrap}
@@ -299,8 +300,48 @@ em {font-style: normal;color:#E63A00;}
 .aside-right .noticebox .list a{ margin:0 0 0 8px;}
 
 /*轮换*/
-.slider-box{padding: 10px;}
-
+.slider-box{background: none repeat scroll 0 0 #f8f6f6;padding: 5px;margin-bottom: 15px;}
+.otherScroll {height: 190px;overflow: hidden;position: relative;z-index: 9;}
+.otherScroll li{width:740px;}
+.otherScroll .img{float: left;width: 380px;}
+.otherScroll .txt {
+    float: right;
+    padding-right: 20px;
+    width: 320px;
+}
+.otherScroll .txt dt {
+    font-size: 18px;
+    line-height: 50px;
+}
+.otherScroll .txt dd {
+    line-height: 26px;
+}
+.otherScroll .txt dd p span {
+    float: right;
+}
+.otherScroll .switch {
+    position: absolute;
+    right: 15px;
+    top: 165px;
+    z-index: 20;
+}
+.otherScroll .switch span {
+    border-radius: 10px;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font: bold 11px/20px Arial;
+    height: 20px;
+    margin-right: 3px;
+    text-align: center;
+    width: 20px;
+}
+.otherScroll .switch span.curr {
+    background: none repeat scroll 0 0 #ff8e1c;
+    color: #fff;
+    opacity: 1;
+}
 
 .pagination {border-top: 1px solid #E0E0E0;margin-left: -1px;text-align:center;}
 .pagination li {border-right: 1px solid #DCDCDC;float: left;text-align: center;}
