@@ -137,22 +137,19 @@
             <!--{/if}-->
             <!-- 待解决 -->
             <div class="index_ask_mod">
-                <form action="index.php?g=Question&amp;a=Index&amp;d=askFromIndex" method="post" onsubmit="return checkAskForm();" name="askFromIndex" id="askFromIndex">
-                    <div class="counter" id="ask_counter"><div id="ask_counter" class="counter">您还可以输入<span>50</span>字</div></div>
-                    <textarea id="title" name="title" placeholder="有问题，问专家"></textarea><!--onkeyup="this.value = this.value.substring(0, 50)"-->
+                <form action="{url question/add}"  method="post" name="askform" id="askform">
+                    <input type="hidden" value="0" name="submit" />
+                    <div class="counter" id="limitNum"><div id="ask_counter" class="counter">您还可以输入<span>50</span>字</div></div>
+                    <textarea id="qtitle" name="title" placeholder="有问题，问专家"></textarea>
                     <p class="type">
-                        <input type="image" src="http://static.mama.cn/mamacn/images/ask/a_submit.png" class="btn">
+                        <input type="image" src="{SITE_URL}css/default/a_submit.png" class="btn" id="submit_ask"/>
                         问题分类：
-                        <select name="cid1" id="cid1">    <option selected="" value="81">备孕期</option>
-                            <option value="2">怀孕期</option>
-                            <option value="1">婴儿期</option>
-                            <option value="3">幼儿期</option>
-                            <option value="4">学龄前</option>
-                            <option value="7">家有学童</option>
-                            <option value="82">常见疾病</option>
-                            <option value="8">情感生活</option>
-                            <option value="9">本地问题</option>
+                        <select name="cid1" id="cid1">
+                            <!--{loop $categorylist  $category1}-->
+                            <option value="{$category1['id']}">{$category1['name']}</option>
+                            <!--{/loop}-->
                         </select>
+                        <select name="cid" id="cid2"><option value="0">请选择</option></select>
                     </p>
                 </form>
             </div>
@@ -293,5 +290,34 @@
 </div>
 <!--{/if}-->
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#cid1").change(function(){
+            load_category(); 
+        });
+        load_category(); 
+        $("#qtitle").keyup(function() {
+            var qbyte = bytes($.trim($(this).val()));
+            var limit = 100 - qbyte;
+            if (limit % 2 == 0) {
+                $("#limitNum span").html((limit / 2));
+            } else {
+                $("#limitNum span").html(((limit + 1) / 2));
+            }
+        });
+        $("#submit_ask").click(function(){
+            var qtitle = $("#qtitle").val();
+            if (bytes($.trim(qtitle)) < 8 || bytes($.trim(qtitle)) > 100) {
+                alert("问题标题长度不得少于4个字，不能超过50字！");
+                $("#qtitle").focus();
+                return false;
+            }
+            $("#askform").submit();
+        });
+    });
+
+    //加载二级分类
+    function load_category(){
+        $("#cid2").load("{SITE_URL}index.php?category/ajaxgetcategory/"+$("#cid1").val());
+    }
 </script>
 <!--{template footer}-->

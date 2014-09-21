@@ -5,20 +5,20 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .clearfix:after {clear: both;content: ".";display: block;height: 0;visibility: hidden;}
 .clearfix {*zoom:1}
 .clr {clear: both;font-size: 0;height: 0;line-height: 0;margin: 0;padding: 0;visibility: hidden;width: 0;}
-.wrapper{ width:980px; margin:0 auto;}
+.wrapper{ width:990px; margin:0 auto;}
 .bordered{border:#D7D7D7 1px solid;border-radius: 5px; }
 .aside{ width:220px; float:left;}
 .user-aside{ width:220px; float:left;}
-.content{ width:750px; float:right;}
+.content{ width:760px; float:right;}
 .tipcontent{width:650px;margin: 0 auto;border:1px solid #D5D5D5;text-align: center;}
-.user-content{ width:750px; float:right;}
+.user-content{ width:760px; float:right;}
 .main{ width:480px; float:left;margin-left: 3px;}
 .main a{color:#1abdc4;}
 .list a{color:#1abdc4;}
-.side{ width:250px; float:right;}
+.side{ width:260px; float:right;}
 .srsite{width: 570px;float: left;}
 .content-left{ width:720px; float:left;}
-.aside-right{ width:250px; float:right;}
+.aside-right{ width:260px; float:right;}
 .ask_right{width:720px; float:right;}
 .ask_left{width:250px; float:left;}
 .mb10{ margin-bottom:10px;}
@@ -48,7 +48,10 @@ em {font-style: normal;color:#E63A00;}
 .goback{float: left;height: 32px;line-height: 32px;padding: 2px 0;margin-left: 10px;}
 .tnav{ float:left; height:32px; line-height:32px; padding:2px 0 0; margin:0 0 0 -10px;}
 .tnav li{ float:left; padding:1px 10px 0;}
-.tnav .attention{margin:3px 5px 3px 0;line-height: 38px;}
+.tnav .attention a{display: block;float: left;}
+.tnav .weibo{height:38px;width:38px; background:url(attention_sina.png) no-repeat scroll 0 50% rgba(0, 0, 0, 0);overflow: hidden;}
+.tnav .weixin{height:38px;width:40px;background:url(attention_weixin.png) no-repeat scroll 0 50% rgba(0, 0, 0, 0);overflow: hidden;}
+.tnav .qzone{height:38px;width:40px;background:url(attention_qqzone.png) no-repeat scroll 0 50% rgba(0, 0, 0, 0);overflow: hidden;}
 .tnav .more{ position:relative; padding:0; background:none; z-index:2;}
 .tnav .more span{ display:inline-block; padding:1px 24px 0 10px; background-position:100% -132px; cursor:pointer;}
 .tnav .more-list{ position:absolute; top:32px; left:0; width:80px; padding:2px; border:1px solid #999; background:#fff;}
@@ -153,8 +156,8 @@ em {font-style: normal;color:#E63A00;}
 #rs th {font-size: 14px;font-weight: 400;line-height: 19px;text-align: left;vertical-align: top;white-space: nowrap;}
 #rs td {width: 5%;}
 /*navbox 导航栏*/
-#navbox{margin: auto;text-align: left;width: 980px;}
-.main-nav {background-color: #fff;background-repeat: repeat-x;height: 48px;line-height: 48px;margin-top: 14px;overflow: hidden;width: 980px;}
+#navbox{margin: auto;text-align: left;width: 990px;}
+.main-nav {background-color: #fff;background-repeat: repeat-x;height: 48px;line-height: 48px;margin-top: 14px;overflow: hidden;}
 .main-nav .navlist {background-color: #46D0D6;background-repeat: repeat-x;height: 48px;line-height: 48px;font-size: 14px;font-weight: bold;border-radius: 10px 10px 0 0;}
 .main-nav .navlist li {float: left;margin-right: -2px;}
 .main-nav .navlist li a {color: #FFFFFF;display: block;text-align: center;text-decoration: none;width: 94px;line-height:48px;height: 48px;}
@@ -457,7 +460,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 
 
 /*提问框*/
-.inputbox .qtitle {height:20px;background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;height: 22px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width: 644px;}
+.inputbox .qtitle {background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width: 670px;}
 .inputbox .adopt_text {height:20px;background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;height: 22px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width:430px;}
 .inputbox .qtitle:hover,.inputbox .adopt_text  {border: 2px solid #1abdc4;padding:11px;}
 .inputbox h3{margin-top:20px;}

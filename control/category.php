@@ -81,6 +81,20 @@ class categorycontrol extends base {
         include template('recommendlist');
     }
 
+    function onajaxgetcategory(){
+      $cid1 = intval($this->get[2]);
+      $categorylist=$this->fromcache('categorylist');
+      $optionstr = '';
+      foreach ($categorylist as $category1) {
+          if($cid1 == $category1['id']){
+            foreach($category1['sublist'] as $category2){
+                $optionstr.= '<option value="'.$category2['id'].'">'.$category2['name'].'</option>';
+            }
+          }
+      }
+      exit($optionstr);
+    }
+
 }
 
 ?>

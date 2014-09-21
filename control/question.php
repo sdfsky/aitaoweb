@@ -22,7 +22,9 @@ class questioncontrol extends base {
 
     function onadd() {
         $navtitle = "提出问题";
+        print_r($this->post);
         if (isset($this->post['submit'])) {
+
             $title = htmlspecialchars($this->post['title']);
             $description = $this->post['description'];
             $cid1 = $this->post['cid1'];
@@ -85,9 +87,9 @@ class questioncontrol extends base {
             $_ENV['userlog']->add('ask');
             $_ENV['doing']->add($this->user['uid'], $this->user['username'], 1, $qid, $description);
             if (0 == $status) {
-                $this->message('问题发布成功！为了确保问答的质量，我们会对您的提问内容进行审核。请耐心等待......', 'BACK');
+                $this->message('问题发布成功！为了确保问答的质量，我们会对您的提问内容进行审核。请耐心等待......', 'ADD_QUESTION');
             } else {
-                $this->message("问题发布成功!", $viewurl);
+                $this->message("问题发布成功!", "ADD_QUESTION");
             }
         } else {
             if (0 == $this->user['uid']) {

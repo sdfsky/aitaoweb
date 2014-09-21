@@ -1,0 +1,10 @@
+<!--{template header}-->
+<div class="wrapper clearfix bordered mt10">
+    <div class="nav-line">
+        <a class="first" href="{url category/view/all}">全部分类</a>
+        <!--{loop $navlist $nav}-->
+        &gt; <a href="{url category/view/$nav['id']}">{$nav['name']}</a> 
+        <!--{/loop}-->
+    </div>
+</div>
+<!--{template footer}-->
