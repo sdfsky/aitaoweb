@@ -127,6 +127,7 @@ em {font-style: normal;color:#E63A00;}
 .round{background:url('search_input.png') no-repeat;border:none;display:inline-block;height:48px;vertical-align:top;width:270px;margin-right: -8px;margin-top:1px;}
 .input_key{-webkit-appearance:none;background:#fff;border:0;font:16px/22px arial;height:35px;margin:5px 0 0 7px;outline:0;padding:0;width:260px}
 .s_ask_btn {background: url("s_ask_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 17px;height: 48px;padding: 0;width: 129px;color:#fff;}
+.tip_ask_btn {background: url("tip_ask_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 17px;height: 45px;padding: 0;width: 119px;color:#fff;}
 .s_btn {background: url("search-bg.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 17px;height: 48px;padding: 0;width: 129px;color:#fff;}
 #qa-tabcard {background: url("ctab.png") repeat-x scroll 0 0 transparent;margin-top: 1.87em;}
 #qa-tabcard ul {height: 35px;overflow: hidden;border-bottom: 2px solid #1abdc4;}
@@ -369,7 +370,12 @@ em {font-style: normal;color:#E63A00;}
 .category-question p{ padding:10px 0 0; font-size:14px; line-height:22px; color:#666;}
 .category-question .type{ margin:0 8px 0 5px; font-size:12px; color:#999;}
 .category-question .answer{ font-size:12px;}
-
+/*问题添加成功*/
+.tip_question{width: 620px;margin:0 auto;}
+.tip_question .tipbox{text-align: center;padding-bottom: 35px;}
+.tip_question .tipbox a{color:#1abdc4;}
+.tip_question .tip{height: 60px;line-height: 60px;font-size: 20px;background: url(success_add_question.png) no-repeat scroll 130px -1px transparent;color:#333;}
+.tip_question .sub_tip{height: 30px;line-height: 30px;}
 /*问题分类*/
 .tablist{height: 42px;background: #D9F4F8;margin:0 5px;}
 .tablist li{float: left;}

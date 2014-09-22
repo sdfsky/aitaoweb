@@ -107,6 +107,7 @@
         <div id="navbox">
             <div class="main-nav clearfix">
                 <ul class="navlist">
+                    <!--{eval $headernavlist = $this->fromcache("headernavlist");}-->
                     <!--{loop $headernavlist $headernav}-->
                     <!--{if $headernav['type']==1 && $headernav['available']}-->
                     <li  <!--{if strstr($headernav['url'],$regular) && $regular!='index/default'}-->class="on"<!--{/if}-->>

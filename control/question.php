@@ -21,10 +21,10 @@ class questioncontrol extends base {
     /* 提交问题 */
 
     function onadd() {
+        include template("tip_add_question");
+        exit;
         $navtitle = "提出问题";
-        print_r($this->post);
         if (isset($this->post['submit'])) {
-
             $title = htmlspecialchars($this->post['title']);
             $description = $this->post['description'];
             $cid1 = $this->post['cid1'];

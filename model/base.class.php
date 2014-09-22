@@ -244,6 +244,7 @@ class base {
             $redirect = $url;
         } else if ('ADD_QUESTION' == $url) {
             include template('tip_add_question', $tpldir);
+            exit;
         } else {
             $redirect = SITE_URL . $this->setting['seo_prefix'] . $url . $this->setting['seo_suffix'];
         }
