@@ -372,6 +372,10 @@ em {font-style: normal;color:#E63A00;}
 .category-question .answer{ font-size:12px;}
 /*问题添加成功*/
 .tip_question{width: 620px;margin:0 auto;}
+.tip_question h4{font-size:15px;font-weight:normal;}
+.tip_question .more{float: right;margin-top: -30px;}
+.tip_question .list li{border:none;}
+.tip_question .mod-answer-list{padding-bottom:60px;}
 .tip_question .tipbox{text-align: center;padding-bottom: 35px;}
 .tip_question .tipbox a{color:#1abdc4;}
 .tip_question .tip{height: 60px;line-height: 60px;font-size: 20px;background: url(success_add_question.png) no-repeat scroll 130px -1px transparent;color:#333;}

@@ -242,14 +242,11 @@ class base {
             $redirect = SITE_URL;
         } else if ('BACK' == $url || 'STOP' == $url) {
             $redirect = $url;
-        } else if ('ADD_QUESTION' == $url) {
-            include template('tip_add_question', $tpldir);
-            exit;
         } else {
             $redirect = SITE_URL . $this->setting['seo_prefix'] . $url . $this->setting['seo_suffix'];
         }
         $tpldir = (0 === strpos($this->get[0], 'admin')) ? 'admin' : $this->setting['tpl_dir'];
-        include template('tip', $tpldir);
+        include template('tip');
         exit;
     }
 

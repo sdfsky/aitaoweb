@@ -21,8 +21,6 @@ class questioncontrol extends base {
     /* 提交问题 */
 
     function onadd() {
-        include template("tip_add_question");
-        exit;
         $navtitle = "提出问题";
         if (isset($this->post['submit'])) {
             $title = htmlspecialchars($this->post['title']);
@@ -86,11 +84,10 @@ class questioncontrol extends base {
             }
             $_ENV['userlog']->add('ask');
             $_ENV['doing']->add($this->user['uid'], $this->user['username'], 1, $qid, $description);
-            if (0 == $status) {
-                $this->message('问题发布成功！为了确保问答的质量，我们会对您的提问内容进行审核。请耐心等待......', 'ADD_QUESTION');
-            } else {
-                $this->message("问题发布成功!", "ADD_QUESTION");
-            }
+            $navlist = $_ENV['category']->get_navigation($cid, true);
+            $solvelist = $_ENV['question']->list_by_cfield_cvalue_status('cid', $cid, 2);            
+            include template('tip_add_question');
+            exit;
         } else {
             if (0 == $this->user['uid']) {
                 $this->setting["ucenter_open"] && $this->message("UCenter开启后游客不能提问!", 'BACK');
@@ -375,7 +372,7 @@ class questioncontrol extends base {
         (1 == $status) && ($qstatus = "1,2,6,9");
         (2 == $status) && ($qstatus = "2,6");
         $word = trim($this->post['word']) ? trim($this->post['word']) : urldecode($this->get[2]);
-        $word = str_replace(array("\\","'"," ","/","&"),"", $word);
+        $word = str_replace(array("\\", "'", " ", "/", "&"), "", $word);
         $word = strip_tags($word);
         $word = htmlspecialchars($word);
         $word = taddslashes($word, 1);

@@ -11,61 +11,24 @@
             <p class="tip">恭喜您！问题已成功提交！</p>
             <p class="sub_tip">查看我的提问记录，请到<a href="{url user/profile}">个人中心</a></p>
             <p class="sub_tip">请您务必在<font color="#1abdc4">15天之内</font>处理您的问题，成功处理后奖励<font color="#1abdc4">10积分</font>！</p>
-            <p class="sub_tip mt10"><input type="button" value="返回该问题" class="tip_ask_btn" id="ask_btn"></p>
+            <p class="sub_tip mt10"><input type="button" value="返回该问题" class="tip_ask_btn" id="ask_btn" onclick="javascript:document.location = '{url question/view/$qid}'" /></p>
         </div>
-        <h4 class="title">专家们正在解决</h3>
+
         <div class="mod-answer-list mt10" id="mod-answer-list">
             <div class="bd">
+
+                <h4>专家们正在解决</h4>
+                <p class="more"><a href="{url category/view/$cid/2}">更多</a></p>
                 <div class="cls-qa-table">
-
-                    <ul class="list">	    		
+                    <ul class="list">	 
+                        <!--{loop $solvelist $index $question}-->                     
                         <li>
                             <span class="qdot">·</span>
-                            <a title="安装" href="http://localhost/aitaoweb/c-109.html" class="type" target="_blank">[安装]</a>
-                            <a title="adsfasfasdfasdfasdf" href="http://localhost/aitaoweb/q-17938.html" target="_blank">adsfasfasdfasdfasdf</a>
-                            <span class="answer-number"><font color="#F9861A">0</font>回答</span>
-
+                            <a target="_blank" class="type" href="{url category/view/$question['cid']}" title="{$question['category_name']}">[{eval echo cutstr($question['category_name'],10,'');}]</a>
+                            <a target="_blank" href="{url question/view/$question['id']}" title="{$question['title']}">{eval echo cutstr($question['title'],50);}</a>
+                            <span class="answer-number"><font color="#F9861A">{$question['answers']}</font>回答</span>
                         </li>
-                    </ul>
-
-                    <ul class="list">	    		
-                        <li>
-                            <span class="qdot">·</span>
-                            <a title="安装" href="http://localhost/aitaoweb/c-109.html" class="type" target="_blank">[安装]</a>
-                            <a title="adsfasfasdfasdfasdf" href="http://localhost/aitaoweb/q-17937.html" target="_blank">adsfasfasdfasdfasdf</a>
-                            <span class="answer-number"><font color="#F9861A">0</font>回答</span>
-
-                        </li>
-                    </ul>
-
-                    <ul class="list">	    		
-                        <li>
-                            <span class="qdot">·</span>
-                            <a title="安装" href="http://localhost/aitaoweb/c-109.html" class="type" target="_blank">[安装]</a>
-                            <a title="阿的所发生的发生俺的沙发安安" href="http://localhost/aitaoweb/q-17936.html" target="_blank">阿的所发生的发生俺的沙发安安</a>
-                            <span class="answer-number"><font color="#F9861A">0</font>回答</span>
-
-                        </li>
-                    </ul>
-
-                    <ul class="list">	    		
-                        <li>
-                            <span class="qdot">·</span>
-                            <a title="安装" href="http://localhost/aitaoweb/c-109.html" class="type" target="_blank">[安装]</a>
-                            <a title="俺的沙发沙发阿斯顿发送到" href="http://localhost/aitaoweb/q-17935.html" target="_blank">俺的沙发沙发阿斯顿发送到</a>
-                            <span class="answer-number"><font color="#F9861A">0</font>回答</span>
-
-                        </li>
-                    </ul>
-
-                    <ul class="list">	    		
-                        <li>
-                            <span class="qdot">·</span>
-                            <a title="安装" href="http://localhost/aitaoweb/c-109.html" class="type" target="_blank">[安装]</a>
-                            <a title="sdfsky123456" href="http://localhost/aitaoweb/q-17934.html" target="_blank">sdfsky123456</a>
-                            <span class="answer-number"><font color="#F9861A">0</font>回答</span>
-
-                        </li>
+                        <!--{/loop}-->
                     </ul>
                 </div>
             </div>
