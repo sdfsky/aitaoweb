@@ -12,7 +12,7 @@
     </div>
     
     <div class="content-left">
-        <div>
+        <div style="margin: 5px;">
             <a href="#"><img src="{SITE_URL}css/guanggao/u112_normal.png"></a>
         </div>
         <div class="questionbox">
@@ -98,16 +98,14 @@
         </div>
         <!--{/if}-->        
         <div id="customerList" class="net-answer mt10">
-            <div class="title">全部回答({$question['answers']})</div>
+            <div class="title">专家们的解答</div>
             <ul class="net-answer-list">
                 <!--{loop $answerlist $index $answer}-->
                 <li id="comment_{$index}">
                     <div class="mainBox">
                         <div class="avatar">
-                            <div  class="avarta-img">
-                                <div class="avarta-name"><a target="_blank" href="{url user/space/$answer['authorid']}"><img width="50" height="50" alt="{$answer['author']}" src="{$answer['author_avartar']}" onmouseover="pop_user_on(this, '{$answer[authorid]}', 'img');"  onmouseout="pop_user_out();"></a></div>
-                            </div>
-                            <div class="avarta-name"><a target="_blank" title="{$answer['author']}" href="{url user/space/$answer['authorid']}" onmouseover="pop_user_on(this, '{$answer[authorid]}', 'text');"  onmouseout="pop_user_out();">{eval echo cutstr($answer['author'],7,'');}</a></div>                           
+                        <div class="avarta-name"><a target="_blank" href="{url user/space/$answer['authorid']}"><img width="64" height="64" alt="{$answer['author']}" src="{$answer['author_avartar']}"></a></div>
+                        <a href="{url question/add/$answer['authorid']}"><img src="{SITE_URL}css/default/ask_to_expert.png" /></a>                        
                         </div>
 
                         <div class="anscontent">
