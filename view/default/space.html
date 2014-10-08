@@ -52,42 +52,6 @@
                     </div>
                 </div>
             </div>
-            <div class="mod-status-info">
-                <div class="hd">
-                    <h3>TA的动态</h3>
-
-                </div>
-                <ul class="q-tabmod mt10">
-                    <!--{loop $doinglist $doing}-->
-                    <li>
-                        <div class="msgcontent">
-                            <div class="source">
-                                <!--{if $doing['hidden'] && in_array($doing['action'],array(1,8))}-->
-                                匿名
-                                <!--{else}-->
-                                <a title="{$doing['author']}"  target="_blank" href="{url user/space/$doing['authorid']}">{$doing['author']}</a> 
-                                <!--{/if}-->                            
-                                {$doing['actiondesc']}<span class="time">{$doing['doing_time']}</span>
-                            </div>                        <div class="title"><a href="{url question/view/$doing['questionid']}" target="_blank">{$doing['title']}?</a></div>
-                            <div class="detail"><p>{eval echo cutstr($doing['content'],500)}</p></div>
-                            <div class="related">
-                                <div class="pv">{$doing['attentions']} 人关注 <span class="dot">•</span> {$doing['answers']} 个回答 <span class="dot">•</span> {$doing['views']} 次浏览 <span class="dot">•</span> 发表于 {$doing['question_time']} </div>
-                            </div>
-                            <!--{if $doing['referid']}-->
-                            <div class="quote">
-                                <div class="avatar">
-                                    <a href="{url user/space/$doing['refer_authorid']}"  target="_blank" class="pic"><img alt="自由的风" src="{$doing['refer_avatar']}" onmouseover="pop_user_on(this, '{$doing['refer_authorid']}', 'img');"  onmouseout="pop_user_out();" /></a>
-                                </div>
-                                <div class="detail"><p>{eval echo cutstr($doing['refer_content'],200)}</p></div>
-                            </div>
-                            <!--{/if}-->
-                        </div>
-                        <div class="clr"></div>
-                    </li>
-                    <!--{/loop}-->
-                </ul>
-            </div>
-            <div class="pages">{$departstr}</div>	
         </div>
     </div>
 </div>

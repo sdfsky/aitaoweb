@@ -52,9 +52,6 @@
                     <!--{/loop}-->
                 </ul>
             </div>
-            <!--{if $question['authorid']!=$user['uid']}-->
-            <div class="score_tip">回答该问题即可获得 <b>{$setting['credit1_answer']}</b> 经验值{if $setting['credit2_answer']} + <b>{$setting['credit2_answer']}</b> 财富值{/if}，问题被采纳即可获得 <b>{$setting['credit1_answer']}</b> 经验值{if $setting['credit2_answer'] || $question['price']} + <b>{eval echo ($setting['credit2_answer']+$question['price'])}</b> 财富值{/if}！</div>
-            <!--{/if}-->
             <!--{if 0!=$question['authorid'] && ($question['authorid']==$user['uid'])}-->
             <div class="clr"></div>
             <div class="managebox mt10">
@@ -71,7 +68,6 @@
             <div style="margin-top:5px;">{$adlist['question_view']['inner1']}</div>
             <!--{/if}-->
         </div>
-        <div class="share-content">{$setting['question_share']}</div>
         <!--广告位2-->
         <!--{if (isset($adlist['question_view']['left1']) && trim($adlist['question_view']['left1']))}-->
         <div class="share-content">{$adlist['question_view']['left1']}</div>
@@ -109,6 +105,19 @@
                         </div>
 
                         <div class="anscontent">
+                            <div class="expert-info">
+                                <div class="expert-info-left">
+                                    <a href="{url user/space/$answer['authorid']}">{$answer['author']}</a>
+                                    <img src="{SITE_URL}css/default/realname.png" class="realname" />
+                                    <span>成都东升医院</span>
+                                </div>
+                                <div class="expert-info-right">
+                                    <span class="time">{$answer['time']}</span>
+                                    <a href="#" class="inform">投诉</a>
+                                 </div>
+                               <div class="clr"></div>
+                            </div>
+                            
                             {$answer['content']}                            
                             <div class="appendcontent">
                                 <!--{loop $answer['appends'] $append}-->       
@@ -139,24 +148,11 @@
                         <div class="comment-box mt10">
                             <div class="comments-hd">
                                 <div class="function" id="{$answer['id']}">
-                                    <span class="number"><a onclick="show_comment('{$answer['id']}');" href="javascript:void(0)">评论({$answer['comments']})</a></span>
                                     <input type="button" class="button_agree" value="{$answer['supports']}" />                                
                                 </div>
-                                <span class="time">回答于 {$answer['time']}</span>
                                 <!--{if $user['grouptype']==1}-->
                                 <span class="admin"><a href="javascript:void(0);" onclick="adoptanswer({$answer['id']});">采纳为最佳答案</a><span class="span-line">|</span><a href="{url question/editanswer/$answer['id']}">编辑内容</a><span class="span-line">|</span><a href="javascript:void(0);" onclick="delete_answer('{$answer['id']}', '{$question['id']}')">删除</a></span>
                                 <!--{/if}-->
-                            </div>
-
-                            <div class="comments-mod" style="display: none;margin-left:70px;" id="comment_{$answer['id']}">
-                                <div class="areabox clearfix">
-                                    <input type="text"  class="comment-input" name="content" />
-                                    <input type='hidden' value='0' name='replyauthor' />
-                                    <input type="button" value="评论"  class="normal-button" name="submit" onclick="addcomment({$answer['id']});"/>
-                                </div>
-                                <ul class="comments-list">
-                                    <li class="loading"><img src='{SITE_URL}css/default/loading.gif' align='absmiddle' />&nbsp;加载中...</li>
-                                </ul>
                             </div>
                         </div>
                 </li>
@@ -170,10 +166,10 @@
         <div class="pages">{$departstr}</div>
         <!--{if $solvelist}-->
         <div class="module mt10">
-            <div class="title">相关已解决</div>
+            <div class="title">类似已解决的问题</div>
             <ul class="list">
                 <!--{loop $solvelist $solve}-->
-                <li><span class="answer-number">{$solve['answers']}个回答</span><a title="{$solve['title']}" target="_blank"  href="{url question/view/$solve['id']}">{$solve['title']}</a></li>
+                <li><span class="qdot">·</span> <span class="answer-number">{$solve['answers']}个回答</span><a title="{$solve['title']}" target="_blank"  href="{url question/view/$solve['id']}">{$solve['title']}</a></li>
                 <!--{/loop}-->
             </ul>
         </div>
@@ -220,25 +216,6 @@
         <!--广告位5-->
         <!--{if (isset($adlist['question_view']['right1']) && trim($adlist['question_view']['right1']))}-->
         <div>{$adlist['question_view']['right1']}</div>
-        <!--{/if}-->
-        <!--{eval $articlelist=$this->fromcache('articlelist');}-->
-        <!--{if $articlelist}-->
-        <div class="modbox mb10">
-            <div class="title">推荐文章</div>
-            <ul class="right-list">
-                <!--{loop $articlelist $index $article}-->
-                <!--{eval $index++;}-->
-                <li>
-                    <!--{if $index<4}-->
-                    <em class="n1">{$index}</em>
-                    <!--{else}-->
-                    <em class="n2">{$index}</em>
-                    <!--{/if}-->
-                    <a  title="{$article['title']}" target="_blank" href="{$article['href']}">{eval echo cutstr($article['title'],40,'');}</a>
-                </li>
-                <!--{/loop}-->
-            </ul>
-        </div>
         <!--{/if}-->
     </div>
 

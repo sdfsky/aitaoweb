@@ -11,19 +11,13 @@
     </div>
     
     <div class="content-left">
-        <div>
+        <div style="margin: 5px;">
             <a href="#"><img src="{SITE_URL}css/guanggao/u112_normal.png"></a>
         </div>
         <div class="questionbox">
-            <div class="title pdl3">
+            <div class="title pd40">
+                <span class="ico ico-nosolve"></span>
                 <h1>{$question['title']} </h1>
-                <div class="same-q-mod">
-                    <!--{if $is_followed}-->
-                     <input type="button" class="button_followed" id="attenttoquestion" value="取消关注" onclick="attentto_question({$question['id']})"/>
-                    <!--{else}-->
-                    <input type="button" class="button_attention" id="attenttoquestion" value="关注" onclick="attentto_question({$question['id']})"/>
-                    <!--{/if}-->
-                </div>
             </div>
             <div class="solve-tag">
                 <!--{loop $taglist $tag}-->
@@ -89,19 +83,8 @@
             <div class="comment-box mt10">
                 <div class="comments-hd">
                     <div class="function" id='{$bestanswer['id']}'>
-                        <span class="number"><a onclick="show_comment('{$bestanswer['id']}');" href="javascript:;">评论({$bestanswer['comments']})</a></span>
                         <input type="button" class="button_agree" value="{$bestanswer['supports']}" />                                
                     </div>
-                </div>
-                <div class="comments-mod" style="display: none;margin-left: 40px;" id="comment_{$bestanswer['id']}">
-                    <div class="areabox clearfix">
-                        <input type="text"  class="comment-input" name="content" />
-                        <input type='hidden' value='0' name='replyauthor' />
-                        <input type="button" value="评论"  class="normal-button" name="submit" onclick="addcomment({$bestanswer['id']});"/>
-                    </div>
-                    <ul class="comments-list">
-                        <li class="loading"><img src='{SITE_URL}css/default/loading.gif' align='absmiddle' />&nbsp;加载中...</li>
-                    </ul>
                 </div>
             </div>
             <div id="gift_box" class="ft">
@@ -135,6 +118,16 @@
         <!--{if (isset($adlist['question_view']['left1']) && trim($adlist['question_view']['left1']))}-->
         <div class="share-content">{$adlist['question_view']['left1']}</div>
         <!--{/if}-->
+        <!--{if $solvelist}-->
+        <div class="module mt10">
+            <div class="title">相关已解决</div>
+            <ul class="list">
+                <!--{loop $solvelist $solve}-->
+                <li><span class="answer-number">{$solve['answers']}个回答</span><a title="{$solve['title']}" target="_blank"  href="{url question/view/$solve['id']}">{$solve['title']}</a></li>
+                <!--{/loop}-->
+            </ul>
+        </div>
+        <!--{/if}-->
         <div id="customerList" class="net-answer mt10">
             <div class="title">其他回答({$rownum})</div>
             <ul class="net-answer-list">
@@ -142,12 +135,22 @@
                 <li id="comment_{$index}">
                     <div class="mainBox">
                         <div class="avatar">
-                            <div  class="avarta-img">
-                                <div class="avarta-name"><a target="_blank" href="{url user/space/$answer['authorid']}"><img width="50" height="50" alt="{$answer['author']}" src="{$answer['author_avartar']}" onmouseover="pop_user_on(this, '{$answer[authorid]}', 'img');"  onmouseout="pop_user_out();"></a></div>
-                            </div>
-                            <div class="avarta-name"><a target="_blank" title="{$answer['author']}" href="{url user/space/$answer['authorid']}" onmouseover="pop_user_on(this, '{$answer[authorid]}', 'text');"  onmouseout="pop_user_out();">{eval echo cutstr($answer['author'],7,'');}</a></div>                           
+                        <div class="avarta-name"><a target="_blank" href="{url user/space/$answer['authorid']}"><img width="64" height="64" alt="{$answer['author']}" src="{$answer['author_avartar']}"></a></div>
+                        <a href="{url question/add/$answer['authorid']}"><img src="{SITE_URL}css/default/ask_to_expert.png" /></a>                        
                         </div>
                       <div class="anscontent">
+                            <div class="expert-info">
+                                <div class="expert-info-left">
+                                    <a href="{url user/space/$answer['authorid']}">{$answer['author']}</a>
+                                    <img src="{SITE_URL}css/default/realname.png" class="realname" />
+                                    <span>成都东升医院</span>
+                                </div>
+                                <div class="expert-info-right">
+                                    <span class="time">{$answer['time']}</span>
+                                    <a href="#" class="inform">投诉</a>
+                                 </div>
+                               <div class="clr"></div>
+                            </div>
                             {$answer['content']}  
                         <div class="appendcontent">
                             <!--{loop $answer['appends'] $append}-->       
@@ -170,20 +173,9 @@
                                 <span class="number"><a onclick="show_comment('{$answer['id']}');" href="javascript:;">评论({$answer['comments']})</a></span>
                                 <input type="button" class="button_agree" value="{$answer['supports']}" />                                
                             </div>
-                            <span class="time">回答于 {$answer['time']}</span>
                             <!--{if $user['grouptype']==1}-->
                             <span class="admin"><a href="{url question/editanswer/$answer['id']}">编辑内容</a><span class="span-line">|</span><a href="javascript:void(0);" onclick="delete_answer('{$answer['id']}', '{$question['id']}')">删除</a></span>
                             <!--{/if}-->
-                        </div>
-                        <div class="comments-mod" style="display: none;margin-left:70px;" id="comment_{$answer['id']}">
-                            <div class="areabox clearfix">
-                                <input type="text"  class="comment-input" name="content" />
-                                <input type='hidden' value='0' name='replyauthor' />
-                                <input type="button" value="评论"  class="normal-button" name="submit" onclick="addcomment({$answer['id']});"/>
-                            </div>
-                            <ul class="comments-list">
-                                <li class="loading"><img src='{SITE_URL}css/default/loading.gif' align='absmiddle' />&nbsp;加载中...</li>
-                            </ul>
                         </div>
                     </div>
                 </li>
@@ -195,16 +187,7 @@
         <!--{/if}-->
         </div>
         <div class="pages">{$departstr}</div>
-        <!--{if $solvelist}-->
-        <div class="module mt10">
-            <div class="title">相关已解决</div>
-            <ul class="list">
-                <!--{loop $solvelist $solve}-->
-                <li><span class="answer-number">{$solve['answers']}个回答</span><a title="{$solve['title']}" target="_blank"  href="{url question/view/$solve['id']}">{$solve['title']}</a></li>
-                <!--{/loop}-->
-            </ul>
-        </div>
-        <!--{/if}-->
+
         <!--广告位4-->
         <!--{if (isset($adlist['question_view']['left3']) && trim($adlist['question_view']['left3']))}-->
         <div  style="margin-top: 5px;">{$adlist['question_view']['left3']}</div>
