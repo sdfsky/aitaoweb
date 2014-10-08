@@ -453,7 +453,11 @@ class usercontrol extends base {
             $rownum = $_ENV['doing']->rownum_by_type("my", $userid);
             $departstr = page($rownum, $pagesize, $page, "user/space/$userid");
             $navtitle = $member['username'] . $navtitle;
-            include template('space');
+            if ($member['expert']) {
+                include template('expert_space');
+            } else {
+                include template('space');
+            }
         } else {
             $this->message("抱歉，该用户个人空间不存在！", 'BACK');
         }
