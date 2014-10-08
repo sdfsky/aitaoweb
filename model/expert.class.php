@@ -35,12 +35,18 @@ class expertmodel {
 
     function get_by_cid($cid, $start=0, $limit=10) {
         $expertlist = array();
-        $query = ($cid == 'all') ? $this->db->query("SELECT * FROM " . DB_TABLEPRE . "user WHERE uid IN (SELECT uid FROM " . DB_TABLEPRE . "expert) ORDER BY answers DESC LIMIT $start,$limit") : $this->db->query("SELECT * FROM " . DB_TABLEPRE . "user WHERE uid IN (SELECT uid FROM " . DB_TABLEPRE . "expert WHERE cid=$cid) ORDER BY answers DESC  LIMIT $start,$limit");
+        $query = ($cid == 'all') ? $this->db->query("SELECT * FROM " . DB_TABLEPRE . "user WHERE expert=1 ORDER BY answers DESC LIMIT $start,$limit") : $this->db->query("SELECT * FROM " . DB_TABLEPRE . "user WHERE expert=1 AND uid IN (SELECT uid FROM " . DB_TABLEPRE . "user_category WHERE cid=$cid) ORDER BY answers DESC  LIMIT $start,$limit");
         while ($expert = $this->db->fetch_array($query)) {
             $expert['avatar'] = get_avatar_dir($expert['uid']);
+            $expert['category'] = $this->get_category($expert['uid']);
             $expertlist[] = $expert;
         }
         return $expertlist;
+    }
+    
+    function rownum_by_cid($cid){
+        $sql = ($cid == 'all') ? "SELECT COUNT(*) FROM " . DB_TABLEPRE . "user WHERE uid IN (SELECT uid FROM " . DB_TABLEPRE . "expert) " : "SELECT COUNT(*) FROM " . DB_TABLEPRE . "user WHERE uid IN (SELECT uid FROM " . DB_TABLEPRE . "expert WHERE cid=$cid)";
+        return $this->db->result_first($sql);
     }
 
     function add($uid, $cids) {

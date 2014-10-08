@@ -18,7 +18,10 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .side{ width:260px; float:right;}
 .srsite{width: 570px;float: left;}
 .content-left{ width:720px; float:left;}
+.expert-left{ width:736px; float:left;}
 .aside-right{ width:260px; float:right;}
+.expert-right{ width:244px; float:right;}
+
 .ask_right{width:720px; float:right;}
 .ask_left{width:250px; float:left;}
 .mb10{ margin-bottom:10px;}
@@ -35,6 +38,7 @@ a{color:#333;text-decoration:none;}
 em {font-style: normal;color:#E63A00;}
 .share-content{overflow: hidden;padding: 4px 0 4px 5px;}
 .modbox{padding-right: 5px;}
+.modbox2{margin-right: 5px;border: 1px solid #E4E4E4;background: none repeat scroll 0 0 #f8f6f6;}
 .right-ad1{margin: 0;padding: 0;}
 /*全局按钮*/
 .blue-btn-w90{ display:block; width:90px; height:30px; background-position:0 -138px; font-size:14px; line-height:30px; color:#fff; text-align:center; font-weight:bold;}
@@ -269,17 +273,36 @@ em {font-style: normal;color:#E63A00;}
 .topic_content .topic_r p{margin-left: 15px;padding-bottom: 3px;}
 
 /*专家模块*/
-.experts .expert{ position:relative; margin-bottom:5px; padding:10px 10px 3px 110px; border:1px solid #D5D5D5; background:#FCFCFC; zoom:1;min-height: 100px;}
+.expert-category{width: 143px;float: left;border:1px solid #e4e4e4;background: none repeat scroll 0 0 #F8F6F6;margin:10px;}
+.expert-category ul{line-height: 34px;text-align: left;margin:5px;font-size:15px;}
+.expert-category li{padding-left: 35px;}
+.expert-category .active{background:url(expert_category.png) no-repeat scroll 0 0 #F8F6F6;font-weight:bold;}
+.expert-category .active a{color: #FFFFFF;}
+.experts{float: left;width: 568px;}
+.experts .expert-filter{height: 30 px;color:#333333;border:1px solid #e4e4e4;margin-bottom: 5px;background: none repeat scroll 0 0 #F8F6F6;}
+.experts .expert-filter span{color:#333333;float: left;padding: 2px 9px 0 15px}
+.experts .expert-filter .check_box{width: 100px;float: left;}
+.experts .expert-filter label{vertical-align:middle;}
+.experts .expert{float: left;position:relative;width:278px; margin-bottom:5px; border:1px solid #D5D5D5; background:none repeat scroll 0 0 #f8f6f6;}
 .experts .expert ul{margin-bottom:10px;}
 .experts .expert ul li{width: 260px;float:left;height: 23px;background: url("lidot.gif") no-repeat scroll 2px 10px transparent;padding:0 0 0 8px;}
-.experts .pic{ position:absolute; top:10px; left:10px;}
-.experts .pic img{width:80px;height:80px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
-.experts .name{ display:inline-block; height:22px; line-height:22px;font-weight: bold;color:#333;}
-.experts span{ padding:0 20px 0 0; display:inline-block; height:22px; line-height:22px; color:#666666;}
-.experts .general em a,.experts .general em,.experts span a{ color:#333;}
-.experts .general h4{font: 12px/28px "Microsoft YaHei";}
-.experts h3{ padding:12px 0 16px; font-size:12px; line-height:22px; font-weight:normal;}
-.experts h3 a{ text-decoration:underline;}
+.experts .expert-info{padding:8px;}
+.experts .expert-avatar{float:left;width: 79px;}
+.experts .expert-desc{float:left;width: 175px;margin-left: 8px;line-height: 22px;}
+.experts .title{color:#333333;display:block;}
+.experts span{ display:inline-block; height:22px; line-height:22px; color:#666666;}
+.experts .expert-intro{margin-left:8px;}
+.experts .advisory{line-height: 30px;margin-left:8px;}
+.experts .btn_on{background: url("btn_advisory_on.png") no-repeat;border: 0 none;cursor: pointer;font-size: 12px;padding: 0;height: 24px;width:69px;color:#fff;}
+/*右边*/
+.modbox2 .title{color:#ffffff;font-weight:bold;font-size: 14px; height: 24px;padding: 0 0 0 10px;background-color:#46D0D6;height: 35px;line-height: 35px;}
+.modbox2 .user-center{margin-left: 25px;margin-top: 10px;line-height: 26px;}
+.modbox2 .charge{color:#0000FF;margin-left: 15px;}
+.modbox2 .record{color:#0000FF;}
+.modbox2 .recor-time{float: right;margin-right: 35px;}
+
+
+
 .ask-input{ height:30px; line-height:30px;}
 .ask-input span,.ask-input input{ float:left;}
 .ask-input .text{ padding:0 5px; width:414px; height:28px; font-size:12px; line-height:28px; font-family:arial; border:1px solid #ccc;}

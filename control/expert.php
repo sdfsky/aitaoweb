@@ -13,12 +13,13 @@ class expertcontrol extends base {
 
     function ondefault() {
         $navtitle = "问题专家";
-        $page = max(1, intval($this->get[2]));
+        $categoryid = intval($this->get[2])?intval($this->get[2]):'all';
+        $page = max(1, intval($this->get[3]));
         $pagesize = $this->setting['list_default'];
         $startindex = ($page - 1) * $pagesize;
-        $rownum = $this->db->fetch_total('user', ' expert=1');
-        $expertlist = $_ENV['expert']->get_list(1, $startindex, $pagesize);
-        $departstr = page($rownum, $pagesize, $page, "expert/default");
+        $rownum =  $_ENV['expert']->rownum_by_cid($categoryid);
+        $expertlist = $_ENV['expert']->get_by_cid($categoryid, $startindex, $pagesize);
+        $departstr = page($rownum, $pagesize, $page, "expert/default/$categoryid");
         $questionlist = $_ENV['expert']->get_solves(0, 15);
         include template('expert');
     }
