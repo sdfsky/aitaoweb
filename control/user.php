@@ -454,6 +454,7 @@ class usercontrol extends base {
             $departstr = page($rownum, $pagesize, $page, "user/space/$userid");
             $navtitle = $member['username'] . $navtitle;
             if ($member['expert']) {
+                $answerlist = $_ENV['answer']->list_by_uid($userid, 'all');
                 include template('expert_space');
             } else {
                 include template('space');

@@ -19,6 +19,7 @@ select,input,button {vertical-align:middle;font-size:100%;}
 .srsite{width: 570px;float: left;}
 .content-left{ width:720px; float:left;}
 .expert-left{ width:736px; float:left;}
+.expert-space-left{ width:730px; float:left;}
 .aside-right{ width:260px; float:right;}
 .expert-right{ width:244px; float:right;}
 
@@ -289,6 +290,7 @@ em {font-style: normal;color:#E63A00;}
 .experts .expert-info{padding:8px;}
 .experts .expert-avatar{float:left;width: 79px;}
 .experts .expert-desc{float:left;width: 175px;margin-left: 8px;line-height: 22px;}
+
 .experts .title{color:#333333;display:block;}
 .experts span{ display:inline-block; height:22px; line-height:22px; color:#666666;}
 .experts .expert-intro{margin-left:8px;}
@@ -300,6 +302,15 @@ em {font-style: normal;color:#E63A00;}
 .modbox2 .charge{color:#0000FF;margin-left: 15px;}
 .modbox2 .record{color:#0000FF;}
 .modbox2 .recor-time{float: right;margin-right: 35px;}
+
+
+.modbox2 .certificate{}
+.modbox2 .certificate img{width: 60px;height: 52px;}
+.modbox2 .certificate li{float: left;width: 55px;padding-right: 5px;text-align: center;}
+.modbox2 .list{margin-left: 10px;}
+
+/*满意度*/
+.modbox2 .satisfaction{margin: 10px;}
 
 
 
@@ -741,7 +752,20 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .expert-general .expert-avatar{padding:15px;width: 180px;float: left;}
 .expert-general .expert-desc{padding:15px;width: 455px;float: left;line-height: 30px;}
 .expert-general .expert-desc h4{font-size:16px;font-weight:normal;color:#333333;width: 120px;float: left;}
-.expert-general .expert-desc span{float: left;line-height: 30px;color:#999999;}
+.expert-general .expert-desc .hospital{float: left;line-height: 30px;color:#999999;}
+.expert-general .expert-info{line-height: 30px;}
+.expert-info .goodat{background:url("expert_good_at.png") no-repeat scroll 0 3px rgba(0, 0, 0, 0);height: 23px;width:46px;}
+.expert-info .short_desc{background:url("expert_desc.png") no-repeat scroll 1px 3px rgba(0, 0, 0, 0);height: 23px;width:45px;}
+.expert-info .short_desc_info{line-height: 24px;}
+.expert_action{margin-top: 20px;line-height: 30px;}
+.expert-general span{float: left;}
+.btn_expert_space{background: url("btn_expert_space.png") no-repeat;border: 0 none;cursor: pointer;font-size: 12px;padding: 0;height: 26px;width:66px;color:#fff;}
+.expert-main{margin: 10px;}
+.expert-main .question-mod{margin-top: 10px;}
+.expert-main  .qlist li{border-bottom:1px dashed #d7d7d7;}
+.expert-main  .qlist a{color:#1abdc4;}
+.expert-main  .qlist .count{line-height: 26px;color:#999999;}
+
 
 
 /*用户空间*/

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <!--{eval global $starttime,$querynum;$mtime = explode(' ', microtime());$runtime=number_format($mtime[1] + $mtime[0] - $starttime,6); $setting=$this->setting;$user=$this->user;$headernavlist=$this->nav;$regular=$this->regular;$toolbars="'".str_replace(",", "','", $setting['editor_toolbars'])."'";}-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!--{if isset($seo_title)}-->
+        <title>{$seo_title}</title>
+        <!--{else}-->
+        <title><!--{if $navtitle}-->{$navtitle} - <!--{/if}-->{$setting['site_name']}</title>
+        <!--{/if}-->
+        <!--{if isset($seo_description)}-->
+        <meta name="description" content="{eval echo cutstr($seo_description,160,'')}" />
+        <!--{else}-->
+        <meta name="description" content="{$setting['site_name']}" />
+        <!--{/if}-->
+        <meta name="keywords" content="{$seo_keywords}" />
+        <meta name="generator" content="Tipask {TIPASK_VERSION} {TIPASK_RELEASE}" />
+        <meta name="author" content="Tipask Team" />
+        <meta name="copyright" content="2014 tipask.com" />
+        <meta name="robots" content="index, follow">
+        <meta name="googlebot" content="index, follow" />
+        <meta property="qc:admins" content="1157543261064101336375" /> 
+        <meta property="wb:webmaster" content="21013a86963dbbe5" />
+        <link rel="stylesheet" type="text/css" href="{SITE_URL}css/default/expert.css" />
+        <link rel="stylesheet" type="text/css" href="{SITE_URL}js/jquery-ui/jquery-ui.css" />
+        <script type="text/javascript" src="{SITE_URL}js/jquery.js"></script>
+        <script type="text/javascript">var g_site_url = "{SITE_URL}";
+            var g_site_name = "{$setting['site_name']}";
+            var g_prefix = "{$setting['seo_prefix']}";
+            var g_suffix = "{$setting['seo_suffix']}";
+            var g_uid = {$user['uid']};</script>
+    </head>
+    <body>
+        <div class="mainbox">
+            <div class="top_bar">
+                <div class="logo"><a href="{SITE_URL}"></a></div>
+                <div class="link_info">
+                    <span>当前咨询时间：120.3.3.3</span>
+                    <span class="help"><a href="#">帮助</a></span>
+                    <span class="inform"><a href="#">投诉</a></span>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content-left">
+                    <div class="tips">网络沟通无法像面诊过程那样，不能全面了解您的健康状态，因此医生回答只作为建议，具体病情还需去医院检查</div>
+                    <div class="qcontent">
+                        <div class="content_item" id="content_item"></div>
+                        <div class="sendbox">
+                            <div class="tooltip">
+                                <input type="button" name="upload" class="button1" value="发送图片"/>
+                                <input type="button" name="upload" class="button1" value="购买健康币"/>
+                                <input type="button" name="upload" class="button1" value="电话咨询"/>
+                                <input type="button" name="upload" class="button1" value="预约挂号"/>
+                                <input type="button" name="upload" class="button1" value="上门服务"/>
+                            </div>
+                            <div class="editor">
+                                <textarea id="content" name="content" class="textarea"></textarea>
+                                <div class="counter" id="counter">0/300</div>
+                                <div class="sendbutton">
+                                    <input type="button" class="button_close" />
+                                    <input type="button" class="button_send" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div class="userinfo clearfix">
+                        <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="81" height="81" src="http://help.tipask.com/data/avatar/000/00/00/small_000000026.jpg"></a>
+                        <h3><a href="http://help.tipask.com/user/default.html" target="_blank">sdf_sky</a></h3>
+                        <p>超级管理员</p>
+                        <p>超级管理员</p>
+                        <p>超级管理员</p>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="pingjia">
+                        <p>评价医生的服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

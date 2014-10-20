@@ -23,6 +23,11 @@ class expertcontrol extends base {
         $questionlist = $_ENV['expert']->get_solves(0, 15);
         include template('expert');
     }
+    
+    function onadvisory(){
+        $navtitle = "在线咨询";
+        include template("expert_advisory");
+    }
 
 }
 

@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-10-20, 14:43:21
+    Author     : simon
+*/
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0;padding:0;}
+body {font:13px/1.8 'Hiragino Sans GB','Microsoft Yahei','微软雅黑','宋体'; color:#333;background:url(expert_body.png) no-repeat;}
+select,input,button {vertical-align:middle;font-size:100%;}
+a{color:#333;text-decoration:none;}
+.mainbox{width: 900px;margin: 0 auto;}
+.clr {clear: both;font-size: 0;height: 0;line-height: 0;margin: 0;padding: 0;visibility: hidden;width: 0;}
+
+.top_bar{margin-top: 25px;height: 70px;background-color: #fff;}
+.top_bar .logo{float: left;}
+.top_bar .link_info{float: right;font-size:15px;font-weight:normal;font-style:normal;text-decoration:none;line-height: 70px;}
+.logo a {background: url("expert_advisory_logo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);display: block;height: 65px;width: 178px;}
+
+.link_info span{margin-right: 15px;}
+.link_info .help{background: url("expert_help.png") no-repeat scroll 0 4px #fff; padding-left: 15px;}
+.link_info .inform{background: url("expert_inform.png") no-repeat scroll 0 4px #fff; padding-left: 15px;}
+.content_box{}
+.content-left{float: left;width: 650px;}
+.tips{background-color: #fff;border-top: 1px solid #AED1CD;line-height: 24px;padding: 5px;font-size: 12px;}
+.content-right{float: right;background-color: #D2EFEB;width: 250px;height: 515px;}
+.qcontent{height: 480px;background-color: #C8DBE1;}
+#content_item{height: 300px;border-bottom:1px solid #A6CFCB;}
+.sendbox{margin: 5px;}
+.button1{background: url("expert_advisory_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 34px;padding: 0;width:99px;}
+.button_close{background: url("expert_close_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
+.button_send{background: url("expert_send_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
+.editor{margin-top: 5px;}
+.textarea {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #a5c8ce;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #f8f8f8 inset;
+    float: left;
+    font-size: 16px;
+    height: 45px;
+    line-height: 22px;
+    outline: 0 none;
+    overflow: hidden;
+    padding: 12px;
+    resize: none;
+    width: 600px;
+}
+.counter{font-size: 14px;}
+.sendbutton{float: right;margin-right: 15px;margin-top: -15px;}
+.userinfo{margin: 10px;}
+.userinfo .pic {
+    float: left;
+    height: 81px;
+    margin:8px 10px 0 0;
+    width: 81px;
+}
+.userinfo h3 {
+    color: #666;
+    float: left;
+    font-size: 12px;
+    width: 120px;
+}
+.userinfo p {
+    color: #888;
+    float: left;
+    overflow: hidden;
+    width: 120px;
+}
+.userinfo p span {
+    margin-left: 20px;
+}

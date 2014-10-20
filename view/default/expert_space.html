@@ -1,23 +1,105 @@
 <!--{template header}-->
 <div class="wrapper bordered mt10 clearfix">
-    <div class="content-left">
+    <div class="expert-space-left">
         <div class="expert-general">
             <div class="title">医生主页</div>
             <div class="expert-content">
                 <div class="expert-avatar"><img src="{$member['avatar']}" width="180px" height="180px"/></div>
                 <div class="expert-desc">
-                    <div class="expert-name">
-                        <h4>徐晓燕医生 <img src="{SITE_URL}css/default/expert-v.png" /></h4>
-                        <span>医院：</span>临沂市人民医院
+                    <div class="expert-info">
+                        <h4>{$member['username']}医生 <img src="{SITE_URL}css/default/expert-v.png" /></h4>
+                        <span class="hospital">医院：</span>临沂市人民医院
                     </div>
-                    <div class="expert-name">
-                        
+                    <div class="expert-info">
+                        <span class="goodat"></span>
+                        <!--{if $member['category']}-->
+                        <!--{loop $member['category'] $category}-->
+                        <i class="expert-field"><a target="_blank" href="{url category/view/$category['cid']}">{$category['categoryname']}</a></i>
+                        <!--{/loop}-->
+                        <!--{else}-->
+                        暂无
+                        <!--{/if}-->
+                    </div>
+                    <div class="expert-info">
+                        <span class="short_desc"></span>
+                        <div class="short_desc_info">{if $member['signature']}{$member['signature']}{else}暂无介绍{/if}</div>
+                        <div class='clr'></div>
+                    </div>
+                    <div class="expert_action" >
+                        <span>感谢信：30封 <input type="button" class="btn_expert_space" value="写感谢信" /></span> 
+                        <span style="margin-left: 20px;">礼物：73件 <input type="button" class="btn_expert_space" value="赠送礼物" /></span>
+                        <p><input type="submit" name="submit" class="normal-button flright" value="提交问题"></p>
+                        <div class="clr"></div>
                     </div>
                 </div>
             </div>
             <div class="clr"></div>
         </div>
+        <div class="expert-main">
+            <div id="qa-tabcard">
+                <ul>
+                    <li  class="on">问答记录</li>
+                    <li><a href="#">用户评价</a></li>
+                    <li><a href="#">感谢信</a></li>
+                    <li><a href="#">收到的礼物</a></li>
+                </ul>
+            </div>
+            <div class="question-mod">
+                <ul class="qlist">
+                    <!--{loop $answerlist $answer}-->
+                    <li>
+                        <span class="qdot">·</span>
+                        <a href="#">{$answer['title']}</a>
+                        {$answer['content']}
+                        <p class="count">{$answer['time']}   评论（{$answer['comments']}）</p>
+                    </li>
+                    <!--{/loop}-->
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="aside-right">asdfasdfasf</div>
+    <div class="aside-right">
+        <div class="modbox2 mt10">
+            <div class="title">医生资格认证</div>
+            <div class="certificate">
+                <ul>
+                    <li><img src="{SITE_URL}css/default/shengfen_rz.png" title="医生认证"/></li>
+                    <li><img src="{SITE_URL}css/default/yisheng_rz.png" /></li>
+                    <li><img src="{SITE_URL}css/default/yishengzige_rz.png" /></li>
+                    <li><img src="{SITE_URL}css/default/mobile_rz.png" /></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="modbox2 mt10">
+            <div class="title">服务器满意度</div>
+            <div class="satisfaction">
+                <div class="item">
+                    <span>非常满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                </div>
+                <div class="item">
+                    <span>满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                </div>
+                <div class="item">
+                    <span>不满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                </div>
+
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="modbox2 mt10">
+            <div class="title">精彩推荐</div>
+            <ul class="list">
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+                <li><span class="qdot">·</span> <a href="http://localhost/cases/aitaoweb/?note/view/20.html" title="测试功高盖主333" target="_blank">测试功高盖主333</a></li>
+            </ul>
+            <div class="clr"></div>
+        </div>
+    </div>
 </div>
 <!--{template footer}-->
