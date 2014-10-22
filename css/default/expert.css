@@ -30,6 +30,8 @@ a{color:#333;text-decoration:none;}
 #content_item{height: 300px;border-bottom:1px solid #A6CFCB;}
 .sendbox{margin: 5px;}
 .button1{background: url("expert_advisory_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 34px;padding: 0;width:99px;}
+.button2{background: url("btn_advisory_button.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 30px;padding: 0;width:75px;color:#fff;}
+.button3{background: url("btn_advisory_button2.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 30px;padding: 0;width:69px;color:#fff;}
 .button_close{background: url("expert_close_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
 .button_send{background: url("expert_send_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
 .editor{margin-top: 5px;}
@@ -72,3 +74,39 @@ a{color:#333;text-decoration:none;}
 .userinfo p span {
     margin-left: 20px;
 }
+
+
+.evaluate{margin-left: 10px;line-height: 24px;}
+.input_group{margin-top: 10px;}
+.input_button{margin-left: 28px;}
+.evaluate label{color:#1abdc4;font-size: 14px;}
+.evaluate .text{vertical-align:top;}
+.checkbox {vertical-align:middle; margin-top:-2px; margin-bottom:1px;}
+.radio {vertical-align:middle; margin-top:-2px; margin-bottom:1px;}
+
+/*健康币*/
+.modbox{margin: 10px;padding: 5px;background-color: #F6E6B2;border:1px solid #A58646;}
+.giftinfo .pic {
+    float: left;
+    height: 50px;
+    margin:8px 10px 0 0;
+    width: 38px;
+}
+.giftinfo h3 {
+    color: #666;
+    float: left;
+    font-size: 12px;
+    width: 120px;
+}
+.giftinfo p {
+    color: #888;
+    float: left;
+    overflow: hidden;
+    width: 120px;
+}
+.giftinfo p span {
+    margin-left: 20px;
+}
+
+.giftinfo .handsel{float: right;margin-top: -45px;}
+.refresh a{color:#1abdc4;text-decoration:underline;}

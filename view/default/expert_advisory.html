@@ -35,7 +35,7 @@
             <div class="top_bar">
                 <div class="logo"><a href="{SITE_URL}"></a></div>
                 <div class="link_info">
-                    <span>当前咨询时间：120.3.3.3</span>
+                    <span>当前咨询时间：2014年12月10日</span>
                     <span class="help"><a href="#">帮助</a></span>
                     <span class="inform"><a href="#">投诉</a></span>
                 </div>
@@ -68,13 +68,63 @@
                     <div class="userinfo clearfix">
                         <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="81" height="81" src="http://help.tipask.com/data/avatar/000/00/00/small_000000026.jpg"></a>
                         <h3><a href="http://help.tipask.com/user/default.html" target="_blank">sdf_sky</a></h3>
-                        <p>超级管理员</p>
-                        <p>超级管理员</p>
-                        <p>超级管理员</p>
+                        <p>专长：</p>
+                        <p>单位</p>
+                        <p>专长</p>
                         <div class="clr"></div>
                     </div>
-                    <div class="pingjia">
-                        <p>评价医生的服务</p>
+                    <div class="evaluate">
+                        <form name="evaluate" action="#" method="POST">
+                            <div class="input_group">
+                                <p>评价医生的服务</p>
+                                <input type="radio" value="1" id="verygood" class="radio"/><label for="verygood">非常满意</label>&nbsp;&nbsp;
+                                <input type="radio" value="2" id="good" class="radio"/><label for="verygood">比较满意</label>&nbsp;&nbsp;
+                                <input type="radio" value="3" id="bad" class="radio"/><label for="verygood">不满意</label>
+                            </div>
+                            <div class="input_group">
+                                <span class="text">评语</span>
+                                <textarea name="comment" id="comment"></textarea>
+                            </div>
+                            <div class="input_button">
+                                <input type="submit" name="submit" value="提交评语" class="button2"/>
+                            </div>
+                            <div class="clr"></div>
+                        </form>
+                    </div>
+                    <!--                    <div class="modbox">
+                                            <p>我要支付健康币给专家</p>
+                                            <p>健康币余额：18.00</p>
+                                            <p>支付&nbsp;<select><option>1</option></select>健康币</p>
+                                            <p><input type="submit" name="submit" value="确认支付" class="button2"/></p>
+                                        </div>-->
+                    <div class="modbox">
+                        <div class="giftinfo clearfix">
+                            <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                            <h3>医德高尚</h3>
+                            <p>价格：5健康币</p>
+                            <p>医生爱心值+6</p>
+                            <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+
+                            <div class="clr"></div>
+                        </div>
+                        <div class="giftinfo clearfix">
+                            <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                            <h3>医德高尚</h3>
+                            <p>价格：5健康币</p>
+                            <p>医生爱心值+6</p>
+                            <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+                            <div class="clr"></div>
+                        </div>
+                        <div class="giftinfo clearfix">
+                            <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                            <h3>医德高尚</h3>
+                            <p>价格：5健康币</p>
+                            <p>医生爱心值+6</p>
+                            <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+                            <div class="clr"></div>
+                        </div>
+                        <p class="refresh"><a href="#">换一换</a></p>
+
                     </div>
                 </div>
             </div>
