@@ -866,7 +866,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 /*用户登陆*/
 .loginform{ margin-left:20px; margin-right:20px; margin-top:5px;margin-bottom: 30px;}
 .poploginform{ margin-left:0px;margin-top:5px;margin-bottom: 30px;}
-.auto-login,.code-bar,.thirdpart_login{ margin-left:116px;margin-top: 15px;}
+.auto-login,.code-bar,.thirdpart_login{ margin-left:173px;margin-top: 15px;}
 .auto-login a{margin-left: 10px;}
 .verifycode{border: 1px solid #DDDDDD;float: left;height: 29px;width:80px;}
 .changecode{line-height: 32px;}
@@ -879,14 +879,14 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 /*表单元素样式*/
 input:hover{border-color:#1abdc4;}
 .input-bar{ margin-left:40px;padding-top: 25px;font-size: 14px;}
-.input-bar h2{float: left;font-size: 14px;font-weight: normal;height: 24px;margin-top: 6px;margin-right: 10px;width:60px;text-align: right;}
+.input-bar h2{float: left;font-size: 16px;font-weight: normal;height: 24px;margin-top: 6px;margin-right: 10px;width:120px;text-align: right;}
 .input-bar .text{float: left;font-size: 14px;height: 30px;line-height: 30px;margin: 0 5px 0 6px;}
 .input-bar .avatarbox{float:left;width: 100px;}
 .input-bar .avatarbox_r{float:left;width:450px;}
 .input-bar p,.input-bar label{line-height: 30px;}
 
 .avatarbox .avatar{margin-right: 25px;width:80px;height:80px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
-.normal-input {margin: 0 10px 0 6px;border: 1px solid #D6D6D6;height: 35px;line-height: 35px;border-radius:4px;padding-left: 5px; width: 245px;float: left;margin-right:5px;font-size:14px;box-shadow: 2px 2px 2px #F0F0F0 inset;}
+.normal-input {margin: 0 10px 0 6px;border: 1px solid #D6D6D6;height: 35px;line-height: 35px;border-radius:4px;padding-left: 5px; width: 220px;float: left;margin-right:5px;font-size:14px;box-shadow: 2px 2px 2px #F0F0F0 inset;}
 .normal_radio,.normal_select,.normal_text{margin: 0 10px 0 6px;}
 .normal_checkbox{margin: 0 10px 0 6px;}
 .normal_text{border: 1px solid #CDCDCD;border-radius:4px;box-shadow: 2px 2px 2px #F1F1F1 inset;padding: 7px;}
@@ -907,10 +907,10 @@ input:hover{border-color:#1abdc4;}
 
 .section {margin-left: 24px;margin-top: 16px;}
 .section h3{font-family: "microsoft yahei";font-size: 16px;font-weight: normal;}
-.section .con {border: 1px solid #D1D1D3;line-height: 24px;width: 650px;border-radius: 2px;}
+.section .con {border: 1px solid #D1D1D3;line-height: 24px;width: 650px;border-radius: 2px;height: 110px;}
 .bg1{background: none repeat scroll 0 0 #FAFAFA;}
 .con .left {float: left;padding: 5px 13px 13px;width: 270px;}
-.con .right {border-left-color: #EDEDED;border-left: 1px solid #D1D1D3;margin-left: 300px;padding: 5px 13px 13px;height:80px;}
+.con .right {border-left-color: #EDEDED;border-left: 1px solid #D1D1D3;margin-left: 300px;padding: 5px 13px 13px;height:92px;}
 .section .y_text {color: #CCCCCC;}
 .section .tag {overflow: hidden;width: 290px;}
 .section .tag .item {background: none repeat scroll 0 0 #FEF1DD;border: 1px solid #F4DEBD;color: #C98314;float: left;line-height: 18px;margin-bottom: 8px;margin-right: 8px;padding: 2px 12px;position: relative;}

@@ -1,0 +1,111 @@
+<!--{template header}-->
+<div class="wrapper mt10 clearfix">
+    <!--{template user_menu}-->
+    <div class="user-content">
+        <div class="my-answerbox">
+            <div id="qa-tabcard">
+                <ul>
+                    <li><a href="{url user/profile}">个人资料</a></li>
+                    <li><a href="{url user/uppass}">修改密码</a></li>
+                    <li><a href="{url user/editimg}">修改头像</a></li>
+                    <li><a href="{url user/mycategory}">我的设置</a></li>
+                    <li class="on">认证服务</li>
+                </ul>
+            </div>
+            <div class="loginform">
+                <form method="POST" name="authform"   action="{url user/auth}">
+                    <div class="input-bar">
+                        <p style="text-align: center;font-size: 16px;">我是育婴业者 （ <font color="red">*</font> 为必填项）</p>
+                    </div>
+                    <div class="input-bar">
+                        
+                        <h2><em>*</em> 姓名:</h2>
+                        <input type="text" name="realname" id="realname" class="normal-input" />
+                        
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 手机号:</h2>
+                        <input type="text" name="mobile" id="mobile" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 身份证号:</h2>
+                        <input type="text" name="idcard" id="idcard" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 证件扫描照:</h2>
+                        <input type="file" name="idcard_image" id="idcard_image" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 相关资质证明:</h2>
+                        <input type="file" name="certificate" id="certificate" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 地区编号:</h2>
+                        <input type="text" name="postcode" id="postcode" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 省份城市:</h2>
+                        <select name="province"  id="province" class="normal_select"><option value='0'>请选择</option></select>
+                        <select name="city" id="city" class="normal_select"><option value='0'>请选择</option></select>
+                        <select name="district" id="district" class="normal_select"><option value='0'>请选择</option></select> 
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 地址:</h2>
+                        <input type="text" name="address" id="address" class="normal-input" />
+                    </div>
+                        
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 银行类型:</h2>
+                        <select id="bank_type" name="bank_type"  class="normal_select">
+                            <option value="1">中国工商银行</option>
+                        </select>                    
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2><em>*</em> 银行卡号:</h2>
+                        <input type="text" name="bank_no" id="bank_no" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2>QQ:</h2>
+                        <input type="text"  name="qq" id="qq" class="normal-input" value="{$user['qq']}"/>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2>微信号:</h2>
+                        <input type="text"  name="weixin" id="weixin" class="normal-input"/>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="input-bar">
+                        <h2>邮箱:</h2>
+                        <input type="text"  name="email" id="email" class="normal-input" />
+                    </div>
+                    <div class="clr"></div>
+                    <div class="auto-login">
+                        <input type="submit" name="submit" class="normal-button" value="确认提交" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><script type="text/javascript" src="{SITE_URL}js/connSelectLocation.js"></script>
+<script type="text/javascript">
+                            $(function() {
+                                $("#conn").connectSelectLocation({
+                                    data: '{SITE_URL}js/location.js',
+                                    select1: $("#province"),
+                                    select2: $("#city"),
+                                    select3: $("#district"),
+                                    current: [4, 4, 73],
+                                });
+                            });
+</script>
+<!--{template footer}-->

@@ -236,8 +236,8 @@ class usermodel {
         tcookie('sid', '', 0);
         tcookie('auth', '', 0);
         tcookie('loginuser', '', 0);
-        $lasttime = $this->db->result_first("SELECT MAX(time) FROM ".DB_TABLEPRE."session WHERE uid=" . $this->base->user['uid']);
-        $this->db->query("DELETE FROM " . DB_TABLEPRE . "session WHERE uid=" . $this->base->user['uid']." AND `time`<$lasttime");
+        $lasttime = $this->db->result_first("SELECT MAX(time) FROM " . DB_TABLEPRE . "session WHERE uid=" . $this->base->user['uid']);
+        $this->db->query("DELETE FROM " . DB_TABLEPRE . "session WHERE uid=" . $this->base->user['uid'] . " AND `time`<$lasttime");
     }
 
     function save_code($code) {
@@ -495,6 +495,14 @@ class usermodel {
             $this->db->query("UPDATE " . DB_TABLEPRE . "user SET followers=followers-1 WHERE `uid`=$sourceid");
             $this->db->query("UPDATE " . DB_TABLEPRE . "user SET attentions=attentions-1 WHERE `uid`=$followerid");
         }
+    }
+
+    function add_auth($uid, $realname, $mobile, $idcard, $idcard_image, $certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email) {
+        echo "INSERT INTO " . DB_TABLEPRE . "user_auth(uid,realname,mobile,idcard,idcard_image,certificate,postcode,province,city,district,address,bank_type,bank_no,qq,weixin,email,status,create_time) VALUES  "
+                                                               . "($uid,'$realname','$mobile','$idcard','$idcard_image','$certificate','$postcode',$province,$city,$district,'$address',$bank_type,'$bank_no','$qq','$weixin','$email',0,{$this->base->time})";
+                                                              
+        $this->db->query("INSERT INTO " . DB_TABLEPRE . "user_auth(uid,realname,mobile,idcard,idcard_image,certificate,postcode,province,city,district,address,bank_type,bank_no,qq,weixin,email,status,create_time) VALUES  "
+                                                               . "($uid,'$realname','$mobile','$idcard','$idcard_image','$certificate','$postcode',$province,$city,$district,'$address',$bank_type,'$bank_no','$qq','$weixin','$email',0,{$this->base->time})");
     }
 
 }

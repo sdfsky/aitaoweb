@@ -593,6 +593,29 @@ class usercontrol extends base {
         include template("recharge");
     }
 
+    function onauth() {
+        if (isset($this->post['submit'])) {
+            $realname = $this->post['realname'];
+            $mobile = $this->post['mobile'];
+            $idcard = $this->post['idcard'];
+            $idcard_image = $this->post['idcard_image'];
+            $certificate = $this->post['certificate'];
+            $postcode = $this->post['postcode'];
+            $province = $this->post['province'];
+            $city = $this->post['city'];
+            $district = $this->post['district'];
+            $address = $this->post['address'];
+            $bank_type = $this->post['bank_type'];
+            $bank_no = $this->post['bank_no'];
+            $qq = $this->post['qq'];
+            $weixin = $this->post['weixin'];
+            $email = $this->post['email'];
+
+            $_ENV['user']->add_auth($this->user['uid'], $realname, $mobile, $idcard, $idcard_image, $certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email);
+        }
+        include template("user_auth");
+    }
+
     //关注用户
     function onattentto() {
         $uid = intval($this->post['uid']);
