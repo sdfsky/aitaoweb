@@ -178,15 +178,16 @@ function pop_user_out() {
 
 /*用户登陆*/
 function login() {
-    $("#poplogin").remove();
-    $("body").append('<div id="poplogin" title="欢迎登陆' + g_site_name + '"></div>');
-    $("#poplogin").load(g_site_url + "index.php?user/ajaxpoplogin");
-    $("#poplogin").dialog({
-        width: 520,
-        modal: true,
-        resizable: false,
-        position: {my: "bottom-60"}
-    });
+    document.location = g_site_url + "index.php?user/login";
+//    $("#poplogin").remove();
+//    $("body").append('<div id="poplogin" title="欢迎登陆' + g_site_name + '"></div>');
+//    $("#poplogin").load(g_site_url + "index.php?user/ajaxpoplogin");
+//    $("#poplogin").dialog({
+//        width: 520,
+//        modal: true,
+//        resizable: false,
+//        position: {my: "bottom-60"}
+//    });
 }
 
 function load_message() {

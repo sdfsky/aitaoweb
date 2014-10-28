@@ -1,0 +1,102 @@
+<!--{template header,admin}-->
+<div style="width:100%; height:15px;color:#000;margin:0px 0px 10px;">
+    <div style="float:left;"><a href="index.php?admin_main/stat{$setting['seo_suffix']}" target="main"><b>控制面板首页</b></a>&nbsp;&raquo;&nbsp;用户管理</div>
+</div>
+<div id="append"></div>
+<!--{if isset($message)}-->
+<!--{eval $type=isset($type)?$type:'correctmsg'; }-->
+<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+    <tr>
+        <td class="{$type}">{$message}</td>
+    </tr>
+</table>
+<!--{/if}-->
+<form action="index.php?admin_user/auth{$setting['seo_suffix']}" method="post">
+    <table width="100%" cellspacing="1" cellpadding="4" align="center" class="tableborder">
+        <tbody>
+            <tr class="header" ><td colspan="4">用户认证列表</td></tr>
+            <tr class="altbg1"><td colspan="4">可以通过如下搜索条件，检索认证信息</td></tr>
+            <tr>
+                <td  width="10%">姓名:<input class="txt" name="srchregip" value="{$search['srchname']}" /></td>
+                <td  width="25%">申请日期:<input class="txt" id="timestart" name="srchregdatestart" value="{$search['srchregdatestart']}" />到<input class="txt" id="timeend" name="srchregdateend" value="{$search['srchregdateend']}" /></td>
+                <td  width="10%">认证状态：
+                    <select name="srchstatus">
+                        <option value="all" >--不限--</option>
+                        <option value="0" {if $search['srchstatus']==0}selected{/if}>未审核</option>
+                        <option value="1" {if $search['srchstatus']==1}selected{/if}>已通过</option>
+                        <option value="2" {if $search['srchstatus']==2}selected{/if}>未通过</option>
+                    </select>
+                </td>
+                <td  width="30%"><input class="btn" type="submit" value="提 交"></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<form name="userForm" action="index.php?admin_user/auth{$setting['seo_suffix']}" method="post">
+    <table width="100%" border="0" cellpadding="4" cellspacing="1" class="tableborder">
+        <tr class="header">
+            <td width="5%"><input class="checkbox" value="chkall" id="chkall" onclick="checkall('uid[]')" type="checkbox" name="chkall"><label for="chkall">全选</label></td>
+            <td  width="10%">姓名</td>
+            <td  width="10%">手机</td>
+            <td  width="10%">qq</td>            
+            <td  width="10%">微信</td>
+            <td  width="10%">省份</td>
+            <td  width="10%">银行</td>
+            <td  width="10%">卡号</td>
+            <td  width="10%">资料</td>
+            <td  width="10%">时间</td>
+            <td  width="5%">状态</td>
+        </tr>
+
+        <!--{loop $authlist $auth}-->
+        <tr>
+            <td class="altbg2"><input class="checkbox" type="checkbox" value="{$auth['uid']}" name="uid[]"></td>
+            <td class="altbg2"><strong>{$auth['realname']}</strong></td>
+            <td class="altbg2">{$auth['mobile']}</td>
+            <td class="altbg2">{$auth['qq']}</td>
+            <td class="altbg2">{$auth['weixin']}</td>
+            <td class="altbg2">{$location['province'][$auth['province']]}</td>
+            <td class="altbg2">{$banklist[$auth['bank_type']]}</td>
+            <td class="altbg2">{$auth['bank_no']}</td>
+            <td class="altbg2"><a href="{SITE_URL}{$auth['idcard_image']}" target="_blank">身份证</a>&nbsp;<a href="{SITE_URL}{$auth['certificate']}" target="_blank">资质</a></td>
+            <td class="altbg2">{eval echo tdate($auth['create_time'])}</td>
+            <td class="altbg2">{if $auth['status']==1}<font color='green'>已审核</font>{elseif $auth['status']==2}未通过{else}<font color='orange'>未审核</font>{/if}</td>
+        </tr>
+        <!--{/loop}-->
+        <!--{if $departstr}-->
+        <tr class="smalltxt">
+            <td class="altbg2" colspan="11" align="right"><div class="scott">{$departstr}</div></td>
+        </tr>
+        <!--{/if}-->
+        <tr><td colspan="11" class="altbg1" align="left"><input class="button" type="button" name="elect" onclick="change_expert(1);" value="通过" />&nbsp;&nbsp;<input class="button" type="button" name="elect" onclick="change_expert(2);" value="不通过" /></td></tr>
+    </table>
+</form>
+<br>
+<!--{template footer,admin}-->
+<script type="text/javascript">
+    function change_expert(type) {
+        if ($("input[name='uid[]']:checked").length == 0) {
+            alert('你没有选择任何用户');
+            return false;
+        }
+        document.userForm.action = "index.php?admin_user/changeauth/" + type;
+        document.userForm.submit();
+
+    }
+
+    function remove_user() {
+        if ($("input[name='uid[]']:checked").length == 0) {
+            alert('你没有选择任何用户');
+            return false;
+        }
+        if (confirm('是否同时删除用户的所有问答？') == true) {
+            document.userForm.action = "index.php?admin_user/remove/all{$setting['seo_suffix']}";
+            document.userForm.submit();
+        } else {
+            document.userForm.action = "index.php?admin_user/remove{$setting['seo_suffix']}";
+            document.userForm.submit();
+        }
+    }
+</script>
+
+

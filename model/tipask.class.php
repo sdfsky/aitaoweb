@@ -5,6 +5,7 @@ define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 
 require TIPASK_ROOT . '/lib/db.class.php';
 require TIPASK_ROOT . '/lib/global.func.php';
+require TIPASK_ROOT . '/lib/define.inc.php';
 require TIPASK_ROOT . '/lib/cache.class.php';
 require TIPASK_ROOT . '/model/base.class.php';
 

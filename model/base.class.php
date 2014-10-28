@@ -12,6 +12,7 @@ class base {
     var $setting = array();
     var $category = array();
     var $usergroup = array();
+    var $location = array();
     var $get = array();
     var $post = array();
     var $regular;
@@ -36,12 +37,25 @@ class base {
     /* 一旦setting的缓存文件读取失败，则更新所有cache */
 
     function init_cache() {
-        global $setting, $category, $badword;
+        global $setting, $category, $badword, $location;
         $this->cache = new cache($this->db);
         $setting = $this->setting = $this->cache->load('setting');
         $category = $this->category = $this->cache->load('category', 'id', 'displayorder');
         $badword = $this->cache->load('badword', 'find');
         $this->usergroup = $this->cache->load('usergroup', 'groupid');
+        $locations = $this->cache->load('location', 'id', 'name');
+        $location = array();
+        $location['province'] = $location['city'] = $location['district'] = array();
+        foreach ($locations as $loc) {
+            if ($loc['grade'] == 1) {
+                $location['province'][$loc['locationid']] = $loc['name'];
+            } else if ($loc['grade'] == 2) {
+                $location['city'][$loc['locationid']] = $loc['name'];
+            } else if ($loc['grade'] == 3) {
+                $location['district'][$loc['locationid']] = $loc['name'];
+            }
+        }
+        $this->location = $location;
     }
 
     /* 从缓存中读取数据，如果失败，则自动去读取数据然后写入缓存 */

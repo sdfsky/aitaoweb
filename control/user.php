@@ -594,6 +594,8 @@ class usercontrol extends base {
     }
 
     function onauth() {
+        global $banklist;
+        $uid = $this->user['uid'];
         if (isset($this->post['submit'])) {
             $realname = $this->post['realname'];
             $mobile = $this->post['mobile'];
@@ -610,9 +612,28 @@ class usercontrol extends base {
             $qq = $this->post['qq'];
             $weixin = $this->post['weixin'];
             $email = $this->post['email'];
-
-            $_ENV['user']->add_auth($this->user['uid'], $realname, $mobile, $idcard, $idcard_image, $certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email);
+            $path = '/data/certificate/' . date("Ym");
+            (!is_dir(TIPASK_ROOT . $path)) && forcemkdir(TIPASK_ROOT . $path);
+            $extname = extname($_FILES["idcard_image"]["name"]);
+            if (!isimage($extname)) {
+                $this->message("证件扫描照格式错误", "BACK");
+            }
+            $upload_idcard_image = $path . '/idcard_image_' . $uid . '.' . $extname;
+            if (!move_uploaded_file($_FILES["idcard_image"]["tmp_name"], TIPASK_ROOT . $upload_idcard_image)) {
+                $this->message("服务器错误", "BACK");
+            }
+            $extname = extname($_FILES["certificate"]["name"]);
+            if (!isimage($extname)) {
+                $this->message("相关资质证明格式错误", "BACK");
+            }
+            $upload_certificate = $path . '/certificate_' . $uid . '.' . $extname;
+            if (!move_uploaded_file($_FILES["certificate"]["tmp_name"], TIPASK_ROOT . $upload_certificate)) {
+                $this->message("服务器错误", "BACK");
+            }
+            $_ENV['user']->add_auth($this->user['uid'], $realname, $mobile, $idcard, $upload_idcard_image, $upload_certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email);
         }
+        $edit = $this->get[2];
+        $myauth = $_ENV['user']->get_auth($uid);
         include template("user_auth");
     }
 

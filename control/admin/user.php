@@ -92,6 +92,42 @@ class admin_usercontrol extends base {
         }
     }
 
+    function onauth($msg = '') {
+        global $banklist;
+        $msg && $message = $msg;
+        $search = array();
+        if (count($this->get) > 2) {
+            $search['srchname'] = $this->get[2];
+            $search['srchregdatestart'] = $this->get[3];
+            $search['srchregdateend'] = $this->get[4];
+            $search['srchstatus'] = $this->get[5];
+        } else {
+            $search = $this->post;
+        }
+        if(!$search['srchstatus']){
+            $search['srchstatus'] = 'all';
+        }
+        @$page = max(1, intval($this->get[6]));
+        $pagesize = $this->setting['list_default'];
+        $startindex = ($page - 1) * $pagesize;
+        $authlist = $_ENV['user']->search_auth($search['srchname'], $search['srchregdatestart'], $search['srchregdateend'], $search['srchstatus'], $startindex, $pagesize);
+        $authnum = $_ENV['user']->search_auth($search['srchname'], $search['srchregdatestart'], $search['srchregdateend'], $search['srchstatus']);
+        $departstr = page($usernum, $pagesize, $page, "admin_user/auth/$search[srchname]/$search[srchregdatestart]/$search[srchregdateend]/$search[srchstatus]");
+        include template('userauth', 'admin');
+    }
+
+    function onchangeauth() {
+        if (isset($this->post['uid'])) {
+            $status = intval($this->get[2]);
+            $uids = implode(",", $this->post['uid']);
+            $this->db->query("UPDATE " . DB_TABLEPRE . "user_auth SET status=$status WHERE uid IN ($uids)");
+            if ($status == 1) {
+                $this->db->query("UPDATE " . DB_TABLEPRE . "user SET expert=1 WHERE uid IN ($uids) ");
+            }
+            $this->onauth('状态修改成功!');
+        }
+    }
+
     function onremove() {
         if (isset($this->post['uid'])) {
             $uids = implode(",", $this->post['uid']);
@@ -134,7 +170,7 @@ class admin_usercontrol extends base {
                 $message = '该邮箱已有人使用，请修改!';
             } else {
                 $password = ($password == '') ? $user['password'] : md5($password);
-                $_ENV['user']->update_user($uid, $username, $password, $email, $groupid, $credits, $credit1, $credit2, $gender, $bday, $phone, $qq, $msn,$introduction,$signature);
+                $_ENV['user']->update_user($uid, $username, $password, $email, $groupid, $credits, $credit1, $credit2, $gender, $bday, $phone, $qq, $msn, $introduction, $signature);
                 $message = '用户资料编辑成功!';
                 unset($type);
             }
@@ -171,10 +207,10 @@ class admin_usercontrol extends base {
             $this->ondefault($msg);
         }
     }
-    
-    function onajaxgetcredit1(){
+
+    function onajaxgetcredit1() {
         $groupid = intval($this->get[2]);
-        if(isset($this->usergroup[$groupid]) && $this->usergroup[$groupid]['grouptype']==2){
+        if (isset($this->usergroup[$groupid]) && $this->usergroup[$groupid]['grouptype'] == 2) {
             exit($this->usergroup[$groupid]['creditslower']);
         }
         exit('0');
