@@ -27,7 +27,8 @@ a{color:#333;text-decoration:none;}
 .tips{background-color: #fff;border-top: 1px solid #AED1CD;line-height: 24px;padding: 5px;font-size: 12px;}
 .content-right{float: right;background-color: #D2EFEB;width: 250px;height: 515px;}
 .qcontent{height: 480px;background-color: #C8DBE1;}
-#content_item{height: 300px;border-bottom:1px solid #A6CFCB;}
+#content_item{height: 300px;border-bottom:1px solid #A6CFCB;overflow-y: scroll;}
+.content_item ul{margin-left: 15px;list-style:outside none none;}
 .sendbox{margin: 5px;}
 .button1{background: url("expert_advisory_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 34px;padding: 0;width:99px;}
 .button2{background: url("btn_advisory_button.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 30px;padding: 0;width:75px;color:#fff;}
@@ -35,6 +36,8 @@ a{color:#333;text-decoration:none;}
 .button_close{background: url("expert_close_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
 .button_send{background: url("expert_send_btn.png") no-repeat;border: 0 none;cursor: pointer;font-family: "microsoft yahei";font-size: 14px;height: 32px;padding: 0;width:101px;}
 .editor{margin-top: 5px;}
+.credit_input{border: 1px solid #D6D6D6;height: 20px;line-height: 24px;width: 50px;}
+
 .textarea {
     background: none repeat scroll 0 0 #ffffff;
     border: 1px solid #a5c8ce;
@@ -110,3 +113,5 @@ a{color:#333;text-decoration:none;}
 
 .giftinfo .handsel{float: right;margin-top: -45px;}
 .refresh a{color:#1abdc4;text-decoration:underline;}
+
+

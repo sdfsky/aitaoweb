@@ -26,6 +26,7 @@ class expertcontrol extends base {
     
     function onadvisory(){
         $navtitle = "在线咨询";
+        $myauth = $_ENV['user']->get_auth($this->user['uid']);
         include template("expert_advisory");
     }
 
