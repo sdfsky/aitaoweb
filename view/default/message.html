@@ -31,7 +31,7 @@
                                 <!--{/if}-->
                             </h3>
                             <!--{if $type!='system'}-->
-                            <div class="detail" onclick="javascript:document.location = '{url message/view/$type/$message[fromuid]}';">{eval echo cutstr($message['content'],300,'')}</div>
+                            <div class="detail" onclick="javascript:window.open('{url message/view/$type/$message[fromuid]}', 'window_{$message[fromuid]}', 'height=620,width=950,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')">{eval echo cutstr($message['content'],300,'')}</div>
                             <!--{else}-->
                             <div class="detail">{$message['content']}</div>
                             <!--{/if}-->
@@ -48,7 +48,7 @@
                     <div class="pages flright">{$departstr}</div>
                     <div class="clearfix"></div>
                 </div>
-                
+
             </div>
         </form>
     </div>

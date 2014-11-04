@@ -1,81 +1,243 @@
-<!--{template header}-->
-<script type="text/javascript" src="{SITE_URL}js/editor/ueditor.config.js"></script> 
-<script type="text/javascript" src="{SITE_URL}js/editor/ueditor.all.js"></script> 
-<div class="wrapper mt10 clearfix">
-    <!--{template user_menu}-->
-    <div class="user-content">
-        <div class="my-answerbox">
-            <div class="title">我的消息<span class="flright"><input type="button" value="写消息" class="normal-button" onclick="javascript:document.location = '{url message/send}'"/></span></div>            
-            <div id="qa-tabcard">
-                <ul>
-                    <li<!--{if $type=="personal"}--> class="on"<!--{/if}-->><!--{if $type=="personal"}-->私人消息<!--{else}--><a href="{url message/personal}">私人消息</a><!--{/if}--></li>
-                    <li<!--{if $type=="system"}--> class="on"<!--{/if}-->><!--{if $type=="system"}-->系统消息<!--{else}--><a href="{url message/system}">系统消息</a><!--{/if}--></li>
-                </ul>
+<!DOCTYPE html>
+<html>
+    <!--{eval global $starttime,$querynum;$mtime = explode(' ', microtime());$runtime=number_format($mtime[1] + $mtime[0] - $starttime,6); $setting=$this->setting;$location=$this->location;$user=$this->user;$headernavlist=$this->nav;$regular=$this->regular;$toolbars="'".str_replace(",", "','", $setting['editor_toolbars'])."'";}-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!--{if isset($seo_title)}-->
+        <title>{$seo_title}</title>
+        <!--{else}-->
+        <title><!--{if $navtitle}-->{$navtitle} - <!--{/if}-->{$setting['site_name']}</title>
+        <!--{/if}-->
+        <!--{if isset($seo_description)}-->
+        <meta name="description" content="{eval echo cutstr($seo_description,160,'')}" />
+        <!--{else}-->
+        <meta name="description" content="{$setting['site_name']}" />
+        <!--{/if}-->
+        <meta name="keywords" content="{$seo_keywords}" />
+        <meta name="generator" content="Tipask {TIPASK_VERSION} {TIPASK_RELEASE}" />
+        <meta name="author" content="Tipask Team" />
+        <meta name="copyright" content="2014 tipask.com" />
+        <meta name="robots" content="index, follow">
+        <meta name="googlebot" content="index, follow" />
+        <meta property="qc:admins" content="1157543261064101336375" /> 
+        <meta property="wb:webmaster" content="21013a86963dbbe5" />
+        <link rel="stylesheet" type="text/css" href="{SITE_URL}css/default/expert.css" />
+        <link rel="stylesheet" type="text/css" href="{SITE_URL}js/jquery-ui/jquery-ui.css" />
+        <script type="text/javascript" src="{SITE_URL}js/jquery.js"></script>
+        <script type="text/javascript">var g_site_url = "{SITE_URL}";
+            var g_site_name = "{$setting['site_name']}";
+            var g_prefix = "{$setting['seo_prefix']}";
+            var g_suffix = "{$setting['seo_suffix']}";
+            var g_uid = {$user['uid']};</script>
+    </head>
+    <body>
+        <div class="mainbox">
+            <div class="top_bar">
+                <div class="logo"><a href="{SITE_URL}"></a></div>
+                <div class="link_info">
+                    <span>当前咨询时间：2014年12月10日</span>
+                    <span class="help"><a href="#">帮助</a></span>
+                    <span class="inform"><a href="#">投诉</a></span>
+                </div>
             </div>
-            <form name="msgform" action="{url message/remove}" method="POST" onsubmit="javascript:if (!confirm('确定删除所选消息?')) return false;">
-                <ul class="q-tabmod mt10">
-                    <!--{loop $messagelist $message}-->
-                    <li>
-                        <!--{if $message['fromuid']}-->
-                        <div class="avatar">
-                            <a href="{url user/space/$message['fromuid']}" title="supermustang" target="_blank" class="pic"><img alt="{$message['from']}" src="{$message['from_avatar']}"/></a>
+            <div class="content_box">
+                <div class="content-left">
+                    <div class="tips">网络沟通无法像面诊过程那样，不能全面了解您的健康状态，因此医生回答只作为建议，具体病情还需去医院检查</div>
+                    <div class="qcontent">
+                        <div class="content_item" id="content_item">
+
                         </div>
-                        <!--{/if}-->
-                        <div class="msgcontent">
-                            <h3>                                
-                                <!--{if $message['fromuid']==$user['uid']}-->
-                                <input type='checkbox' value="{$message['id']}" name="messageid[outbox][]"/>
-                                <a href="{url user/score}">您</a> 对 <a href="{url user/space/$message['fromuid']}">{$message['touser']}</a> 说：
-                                <!--{else}-->
-                                <input type='checkbox' value="{$message['id']}" name="messageid[inbox][]"/>
-                                <a href="{url user/space/$message['fromuid']}">{$message['from']}</a> 对 <a href="{url user/score}">您</a> 说：
-                                <!--{/if}-->
-                                {$message['subject']}
-                            </h3>
-                            <p>{$message['content']}</p>
-                            <div class="related">
-                                <div class="pv">{$message['format_time']}</div>
-                            </div>
+                        <div class="sendbox">
+                            <form id="sendform" id="sendform" action="#" method="POST">
+                                <input type="hidden" name="touid" value="{$fromuid}" />
+                                <div class="tooltip">
+                                    <input type="button" name="upload" class="button1" value="发送图片"/>
+                                    <input type="button" name="upload" class="button1" value="购买健康币"/>
+                                    <input type="button" name="upload" class="button1" value="电话咨询"/>
+                                    <input type="button" name="upload" class="button1" value="预约挂号"/>
+                                    <input type="button" name="upload" class="button1" value="上门服务"/>
+                                </div>
+                                <div class="editor">
+                                    <textarea id="editor_content" name="content" class="textarea"></textarea>
+                                    <div class="counter" id="counter">0/300</div>
+                                    <div class="sendbutton">
+                                        <input type="button" class="button_close"  onclick="closeme();"/>
+                                        <input type="button" class="button_send" onclick="sendmsg()" />
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+
+                    </div>
+                </div>
+                <div class="content-right">
+                    <!--{if  $user['expert']}-->
+                    <div class="userinfo clearfix">
+                        <a class="pic" href="{url user/space/$user['uid']}" target="_blank"><img width="81" height="81" src="{$user['avatar']}"></a>
+                        <h3>
+                            <a href="{url user/space/$user['uid']}" target="_blank">{$myauth['realname']}</a>
+                        </h3>
+                        <p>健康币:{$user['credit2']}</p>
+                        <p>地区：{$location['province'][$myauth['province']]}&nbsp;{$location['city'][$myauth['city']]}</p>
                         <div class="clr"></div>
-                    </li>
-                    <!--{/loop}-->
-                    <li><div class="manage-box"><input type="checkbox"value="chkall" id="chkall" onclick="checkall('messageid');"/> 全选&nbsp;&nbsp;<input type="submit" value="删除" name="submit" class="button_2" /></div></li>
-                </ul>
-            </form>
-            <!--{if 'personal'==$type}-->
-            <ul class="q-tabmod mt10">
-                <form name="commentform" action="{url message/send}" method="POST" onsubmit="return check_form();">
-                    <li>
-                        <div class="avatar">
-                            <span class="pic"><img alt="{$user['username']}" src="{$user['avatar']}"/></span>
-                        </div>
-                        <div class="msgcontent">
-                            <script type="text/plain" id="content" name="content" style="height: 122px;"></script>
-                            <script type="text/javascript">UE.getEditor('content', UE.utils.extend({toolbars:[[{$toolbars}]]}));</script>
-                            <div class="related">
-                                <input type="text" class="code-input" id="code" name="code" onblur="check_code()">&nbsp;<span class="verifycode"><img src="{url user/code}" onclick="javascript:updatecode();" id="verifycode"></span><a href="javascript:updatecode();" class="changecode">&nbsp;换一个</a>
-                                <span id="codetip"></span>
-                                <input type="hidden" name="username" value="{$fromuser['username']}" />
-                                <input type="submit" value="提&nbsp;交" class="normal-button flright" name="submit">
+                    </div>
+                    <div class="evaluate">
+                        <form name="expert_info_form" id="expert_info_form"   method="POST">
+                            <div class="input_group">
+                                <span class="text">我的状态</span>
+                                <select name="online_status" id="online_status">
+                                    <option value="1" {if $user['online_status']}selected{/if}>可以咨询</option>
+                                    <option value="0" {if !$user['online_status']}selected{/if}>暂时离开</option>
+                                </select>
                             </div>
+                            <div class="input_group">
+                                <span class="text">预约挂号</span>
+                                <input type="radio" value="1"  class="radio" id="support" name="support_register" {if $user['support_register']}checked{/if}/><label for="support">支持</label>&nbsp;&nbsp;
+                                <input type="radio" value="0"  class="radio" id="unsupport" name="support_register" {if !$user['support_register']}checked{/if}/><label for="unsupport">不支持</label>&nbsp;&nbsp;
+                            </div>
+                            <div class="input_group">
+                                <span class="text" >挂号需支付</span>
+                                <input type="text" value="{$user['price']}" name="price" id="price" class="credit_input"/>&nbsp;<label for="verygood">健康币</label>&nbsp;&nbsp;
+                            </div>
+
+                            <div class="input_group">
+                                <input type="button" name="submit" value="保存设置" class="button2" onclick="save_expert_info()"/>
+                            </div>
+                            <div class="clr"></div>
+                        </form>
+                        <p>对方支付健康币0个&nbsp;&nbsp;<a href="#" style="color:blue;">查看收支记录</a></p>
+                        <div class="modbox">
+                            <p>对方赠送的礼物</p>
+                            <div class="giftinfo clearfix">
+                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                                <h3>医德高尚</h3>
+                                <p>价格：5健康币</p>
+                                <p>医生爱心值+6</p>
+                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+
+                                <div class="clr"></div>
+                            </div>
+                            <div class="giftinfo clearfix">
+                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                                <h3>医德高尚</h3>
+                                <p>价格：5健康币</p>
+                                <p>医生爱心值+6</p>
+                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+                                <div class="clr"></div>
+                            </div>
+                            <p class="refresh"><a href="#">查看更多</a></p>
+
                         </div>
+                    </div>
+                    <!--{else}-->
+                    <div class="userinfo clearfix">
+                        <a class="pic" href="{url user/space/$fromuser['uid']}" target="_blank"><img width="81" height="81" src="{$fromuser['avatar']}"></a>
+                        <h3>
+                            <a href="{url user/space/$fromuser['uid']}" target="_blank">{$myauth['realname']}</a>
+                        </h3>
+                        <p>专长：</p>
+                        <p>单位</p>
+                        <p>专长</p>
                         <div class="clr"></div>
-                    </li>
-                </form>
-            </ul>
-            <!--{/if}-->
-            <div class="pages">{$departstr}</div>
+                        <div class="evaluate">
+                            <form name="evaluate" action="#" method="POST">
+                                <div class="input_group">
+                                    <p>评价医生的服务</p>
+                                    <input type="radio" value="1" id="verygood" class="radio"/><label for="verygood">非常满意</label>&nbsp;&nbsp;
+                                    <input type="radio" value="2" id="good" class="radio"/><label for="verygood">比较满意</label>&nbsp;&nbsp;
+                                    <input type="radio" value="3" id="bad" class="radio"/><label for="verygood">不满意</label>
+                                </div>
+                                <div class="input_group">
+                                    <span class="text">评语</span>
+                                    <textarea name="comment" id="comment"></textarea>
+                                </div>
+                                <div class="input_button">
+                                    <input type="submit" name="submit" value="提交评语" class="button2"/>
+                                </div>
+                                <div class="clr"></div>
+                            </form>
+                        </div>
+                        <div class="modbox">
+                            <div class="giftinfo clearfix">
+                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                                <h3>医德高尚</h3>
+                                <p>价格：5健康币</p>
+                                <p>医生爱心值+6</p>
+                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+
+                                <div class="clr"></div>
+                            </div>
+                            <div class="giftinfo clearfix">
+                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                                <h3>医德高尚</h3>
+                                <p>价格：5健康币</p>
+                                <p>医生爱心值+6</p>
+                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="giftinfo clearfix">
+                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
+                                <h3>医德高尚</h3>
+                                <p>价格：5健康币</p>
+                                <p>医生爱心值+6</p>
+                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
+                                <div class="clr"></div>
+                            </div>
+                            <p class="refresh"><a href="#">换一换</a></p>
+
+                        </div>
+                    </div>
+                    <!--{/if}-->
+
+                    <!--                    <div class="modbox">
+                                            <p>我要支付健康币给专家</p>
+                                            <p>健康币余额：18.00</p>
+                                            <p>支付&nbsp;<select><option>1</option></select>健康币</p>
+                                            <p><input type="submit" name="submit" value="确认支付" class="button2"/></p>
+                                        </div>-->
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
-function check_form() {
-    if ($.trim(UE.getEditor('content').getPlainTxt()) == '') {
-        alert("消息内容不能为空!");
-        return false;
-    }
-    return true;
-}
-</script>
-<!--{template footer}-->
+        <script type="text/javascript">
+            function save_expert_info() {
+                $.ajax({
+                    type: "POST",
+                    url: "{SITE_URL}index.php?expert/ajaxsaveinfo",
+                    data: $("#expert_info_form").serialize(),
+                    success: function(msg) {
+                        alert("信息保存成功！");
+                    }
+                });
+            }
+
+            function sendmsg() {
+                $.ajax({
+                    type: "POST",
+                    url: "{SITE_URL}index.php?message/ajaxsend",
+                    data: $("#sendform").serialize(),
+                    success: function(msg) {
+                        $("#editor_content").val("");
+                    }
+                });
+            }
+            function loadmsg() {
+                $("#content_item").load("{SITE_URL}index.php?message/ajaxloadmsg/{$fromuid}");
+            }
+            function closeme() {
+                if(!confirm("确认关闭当前页面?")){
+                    return false;
+                }
+                var browserName = navigator.appName;
+                if (browserName == "Netscape") {
+                    window.open('', '_parent', '');
+                    window.close();
+                } else if (browserName == "Microsoft Internet Explorer") {
+                    window.opener = "whocares";
+                    window.close();
+                }
+            }
+            setInterval(loadmsg, 1000);
+        </script>
+    </body>
+</html>

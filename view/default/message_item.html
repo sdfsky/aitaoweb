@@ -1,0 +1,18 @@
+<ul>
+
+    <!--{loop $messagelist $message}-->
+    <!--{if $message['fromuid']==$user['uid']}-->
+    <li class="me">
+        <p style="color:blue;">您 {$message['format_time']}</p>
+        {$message['content']}
+    </li>
+    <!--{else}-->
+    <li class="expert">
+        <p style="color:green;">{$message['from']} {$message['format_time']}</p>
+        {$message['content']}
+    </li>                                
+    <!--{/if}-->
+    <!--{/loop}-->
+
+
+</ul>

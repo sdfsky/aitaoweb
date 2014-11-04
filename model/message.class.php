@@ -65,10 +65,10 @@ class messagemodel {
 
     function list_by_fromuid($fromuid, $start = 0, $limit = 10) {
         $messagelist = array();
-        $sql = "SELECT * FROM " . DB_TABLEPRE . "message WHERE fromuid<>touid AND ((fromuid=$fromuid AND touid=" . $this->base->user['uid'] . ") AND status IN (0,1)) OR ((fromuid=" . $this->base->user['uid'] . " AND touid=" . $fromuid . ") AND  status IN (0,2)) ORDER BY time DESC LIMIT $start,$limit";
+        $sql = "SELECT * FROM " . DB_TABLEPRE . "message WHERE fromuid<>touid AND ((fromuid=$fromuid AND touid=" . $this->base->user['uid'] . ") AND status IN (0,1)) OR ((fromuid=" . $this->base->user['uid'] . " AND touid=" . $fromuid . ") AND  status IN (0,2)) ORDER BY time ASC LIMIT $start,$limit";
         $query = $this->db->query($sql);
         while ($message = $this->db->fetch_array($query)) {
-            $message['format_time'] = tdate($message['time']);
+            $message['format_time'] = tdate($message['time'],3,0);
             $message['from_avatar'] = get_avatar_dir($message['fromuid']);
             $message['touser'] = $this->db->result_first("SELECT username FROM " . DB_TABLEPRE . "user WHERE uid=" . $message['touid']);
             $messagelist[] = $message;

@@ -58,6 +58,22 @@ class messagecontrol extends base {
         include template('sendmsg');
     }
 
+    function onajaxsend() {
+        $touser = $_ENV['user']->get_by_uid(intval($this->post['touid']));
+        $_ENV['message']->add($this->user['username'], $this->user['uid'], $touser['uid'], '', $this->post['content']);
+        $this->credit($this->user['uid'], $this->setting['credit1_message'], $this->setting['credit2_message']);
+        echo "ok";
+    }
+
+    function onajaxloadmsg() {
+        $user = $this->user;
+        $fromuid = intval($this->get[2]);
+        $_ENV['message']->read_by_fromuid($fromuid);
+        $fromuser = $_ENV['user']->get_by_uid($fromuid);
+        $messagelist = $_ENV['message']->list_by_fromuid($fromuid, 0, 100);
+        include template("message_item");
+    }
+
     /* 查看消息 */
 
     function onview() {
@@ -70,6 +86,12 @@ class messagecontrol extends base {
         $_ENV['message']->read_by_fromuid($fromuid);
         $fromuser = $_ENV['user']->get_by_uid($fromuid);
         $status = 1;
+        if($this->user['expert']){
+        $myauth = $_ENV['user']->get_auth($this->user['uid']);
+        }else{
+            $myauth = $_ENV['user']->get_auth($fromuid);
+        }
+
         $messagelist = $_ENV['message']->list_by_fromuid($fromuid, $startindex, $pagesize);
         $messagenum = $this->db->fetch_total('message', "fromuid<>touid AND ((fromuid=$fromuid AND touid=" . $this->user['uid'] . ") AND status IN (0,1)) OR ((touid=" . $this->user['uid'] . " AND fromuid=" . $fromuid . ") AND  status IN (0,2))");
         $departstr = page($messagenum, $pagesize, $page, "message/view/$type/$fromuid");
@@ -99,10 +121,10 @@ class messagecontrol extends base {
      * 删除对话
      */
     function onremovedialog() {
-        if($this->post['message_author']){
+        if ($this->post['message_author']) {
             $authors = $this->post['message_author'];
             $_ENV['message']->remove_by_author($authors);
-             $this->message("对话删除成功!", get_url_source());
+            $this->message("对话删除成功!", get_url_source());
         }
     }
 
