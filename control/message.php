@@ -68,6 +68,11 @@ class messagecontrol extends base {
     function onajaxloadmsg() {
         $user = $this->user;
         $fromuid = intval($this->get[2]);
+        if ($this->user['expert']) {
+            $myauth = $_ENV['user']->get_auth($this->user['uid']);
+        } else {
+            $myauth = $_ENV['user']->get_auth($fromuid);
+        }
         $_ENV['message']->read_by_fromuid($fromuid);
         $fromuser = $_ENV['user']->get_by_uid($fromuid);
         $messagelist = $_ENV['message']->list_by_fromuid($fromuid, 0, 100);
@@ -86,9 +91,9 @@ class messagecontrol extends base {
         $_ENV['message']->read_by_fromuid($fromuid);
         $fromuser = $_ENV['user']->get_by_uid($fromuid);
         $status = 1;
-        if($this->user['expert']){
-        $myauth = $_ENV['user']->get_auth($this->user['uid']);
-        }else{
+        if ($this->user['expert']) {
+            $myauth = $_ENV['user']->get_auth($this->user['uid']);
+        } else {
             $myauth = $_ENV['user']->get_auth($fromuid);
         }
 

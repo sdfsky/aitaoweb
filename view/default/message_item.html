@@ -8,7 +8,7 @@
     </li>
     <!--{else}-->
     <li class="expert">
-        <p style="color:green;">{$message['from']} {$message['format_time']}</p>
+        <p style="color:green;">{if $message['fromuid']==$myauth['uid']}{$myauth['realname']}{else}{$message['from']}{/if} {$message['format_time']}</p>
         {$message['content']}
     </li>                                
     <!--{/if}-->

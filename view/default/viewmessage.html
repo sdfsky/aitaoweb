@@ -143,6 +143,7 @@
                             <form name="evaluate" action="#" method="POST">
                                 <div class="input_group">
                                     <p>评价医生的服务</p>
+                                    <div class="clr"></div>
                                     <input type="radio" value="1" id="verygood" class="radio"/><label for="verygood">非常满意</label>&nbsp;&nbsp;
                                     <input type="radio" value="2" id="good" class="radio"/><label for="verygood">比较满意</label>&nbsp;&nbsp;
                                     <input type="radio" value="3" id="bad" class="radio"/><label for="verygood">不满意</label>
@@ -222,7 +223,9 @@
                 });
             }
             function loadmsg() {
+                $("#content_item").scrollTop(10000);
                 $("#content_item").load("{SITE_URL}index.php?message/ajaxloadmsg/{$fromuid}");
+                
             }
             function closeme() {
                 if(!confirm("确认关闭当前页面?")){
