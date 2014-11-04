@@ -303,26 +303,26 @@
                         <div class="clr"></div>
                     </div>
                     <div class="evaluate">
-                        <form name="evaluate" action="#" method="POST">
+                        <form name="expert_info_form" id="expert_info_form"   method="POST">
                             <div class="input_group">
                                 <span class="text">我的状态</span>
-                                <select name="online" id="online">
-                                    <option value="1">可以咨询</option>
-                                    <option value="0">暂时离开</option>
+                                <select name="online_status" id="online_status">
+                                    <option value="1" {if $user['online_status']}selected{/if}>可以咨询</option>
+                                    <option value="0" {if !$user['online_status']}selected{/if}>暂时离开</option>
                                 </select>
                             </div>
                             <div class="input_group">
                                 <span class="text">预约挂号</span>
-                                <input type="radio" value="1" id="verygood" class="radio"/><label for="verygood">支持</label>&nbsp;&nbsp;
-                                <input type="radio" value="0" id="good" class="radio"/><label for="verygood">不支持</label>&nbsp;&nbsp;
+                                <input type="radio" value="1"  class="radio" id="support" name="support_register" {if $user['support_register']}checked{/if}/><label for="support">支持</label>&nbsp;&nbsp;
+                                <input type="radio" value="0"  class="radio" id="unsupport" name="support_register" {if !$user['support_register']}checked{/if}/><label for="unsupport">不支持</label>&nbsp;&nbsp;
                             </div>
                             <div class="input_group">
-                                <span class="text">挂号需支付</span>
-                                <input type="text" value="1" id="verygood" class="credit_input"/>&nbsp;<label for="verygood">健康币</label>&nbsp;&nbsp;
+                                <span class="text" >挂号需支付</span>
+                                <input type="text" value="{$user['price']}" name="price" id="price" class="credit_input"/>&nbsp;<label for="verygood">健康币</label>&nbsp;&nbsp;
                             </div>
 
                             <div class="input_group">
-                                <input type="submit" name="submit" value="保存设置" class="button2"/>
+                                <input type="button" name="submit" value="保存设置" class="button2" onclick="save_expert_info()"/>
                             </div>
                             <div class="clr"></div>
                         </form>
@@ -420,5 +420,17 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function save_expert_info() {
+                $.ajax({
+                    type: "POST",
+                    url: "{SITE_URL}index.php?expert/ajaxsaveinfo",
+                    data: $("#expert_info_form").serialize(),
+                    success: function(msg) {
+                        alert("Data Saved: " + msg);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
