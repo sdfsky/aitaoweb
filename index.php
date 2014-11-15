@@ -10,6 +10,4 @@ define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF
 include TIPASK_ROOT . '/model/tipask.class.php';
 $tipask = new tipask();
 $tipask->run();
-
-/*git test*/
 ?>
