@@ -598,6 +598,8 @@ class usercontrol extends base {
         $uid = $this->user['uid'];
         if (isset($this->post['submit'])) {
             $realname = $this->post['realname'];
+            $hospital = $this->post['hospital'];
+            $job_title = $this->post['job_title'];
             $mobile = $this->post['mobile'];
             $idcard = $this->post['idcard'];
             $idcard_image = $this->post['idcard_image'];
@@ -630,7 +632,7 @@ class usercontrol extends base {
             if (!move_uploaded_file($_FILES["certificate"]["tmp_name"], TIPASK_ROOT . $upload_certificate)) {
                 $this->message("服务器错误", "BACK");
             }
-            $_ENV['user']->add_auth($this->user['uid'], $realname, $mobile, $idcard, $upload_idcard_image, $upload_certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email);
+            $_ENV['user']->add_auth($this->user['uid'], $realname,$hospital,$job_title, $mobile, $idcard, $upload_idcard_image, $upload_certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email);
         }
         $edit = $this->get[2];
         $myauth = $_ENV['user']->get_auth($uid);

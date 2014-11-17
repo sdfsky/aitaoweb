@@ -497,9 +497,9 @@ class usermodel {
         }
     }
 
-    function add_auth($uid, $realname, $mobile, $idcard, $idcard_image, $certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email) {
-        $this->db->query("INSERT INTO " . DB_TABLEPRE . "user_auth(uid,realname,mobile,idcard,idcard_image,certificate,postcode,province,city,district,address,bank_type,bank_no,qq,weixin,email,status,create_time) VALUES  "
-                . "($uid,'$realname','$mobile','$idcard','$idcard_image','$certificate','$postcode',$province,$city,$district,'$address',$bank_type,'$bank_no','$qq','$weixin','$email',0,{$this->base->time})");
+    function add_auth($uid, $realname, $hospital, $job_title, $mobile, $idcard, $idcard_image, $certificate, $postcode, $province, $city, $district, $address, $bank_type, $bank_no, $qq, $weixin, $email) {
+        $this->db->query("INSERT INTO " . DB_TABLEPRE . "user_auth(uid,realname,hospital,job_title,mobile,idcard,idcard_image,certificate,postcode,province,city,district,address,bank_type,bank_no,qq,weixin,email,status,create_time) VALUES  "
+                . "($uid,'$realname','$hospital','$job_title','$mobile','$idcard','$idcard_image','$certificate','$postcode',$province,$city,$district,'$address',$bank_type,'$bank_no','$qq','$weixin','$email',0,{$this->base->time})");
     }
 
     function get_auth($uid) {
@@ -509,8 +509,8 @@ class usermodel {
     function search_auth($realname = '', $starttime = 0, $endtime = 0, $status = 'all', $start = 0, $limit = 20) {
         $sql = "SELECT * FROM " . DB_TABLEPRE . "user_auth WHERE 1=1 ";
         $realname && $sql.= " AND realname LIKE '%$realname%'";
-        $starttime && $sql.= " AND createtime > ".  strtotime($starttime);
-        $endtime && $sql.= " AND createtime <  ".  strtotime($endtime);
+        $starttime && $sql.= " AND createtime > " . strtotime($starttime);
+        $endtime && $sql.= " AND createtime <  " . strtotime($endtime);
         ($status !== 'all') && $sql.= " AND status=$status ";
         $query = $this->db->query($sql);
         $authlist = array();
@@ -523,8 +523,8 @@ class usermodel {
     function rownum_auth($realname = '', $starttime = 0, $endtime = 0, $status = 'all') {
         $sql = "SELECT COUNT(*) FROM " . DB_TABLEPRE . "user_auth WHERE 1=1 ";
         $realname && $sql.= " AND realname LIKE '%$realname%'";
-       $starttime && $sql.= " AND createtime > ".  strtotime($starttime);
-        $endtime && $sql.= " AND createtime <  ".  strtotime($endtime);
+        $starttime && $sql.= " AND createtime > " . strtotime($starttime);
+        $endtime && $sql.= " AND createtime <  " . strtotime($endtime);
         ($status !== 'all') && $sql.= " AND status=$status ";
         return $this->db->result_first($sql);
     }
