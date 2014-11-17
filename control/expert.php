@@ -21,6 +21,7 @@ class expertcontrol extends base {
         $rownum = $_ENV['expert']->rownum_by_cid($categoryid);
         $expertlist = $_ENV['expert']->get_by_cid($categoryid, $startindex, $pagesize);
         $departstr = page($rownum, $pagesize, $page, "expert/default/$categoryid");
+        $questioned_expertlist = $_ENV['expert']->get_questioned_expert($this->user['uid']);
         $questionlist = $_ENV['expert']->get_solves(0, 15);
         include template('expert');
     }

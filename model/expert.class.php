@@ -39,6 +39,7 @@ class expertmodel {
         while ($expert = $this->db->fetch_array($query)) {
             $expert['avatar'] = get_avatar_dir($expert['uid']);
             $expert['category'] = $this->get_category($expert['uid']);
+            $expert['authinfo'] = $this->get_auth($expert['uid']);
             $expertlist[] = $expert;
         }
         return $expertlist;
@@ -91,6 +92,22 @@ class expertmodel {
             $solvelist[] = $solve;
         }
         return $solvelist;
+    }
+
+    function get_auth($uid) {
+        return $this->db->fetch_first("SELECT * FROM " . DB_TABLEPRE . "user_auth WHERE uid=$uid");
+    }
+
+    /*查询我咨询过的医生*/
+    function get_questioned_expert($uid){
+        $expertlist = array();
+        $query = $this->db->query("SELECT u.username,m.time FROM ".DB_TABLEPRE."user as u,".DB_TABLEPRE."message as m WHERE u.uid=m.touid AND m.fromuid=$uid GROUP BY u.username ORDER BY m.time DESC LIMIT 0,5");
+        while($expert = $this->db->fetch_array($query)){
+            $expert['format_time'] = tdate($expert['time'],2);
+            $expertlist[] = $expert;
+        }
+        return $expertlist;
+
     }
 
 }

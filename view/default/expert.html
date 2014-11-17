@@ -25,17 +25,17 @@
                     </div>
                     <div class="expert-desc">
                         <a class="title" target="_blank" title="{$expert['username']}" href="{url user/space/$expert['uid']}">{$expert['username']}</a>
-                        <span>职称：医生</span>
-                        <span>医院：临沂市人民医院</span>
+                        <span>职称：{if $expert['authinfo']['job_title']}{$expert['authinfo']['job_title']}{else}暂无{/if}</span>
+                        <span>医院：{if $expert['authinfo']['hospital']}{$expert['authinfo']['hospital']}{else}暂无{/if}</span>
                         <span>擅长领域：{$expert['category'][0]['categoryname']}</span>
                     </div>
                     <div class="clr"></div>
                 </div>
-                <p class="expert-intro"><span>专长：</span>阿萨德发生发生</p>
+                <p class="expert-intro"><span>专长：</span>{$expert['introduction']}</p>
                 <div class="advisory">
                     <img src="{SITE_URL}css/default/expert_status_ok.png" style="vertical-align:middle;"/>
-                    <input type="button" value="点击咨询" class="btn_on"  onclick="javascript:document.location='{url expert/advisory}'"/>
-                    <input type="button" value="电话咨询" class="btn_on" />
+                    <input type="button" value="点击咨询" class="btn_on"  onclick="javascript:window.open('{url message/view/personal/$expert['uid']}', 'window_{$expert['uid']}', 'height=620,width=950,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')"/>
+                    <!-- <input type="button" value="电话咨询" class="btn_on" /> -->
                 </div>
             </div>
             <!--{/loop}-->
@@ -47,12 +47,12 @@
         <div class="modbox2 mt10">
             <div class="title">专家最新解答</div>
             <div class="user-center">
-                <p>账户余额：    <font color="#1abdc4">18.00</font><a href="#" class="charge">充值</a></p>
-                <p><a href="#" class="record">我的咨询记录</a><a href="#" class="charge">我的提问</a></p>
+                <p>账户余额：    <font color="#1abdc4">{$user['credit2']}</font><a href="#" class="charge">充值</a></p>
+                <p><a href="{url message/personal}" class="record">我的咨询记录</a><a href="{url user/ask/1}" class="charge">我的提问</a></p>
                 <p>最近咨询过的医生：</p>
-                <p>张三<span class="recor-time">12-08 16:00</span></p>
-                <p>张三<span class="recor-time">12-08 16:00</span></p>
-                <p>张三<span class="recor-time">12-08 16:00</span></p>
+                <!--{loop $questioned_expertlist $qexpert}-->
+                <p>{$qexpert['username']}<span class="recor-time">{$qexpert['format_time']}</span></p>
+                <!--{/loop}-->
             </div>
         </div>
         <div class="modbox2 mt10">
@@ -82,5 +82,10 @@
             current: [4, 4, 73],
         });
     });
+
+function open_expert_dialog(){
+
+}
+
 </script>
 <!--{template footer}-->

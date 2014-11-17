@@ -281,7 +281,7 @@ em {font-style: normal;color:#E63A00;}
 .expert-category .active a{color: #FFFFFF;}
 .experts{float: left;width: 568px;}
 .experts .expert-filter{height: 30 px;color:#333333;border:1px solid #e4e4e4;margin-bottom: 5px;background: none repeat scroll 0 0 #F8F6F6;}
-.experts .expert-filter span{color:#333333;float: left;padding: 2px 9px 0 15px}
+.experts .expert-filter span{color:#333333;float: left;padding: 2px 9px 0 15px;width: 39px;}
 .experts .expert-filter .check_box{width: 100px;float: left;}
 .experts .expert-filter label{vertical-align:middle;}
 .experts .expert{float: left;position:relative;width:278px; margin-bottom:5px; border:1px solid #D5D5D5; background:none repeat scroll 0 0 #f8f6f6;}
@@ -292,8 +292,9 @@ em {font-style: normal;color:#E63A00;}
 .experts .expert-desc{float:left;width: 175px;margin-left: 8px;line-height: 22px;}
 
 .experts .title{color:#333333;display:block;}
-.experts span{ display:inline-block; height:22px; line-height:22px; color:#666666;}
+.experts span{ display:inline-block; height:22px; line-height:22px; color:#666666;width:170px;}
 .experts .expert-intro{margin-left:8px;}
+.experts .expert-intro span{width: auto;}
 .experts .advisory{line-height: 30px;margin-left:8px;}
 .experts .btn_on{background: url("btn_advisory_on.png") no-repeat;border: 0 none;cursor: pointer;font-size: 12px;padding: 0;height: 24px;width:69px;color:#fff;}
 /*右边*/

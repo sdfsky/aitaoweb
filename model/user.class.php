@@ -529,6 +529,8 @@ class usermodel {
         return $this->db->result_first($sql);
     }
 
+    
+
 }
 
 ?>
