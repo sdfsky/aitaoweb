@@ -109,6 +109,20 @@ class expertmodel {
         return $expertlist;
 
     }
+    
+    /**
+     * 添加专家评论
+     * @param Int $expert_uid
+     * @param String $author
+     * @param Int $authorid
+     * @param Int $level
+     * @param String $content
+     */
+    function add_comment($expert_uid,$author,$authorid,$level,$content){
+        $level_field = "level".$level;
+        $this->db->query("UPDATE ".DB_TABLEPRE."user SET $level_field=$level_field+1 WHERE uid=$expert_uid");
+        return $this->db->query("INSERT INTO ".DB_TABLEPRE."expert_comment(`id`,expert_uid,author,authorid,level,content,create_time) VALUES (null,$expert_uid,'$author',$authorid,$level,'$content',{$this->base->time})");
+    }
 
 }
 

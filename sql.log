@@ -1,0 +1,1 @@
+INSERT INTO ask_expert_comment(`id`,expert_uid,author,authorid,level,content,create_time) VALUES (null,30001,'自由的风',36,2,'asdfasf',1416754752)

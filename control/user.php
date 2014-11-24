@@ -443,19 +443,16 @@ class usercontrol extends base {
         $userid = intval($this->get[2]);
         $member = $_ENV['user']->get_by_uid($userid, 2);
         if ($member) {
-            $this->load('doing');
             $membergroup = $this->usergroup[$member['groupid']];
             $adoptpercent = $_ENV['user']->adoptpercent($member);
             $page = max(1, intval($this->get[3]));
             $pagesize = 8;
             $startindex = ($page - 1) * $pagesize;
-            $doinglist = $_ENV['doing']->list_by_type("my", $userid, $startindex, $pagesize);
-            $rownum = $_ENV['doing']->rownum_by_type("my", $userid);
-            $departstr = page($rownum, $pagesize, $page, "user/space/$userid");
             $navtitle = $member['username'] . $navtitle;
             if ($member['expert']) {
                 $this->load('expert');
                 $answerlist = $_ENV['answer']->list_by_uid($userid, 'all');
+                print_r($answerlist);
                 $questionlist = $_ENV['expert']->get_solve_answer($userid, 0, 8);
                 include template('expert_space');
             } else {

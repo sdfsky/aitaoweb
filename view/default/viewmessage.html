@@ -131,29 +131,30 @@
                     </div>
                     <!--{else}-->
                     <div class="userinfo clearfix">
-                        <a class="pic" href="{url user/space/$fromuser['uid']}" target="_blank"><img width="81" height="81" src="{$fromuser['avatar']}"></a>
+                        <a class="pic" href="{url user/space/$myauth['uid']}" target="_blank"><img width="81" height="81" src="{$myauth['avatar']}"></a>
                         <h3>
-                            <a href="{url user/space/$fromuser['uid']}" target="_blank">{$myauth['realname']}</a>
+                            <a href="{url user/space/$myauth['uid']}" target="_blank">{$myauth['realname']}</a>
                         </h3>
-                        <p>专长：</p>
-                        <p>单位</p>
-                        <p>专长</p>
+                        <p>职称：{if $myauth['job_title']}{$myauth['job_title']}{else}暂无{/if}</p>
+                        <p>医院：{if $myauth['hospital']}{$myauth['hospital']}{else}暂无{/if}</p>
+                        <p>擅长：{$goodat[0]['categoryname']}</p>
                         <div class="clr"></div>
                         <div class="evaluate">
-                            <form name="evaluate" action="#" method="POST">
+                            <form name="commentForm" id="commentform" method="POST">
+                                <input type="hidden" name="expert_uid" value="{$myauth['uid']}" />
                                 <div class="input_group">
                                     <p>评价医生的服务</p>
                                     <div class="clr"></div>
-                                    <input type="radio" value="1" id="verygood" class="radio"/><label for="verygood">非常满意</label>&nbsp;&nbsp;
-                                    <input type="radio" value="2" id="good" class="radio"/><label for="verygood">比较满意</label>&nbsp;&nbsp;
-                                    <input type="radio" value="3" id="bad" class="radio"/><label for="verygood">不满意</label>
+                                    <input type="radio" value="1" checked id="verygood" class="radio" name="goodlevel"/><label for="verygood">非常满意</label>&nbsp;&nbsp;
+                                    <input type="radio" value="2" id="good" class="radio" name="goodlevel"/><label for="verygood">比较满意</label>&nbsp;&nbsp;
+                                    <input type="radio" value="3" id="bad" class="radio" name="goodlevel"/><label for="verygood">不满意</label>
                                 </div>
                                 <div class="input_group">
                                     <span class="text">评语</span>
-                                    <textarea name="comment" id="comment"></textarea>
+                                    <textarea name="comment" id="comment">谢谢您的耐心解答！</textarea>
                                 </div>
                                 <div class="input_button">
-                                    <input type="submit" name="submit" value="提交评语" class="button2"/>
+                                    <input type="button" name="subcomment" id="btnsubmit" value="提交评语" class="button2"/>
                                 </div>
                                 <div class="clr"></div>
                             </form>
@@ -201,12 +202,35 @@
             </div>
         </div>
         <script type="text/javascript">
+            $(function () {
+                $("#btnsubmit").click(function () {
+                    var comment = $.trim($("#comment").val());
+                    if(comment==''){
+                        alert("评语不能为空，请简短的评价一下该专家！");
+                        return ;
+                    }
+                    var formdata = $("#commentform").serialize();
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "{SITE_URL}index.php?expert/ajaxaddcomment",
+                        data: formdata,
+                        success: function (msg) {
+                            if(msg=='ok'){
+                                alert('评价成功，感谢您的参与！');
+                            }else{
+                                alert("网络异常，请稍后再试！");
+                            }
+                        }
+                    });
+                });
+            });
             function save_expert_info() {
                 $.ajax({
                     type: "POST",
                     url: "{SITE_URL}index.php?expert/ajaxsaveinfo",
                     data: $("#expert_info_form").serialize(),
-                    success: function(msg) {
+                    success: function (msg) {
                         alert("信息保存成功！");
                     }
                 });
@@ -217,7 +241,7 @@
                     type: "POST",
                     url: "{SITE_URL}index.php?message/ajaxsend",
                     data: $("#sendform").serialize(),
-                    success: function(msg) {
+                    success: function (msg) {
                         $("#editor_content").val("");
                     }
                 });
@@ -225,10 +249,10 @@
             function loadmsg() {
                 $("#content_item").scrollTop(10000);
                 $("#content_item").load("{SITE_URL}index.php?message/ajaxloadmsg/{$fromuid}");
-                
+
             }
             function closeme() {
-                if(!confirm("确认关闭当前页面?")){
+                if (!confirm("确认关闭当前页面?")) {
                     return false;
                 }
                 var browserName = navigator.appName;

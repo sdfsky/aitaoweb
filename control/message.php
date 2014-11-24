@@ -95,6 +95,8 @@ class messagecontrol extends base {
             $myauth = $_ENV['user']->get_auth($this->user['uid']);
         } else {
             $myauth = $_ENV['user']->get_auth($fromuid);
+            $myauth['avatar'] = get_avatar_dir($fromuid);
+            $goodat = $_ENV['user']->get_category($fromuid);
         }
 
         $messagelist = $_ENV['message']->list_by_fromuid($fromuid, $startindex, $pagesize);

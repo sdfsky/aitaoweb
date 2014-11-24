@@ -44,6 +44,19 @@ class expertcontrol extends base {
         echo 'ok';
     }
 
+    /**
+     * 添加评分
+     */
+    function onajaxaddcomment() {
+        if ($this->user['uid'] && $this->post) {
+            $expert_uid = $this->post['expert_uid'];
+            $level = $this->post['goodlevel'];
+            $comment = $this->post['comment'];
+            $_ENV['expert']->add_comment($expert_uid, $this->user['username'], $this->user['uid'], $level, $comment);
+        }
+        echo "ok";
+    }
+
 }
 
 ?>
