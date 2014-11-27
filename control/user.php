@@ -452,7 +452,8 @@ class usercontrol extends base {
             if ($member['expert']) {
                 $this->load('expert');
                 $answerlist = $_ENV['answer']->list_by_uid($userid, 'all');
-                print_r($answerlist);
+                $levelcount = $_ENV['expert']->get_level_count($userid);
+                $commentlist = $_ENV['expert']->get_comment_list($userid);
                 $questionlist = $_ENV['expert']->get_solve_answer($userid, 0, 8);
                 include template('expert_space');
             } else {

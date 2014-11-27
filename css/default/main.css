@@ -297,6 +297,13 @@ em {font-style: normal;color:#E63A00;}
 .experts .expert-intro span{width: auto;}
 .experts .advisory{line-height: 30px;margin-left:8px;}
 .experts .btn_on{background: url("btn_advisory_on.png") no-repeat;border: 0 none;cursor: pointer;font-size: 12px;padding: 0;height: 24px;width:69px;color:#fff;}
+
+/*进度条*/
+.bar_text{float:left;width:80px;text-align:left;}
+.Bars { float:left; position: relative;width: 100px; border: 1px solid #46d0d6;margin-top:5px;}
+.Bars div { display: block; position: relative; background:#1abdc4;/* 进度条背景颜色 */ color: #333333; height: 13px;}
+
+
 /*右边*/
 .modbox2 .title{color:#ffffff;font-weight:bold;font-size: 14px; height: 24px;padding: 0 0 0 10px;background-color:#46D0D6;height: 35px;line-height: 35px;}
 .modbox2 .user-center{margin-left: 25px;margin-top: 10px;line-height: 26px;}

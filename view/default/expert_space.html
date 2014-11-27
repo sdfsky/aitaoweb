@@ -72,18 +72,29 @@
             <div class="clr"></div>
         </div>
         <div class="modbox2 mt10">
-            <div class="title">服务器满意度</div>
+            <div class="title">服务满意度</div>
             <div class="satisfaction">
                 <div class="item">
-                    <span>非常满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                    <span class='bar_text'>非常满意：</span>
+                    <div class="Bars">
+                        <div style="width: {$levelcount['good']}%;"></div>
+                    </div>
+                    &nbsp;{$levelcount['bad']}%
                 </div>
                 <div class="item">
-                    <span>满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                    <span class='bar_text'>满意：</span>
+                    <div class="Bars">
+                        <div style="width: {$levelcount['good']}%;"></div>
+                    </div>
+                    &nbsp;{$levelcount['good']}%
                 </div>
                 <div class="item">
-                    <span>不满意：</span><img src="{SITE_URL}css/default/expert_manyi.png" />
+                    <span class='bar_text'>不满意：</span>
+                    <div class="Bars">
+                        <div style="width: {$levelcount['bad']}%;"></div>
+                    </div>
+                    &nbsp;{$levelcount['bad']}%
                 </div>
-
             </div>
             <div class="clr"></div>
         </div>
