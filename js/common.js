@@ -1,18 +1,18 @@
 var popusertimer = null;
 var query = '?';
-$(document).ready(function() {
+$(document).ready(function () {
     //头部header浮动层
-    $(".ismore a").hover(function() {
+    $(".ismore a").hover(function () {
         $(".tuser-more-list").hide();
         $(this).parent().next("div").show();
-        $(this).parent().next("div").hover(function() {
-        }, function() {
+        $(this).parent().next("div").hover(function () {
+        }, function () {
             $(this).hide();
         });
     });
 
     //搜索框底层border
-    $(window).bind("scroll", function() {
+    $(window).bind("scroll", function () {
         var e = document.documentElement.scrollTop || document.body.scrollTop;
         e > 20 ? $(".js-fixed").addClass("fixed-theme") : $(".js-fixed").removeClass("fixed-theme");
     });
@@ -20,43 +20,43 @@ $(document).ready(function() {
 
 
     //搜索提问按钮
-    $("#search_btn").click(function() {
+    $("#search_btn").click(function () {
         document.searchform.action = g_site_url + '' + query + 'question/search/2' + g_suffix;
         document.searchform.submit();
     });
-    $("#ask_btn").click(function() {
+    $("#ask_btn").click(function () {
         document.searchform.action = g_site_url + '' + query + 'question/add' + g_suffix;
         document.searchform.submit();
     });
 
     //分类选择
-    $("#category1").change(function() {
+    $("#category1").change(function () {
         fillcategory(category2, $("#category1 option:selected").val(), "category2");
         $("#jiantou1").show();
         $("#category2").show();
     });
-    $("#category2").change(function() {
+    $("#category2").change(function () {
         fillcategory(category3, $("#category2 option:selected").val(), "category3");
         $("#jiantou2").show();
         $("#category3").show();
     });
-    $("#changecategory").click(function() {
+    $("#changecategory").click(function () {
         if (!$(this).hasClass("btn-disabled-1"))
             $("#catedialog").dialog("open");
 
     });
 
     //usercard关闭
-    $("#usercard").hover(function() {
+    $("#usercard").hover(function () {
         if (popusertimer) {
             clearTimeout(popusertimer);
         }
         $("#usercard").show();
-    }, function() {
+    }, function () {
         if (popusertimer) {
             clearTimeout(popusertimer);
         }
-        popusertimer = setTimeout(function() {
+        popusertimer = setTimeout(function () {
             $("#usercard").hide();
         }, 300);
     });
@@ -131,7 +131,7 @@ function check_code() {
         async: false,
         cache: false,
         url: g_site_url + "index.php" + query + "user/ajaxcode/" + code,
-        success: function(flag) {
+        success: function (flag) {
             if (1 == flag) {
                 $('#codetip').html("&nbsp;");
                 $('#codetip').attr('class', 'input_ok');
@@ -158,7 +158,7 @@ function pop_user_on(popobj, uid, type) {
     if (popusertimer) {
         clearTimeout(popusertimer);
     }
-    popusertimer = setTimeout(function() {
+    popusertimer = setTimeout(function () {
         $("#usercard").show();
         $("#usercard").position({
             my: myalign,
@@ -171,7 +171,7 @@ function pop_user_out() {
     if (popusertimer) {
         clearTimeout(popusertimer);
     }
-    popusertimer = setTimeout(function() {
+    popusertimer = setTimeout(function () {
         $("#usercard").hide();
     }, 300);
 }
@@ -190,11 +190,23 @@ function login() {
 //    });
 }
 
+function recharge() {
+    $("#poprecharge").remove();
+    $("body").append('<div id="poprecharge" title="购买健康币"></div>');
+    $("#poprecharge").load(g_site_url + "index.php?user/ajaxrecharge");
+    $("#poprecharge").dialog({
+        width: 520,
+        modal: true,
+        resizable: false,
+        position: {my: "bottom-60"}
+    });
+}
+
 function load_message() {
     if (g_uid == 0) {
         return false;
     }
-    $.post(g_site_url + "index.php?user/ajaxloadmessage", function(msg) {
+    $.post(g_site_url + "index.php?user/ajaxloadmessage", function (msg) {
         if (msg.msg_personal != 0) {
             $("#mymessage_personal").html(msg.msg_personal);
             $("#mymessage_personal").show();
@@ -224,7 +236,7 @@ function attentto_question(qid) {
     if (g_uid == 0) {
         login();
     }
-    $.post(g_site_url + "index.php?question/attentto", {qid: qid}, function(msg) {
+    $.post(g_site_url + "index.php?question/attentto", {qid: qid}, function (msg) {
         if (msg == 'ok') {
             if ($("#attenttoquestion").hasClass("button_attention")) {
                 $("#attenttoquestion").removeClass("button_attention");
@@ -243,7 +255,7 @@ function attentto_user(uid) {
     if (g_uid == 0) {
         login();
     }
-    $.post(g_site_url + "index.php?user/attentto", {uid: uid}, function(msg) {
+    $.post(g_site_url + "index.php?user/attentto", {uid: uid}, function (msg) {
         if (msg == 'ok') {
             if ($("#attenttouser_" + uid).hasClass("button_attention")) {
                 $("#attenttouser_" + uid).removeClass("button_attention");
@@ -261,11 +273,11 @@ function attentto_user(uid) {
 function checkall(checkname) {
     var chkall = $("#chkall:checked").val();
     if (chkall && (chkall === 'chkall')) {
-        $("input[name^='" + checkname + "']").each(function() {
+        $("input[name^='" + checkname + "']").each(function () {
             $(this).prop("checked", "checked");
         });
     } else {
-        $("input[name^='" + checkname + "']").each(function() {
+        $("input[name^='" + checkname + "']").each(function () {
             $(this).removeProp("checked");
         });
     }
@@ -283,32 +295,32 @@ function show_sidebar(h) {
     for (var b = 0; b < d.length; b++) {
         $(a + " div.switch").append("<span>" + (b + 1) + "</span>");
     }
-    $(a + ">ul").add(a + " a.next").hover(function() {
+    $(a + ">ul").add(a + " a.next").hover(function () {
         e = true;
         clearInterval(g);
-    }, function() {
+    }, function () {
         e = false;
         clearInterval(g);
-        g = setTimeout(function() {
+        g = setTimeout(function () {
             c(f($(a + " div.switch span[class=curr]").index()));
         }, 500);
     });
-    $(a + " a.next").click(function() {
+    $(a + " a.next").click(function () {
         c(f($(a + " div.switch span[class=curr]").index()));
         return false;
     });
-    $(a + " div.switch span").hover(function() {
+    $(a + " div.switch span").hover(function () {
         if ($(this).hasClass("curr")) {
             return;
         }
         e = true;
         clearInterval(g);
         c($(this).index());
-    }, function() {
+    }, function () {
         e = false;
         clearInterval(g);
         var j = this;
-        g = setTimeout(function() {
+        g = setTimeout(function () {
             c(f($(j).index()));
         }, 5000);
     });
@@ -327,7 +339,7 @@ function show_sidebar(h) {
         }
         $(a + " div.switch span").removeClass("curr").eq(j).addClass("curr");
         if (!e) {
-            g = setTimeout(function() {
+            g = setTimeout(function () {
                 c(f(j));
             }, 5000);
         }

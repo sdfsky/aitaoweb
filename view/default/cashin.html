@@ -1,0 +1,44 @@
+<!--{template header}-->
+<div class="wrapper mt10 clearfix">
+
+    <!--{template user_menu}-->
+
+    <div class="user-content">
+        <div class="my-answerbox">
+            <div class="title">我要提现</div>
+            <div class="poploginform">
+                <form  action="{url expert/cashin}" method="post" onsubmit="return check_form();">
+                    <div class="input-bar">
+                        <p>可提现金金额：<font color="red">{$user['credit2']}.00</font>元</p>
+                        <p>&nbsp;</p>
+                        请输入提现金额:
+                        <input id="money" name="money" class="credit_input" value="" />&nbsp;元(最低100元，否则无法提现)
+                    </div>
+                    <div class="clr"></div>
+                    <div class="auto-login">
+                        <input type="submit" value="确&nbsp;定" class="normal-button" name="submit" />
+                    </div>
+                </form>
+                <div class="clr"></div>
+                <script type="text/javascript">
+                    function check_form() {
+                        var money_reg = /\d{1,4}/;
+                        var money = $("#money").val();
+                        var credit2 = {$user['credit2']};
+                        if ('' == money || !money_reg.test(money) || money > 20000 || money < 100) {
+                            alert("输入提现金额不正确!提现金额最低100元，且单次提现不超过20000元!");
+                            return false;
+                        }
+                        if (money > credit2) {
+                            alert("抱歉您的健康币不足，不能完成提现!");
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--{template footer}-->

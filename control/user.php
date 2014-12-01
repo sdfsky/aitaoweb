@@ -554,6 +554,13 @@ class usercontrol extends base {
         }
     }
 
+    function onajaxrecharge() {
+        if (!intval($this->user['uid'])) {
+            header("Location:index.php?user/login.html");
+        }
+        include template("poprecharge");
+    }
+
     function onajaxpoplogin() {
         $forward = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : SITE_URL;
         include template("poplogin");
@@ -588,9 +595,13 @@ class usercontrol extends base {
 
     //积分充值
     function onrecharge() {
-        header("Location:" . SITE_URL);
-        exit;
+        $navtitle = "我的账户";
         include template("recharge");
+    }
+
+    function onbudget() {
+        $navtitle = "收支记录";
+        include template("budget");
     }
 
     function onauth() {

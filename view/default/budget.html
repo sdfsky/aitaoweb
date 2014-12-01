@@ -1,0 +1,22 @@
+<!--{template header}-->
+<div class="wrapper mt10 clearfix">
+
+    <!--{template user_menu}-->
+
+    <div class="user-content">
+        <div class="my-answerbox">
+            <div id="qa-tabcard">
+                <ul>
+                    <li><a href="{url user/recharge}">我的账户</a></li>
+                    <li class="on">收支记录</li>
+                </ul>
+            </div>
+            <div class="loginform">
+                <p>用户名：{$user['username']}</p>
+                <p>账户余额：<font color="#FC6603" >{$user['credit2']}</font> 健康币 &nbsp;&nbsp;<a href="javascript:void(0)" onclick="recharge()">购买健康币</a></p>
+                <p>积分：<font color="#FC6603" >{$user['credit2']}</font>&nbsp;&nbsp;<a href="#">如何赚积分？</a>&nbsp;&nbsp;<a href="#">去积分商城</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--{template footer}-->

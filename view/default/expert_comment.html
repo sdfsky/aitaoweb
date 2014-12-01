@@ -38,20 +38,18 @@
         <div class="expert-main">
             <div id="qa-tabcard">
                 <ul>
-                    <li  class="on">问答记录</li>
-                    <li><a href="{url expert/comment/$member['uid']}">用户评价</a></li>
+                    <li><a href="{url user/space/$expert['uid']}">问答记录</a></li>
+                    <li   class="on">用户评价</li>
                     <li><a href="#">感谢信</a></li>
                     <li><a href="#">收到的礼物</a></li>
                 </ul>
             </div>
             <div class="question-mod">
                 <ul class="qlist">
-                    <!--{loop $answerlist $answer}-->
+                    <!--{loop $commentlist $comment}-->
                     <li>
-                        <span class="qdot">·</span>
-                        <a href="#">{$answer['title']}</a>
-                        {$answer['content']}
-                        <p class="count">{$answer['time']}</p>
+                        {$comment['content']}
+                        <p class="count">{$comment['author']}&nbsp;评价于&nbsp;{$comment['format_time']}</p>
                     </li>
                     <!--{/loop}-->
                 </ul>

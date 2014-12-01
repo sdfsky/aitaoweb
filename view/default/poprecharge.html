@@ -1,0 +1,27 @@
+<!--{eval global $starttime,$querynum;$mtime = explode(' ', microtime());$runtime=number_format($mtime[1] + $mtime[0] - $starttime,6); $setting=$this->setting;$user=$this->user;$headernavlist=$this->nav;$regular=$this->regular;}-->
+<div class="poploginform">
+    <form  action="{url ebank/aliapytransfer}" method="post" onsubmit="return check_form();">
+        <div class="input-bar">
+            <p>目前财富充值汇率为<font color="green">[1元={$setting['recharge_rate']}财富值]</font></p>
+            <h2>充值金额:</h2>
+            <input id="money" name="money" class="credit_input" value="" />&nbsp;元
+        </div>
+        <div class="clr"></div>
+        <div class="auto-login">
+            <input type="submit" value="确认支付" class="normal-button" name="submit" />
+        </div>
+    </form>
+    <div class="clr"></div>
+    <script type="text/javascript">
+        function check_form() {
+            var money_reg = /\d{1,4}/;
+            var money = $("#money").val();
+            if ('' == money || !money_reg.test(money) || money > 20000 || money <= 0) {
+                alert("输入充值金额不正确!充值金额必须为整数，且单次充值不超过20000元!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</div>
