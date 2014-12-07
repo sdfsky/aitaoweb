@@ -11,9 +11,9 @@ class cashinmodel {
         $this->base = $base;
         $this->db = $base->db;
     }
-    
-    function get($cashid){
-        return $this->db->fetch_first("SELECT * FROM ".DB_TABLEPRE."cashin WHERE `id`=$cashid");
+
+    function get($cashid) {
+        return $this->db->fetch_first("SELECT * FROM " . DB_TABLEPRE . "cashin WHERE `id`=$cashid");
     }
 
     function add($uid, $username, $money, $credit2) {
@@ -21,7 +21,18 @@ class cashinmodel {
         return $this->db->insert_id();
     }
 
-    function search($username='', $status=0, $start = 0, $limit = 50) {
+    function get_by_uid($uid, $start = 0, $limit = 20) {
+        $cashinlist = array();
+        $query = $this->db->query("SELECT * FROM " . DB_TABLEPRE . "cashin WHERE uid=$uid ORDER BY create_time DESC LIMIT $start,$limit");
+        while ($cashin = $this->db->fetch_array($query)) {
+            $cashin['fctime'] = tdate($cashin['create_time']);
+            $cashin['futime'] = tdate($cashin['update_time']);
+            $cashinlist[] = $cashin;
+        }
+        return $cashinlist;
+    }
+
+    function search($username = '', $status = 0, $start = 0, $limit = 50) {
         echo "adsfasf";
         $cashinlist = array();
         $sql = "SELECT * FROM " . DB_TABLEPRE . "cashin WHERE status <> -1";
@@ -36,9 +47,9 @@ class cashinmodel {
         }
         return $cashinlist;
     }
-    
-    function change_status($cashid,$status){
-        $this->db->query("UPDATE ".DB_TABLEPRE."cashin SET status=$status,`admin`='{$this->base->user['username']}',update_time={$this->base->time} WHERE `id`=$cashid");
+
+    function change_status($cashid, $status) {
+        $this->db->query("UPDATE " . DB_TABLEPRE . "cashin SET status=$status,`admin`='{$this->base->user['username']}',update_time={$this->base->time} WHERE `id`=$cashid");
     }
 
 }

@@ -38,6 +38,25 @@
                 </script>
 
             </div>
+            <div class="title">提现记录</div>
+            <div class="bd">
+                <div class="cls-qa-table">
+                    <table>
+                        <tbody>
+                            <tr><th class="s2">提交时间</th><th class="s1">提现金额</th><th class="s2">当前状态</th><th class="s2">更新时间</th></tr>
+                            <!--{loop $cashinlist $cashin}-->
+                            <tr>
+                                <td>{$cashin['fctime']}</td>
+                                <td>{$cashin['money']}</td>
+                                <td>{if $cashin['status']==1}待审核{elseif $cashin['status']==2}已审核{else}已拒绝{/if}</td>
+                                <td>{if $cashin['update_time']}{$cashin['futime']}{else}暂未更新{/if}</td>
+                            </tr>                   
+                            <!--{/loop}-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pages">{$departstr}</div>
+            </div>
         </div>
     </div>
 </div>

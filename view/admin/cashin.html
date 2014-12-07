@@ -51,7 +51,7 @@
         <td class="altbg2">{if $cashin['status']==1}<font color='red'>未审核</font>{elseif $cashin['status']==2}<font color='#46D0D6'>已审核</font>{elseif $cashin['status']==3}<font color='#666'>已拒绝</font>{/if}</td>
         <td class="altbg2">{$cashin['admin']}</td>
         <td class="altbg2">{$cashin['format_utime']}</td>
-        <td class="altbg2">{if $cashin['status']==1}<a href="index.php?admin_cashin/change/2/{$cashin['id']}{$setting['seo_suffix']}">通过</a>&nbsp;|&nbsp;<a href="index.php?admin_cashin/change/3/{$cashin['id']}{$setting['seo_suffix']}">拒绝</a>{/if}</td>
+        <td class="altbg2">{if $cashin['status']==1}<a href="javascript:void(0)" onclick="change_status(2);">通过</a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="change_status(3);">拒绝</a>{/if}</td>
     </tr>
     <!--{/loop}-->
     <!--{if $departstr}-->
@@ -61,5 +61,13 @@
     <!--{/if}-->
 </table>
 <br>
+<script type='text/javascript'>
+    function change_status(status) {
+        if(confirm("确认执行该操作？")){
+            document.location="{SITE_URL}index.php?admin_cashin/change/"+status+"/{$cashin['id']}{$setting['seo_suffix']}";
+        }
+        return false;
+    }
+</script>
 <!--{template footer,admin}-->
 

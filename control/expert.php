@@ -69,6 +69,8 @@ class expertcontrol extends base {
 
     function oncashin() {
         $this->load("cashin");
+        $uid = intval($this->user['uid']);
+
         if (isset($this->post['submit'])) {
             $money = intval($this->post['money']);
             if ($money < 100) {
@@ -79,13 +81,13 @@ class expertcontrol extends base {
                 $this->message("抱歉您的健康币不足，不能完成提现!", 'BACK');
                 exit;
             }
-            $uid = intval($this->user['uid']);
             $cashid = $_ENV['cashin']->add($uid, $this->user['username'], $money, $this->user['credit2']);
             if ($cashid)
                 $this->credit($uid, 0, -$money);
 
             $this->message("提现申请申请成功，请耐心等待我们的审核，审核期间如有问题请直接联系在线客服！", 'BACK');
         }
+        $cashinlist = $_ENV['cashin']->get_by_uid($uid);
         include template("cashin");
     }
 
