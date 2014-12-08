@@ -52,7 +52,7 @@
                                 <input type="hidden" name="touid" value="{$fromuid}" />
                                 <div class="tooltip">
                                     <input type="button" name="upload" class="button1" value="发送图片"/>
-                                    <input type="button" name="upload" class="button1" value="购买健康币"/>
+                                    <input type="button" name="chongzhi" class="button1" onclick="recharge();" value="购买健康币"/>
                                     <input type="button" name="upload" class="button1" value="电话咨询"/>
                                     <input type="button" name="upload" class="button1" value="预约挂号"/>
                                     <input type="button" name="upload" class="button1" value="上门服务"/>
@@ -160,32 +160,18 @@
                             </form>
                         </div>
                         <div class="modbox">
-                            <div class="giftinfo clearfix">
-                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
-                                <h3>医德高尚</h3>
-                                <p>价格：5健康币</p>
-                                <p>医生爱心值+6</p>
-                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
-
-                                <div class="clr"></div>
+                            <div id="giftlist">
+                                <!--{loop $giftlist $gift}-->
+                                <div class="giftinfo clearfix">
+                                    <a class="pic" href="#" target="_blank"><img width="38" height="50" src="{SITE_URL}{$gift['image']}"></a>
+                                    <h3>{$gift['title']}</h3>
+                                    <p>价格:{$gift['credit']}健康币</p>
+                                    <div class="handsel"><input type="button" value="赠送" class="button3" onclick="exchange({$gift['id']}, {$gift['credit']});" /></div>
+                                    <div class="clr"></div>
+                                </div>
+                                <!--{/loop}-->
                             </div>
-                            <div class="giftinfo clearfix">
-                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
-                                <h3>医德高尚</h3>
-                                <p>价格：5健康币</p>
-                                <p>医生爱心值+6</p>
-                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
-                                <div class="clr"></div>
-                            </div>
-                            <div class="giftinfo clearfix">
-                                <a class="pic" href="http://help.tipask.com/user/default.html" target="_blank"><img width="38" height="50" src="{SITE_URL}css/default/expert_default_gift.png"></a>
-                                <h3>医德高尚</h3>
-                                <p>价格：5健康币</p>
-                                <p>医生爱心值+6</p>
-                                <div class="handsel"><input type="button" value="赠送" class="button3"/></div>
-                                <div class="clr"></div>
-                            </div>
-                            <p class="refresh"><a href="#">换一换</a></p>
+                            <p class="refresh"><a href="javascript:void(0);" id="changelist" >换一换</a></p>
 
                         </div>
                     </div>
@@ -201,70 +187,101 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="{SITE_URL}js/jquery-ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="{SITE_URL}js/common.js"></script>
         <script type="text/javascript">
-            $(function () {
-                $("#btnsubmit").click(function () {
-                    var comment = $.trim($("#comment").val());
-                    if(comment==''){
-                        alert("评语不能为空，请简短的评价一下该专家！");
-                        return ;
-                    }
-                    var formdata = $("#commentform").serialize();
-                    
-                    $.ajax({
-                        type: "POST",
-                        url: "{SITE_URL}index.php?expert/ajaxaddcomment",
-                        data: formdata,
-                        success: function (msg) {
-                            if(msg=='ok'){
-                                alert('评价成功，感谢您的参与！');
-                            }else{
-                                alert("网络异常，请稍后再试！");
-                            }
-                        }
-                    });
-                });
-            });
-            function save_expert_info() {
-                $.ajax({
-                    type: "POST",
-                    url: "{SITE_URL}index.php?expert/ajaxsaveinfo",
-                    data: $("#expert_info_form").serialize(),
-                    success: function (msg) {
-                        alert("信息保存成功！");
-                    }
-                });
-            }
+                                    var refresh_page = 3;
+                                    $(function () {
+                                        $("#btnsubmit").click(function () {
+                                            var comment = $.trim($("#comment").val());
+                                            if (comment == '') {
+                                                alert("评语不能为空，请简短的评价一下该专家！");
+                                                return;
+                                            }
+                                            var formdata = $("#commentform").serialize();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "{SITE_URL}index.php?expert/ajaxaddcomment",
+                                                data: formdata,
+                                                success: function (msg) {
+                                                    if (msg == 'ok') {
+                                                        alert('评价成功，感谢您的参与！');
+                                                    } else {
+                                                        alert("网络异常，请稍后再试！");
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        $("#changelist").click(function () {
+                                            $.ajax({
+                                                type: "get",
+                                                url: "{SITE_URL}index.php?gift/ajaxgetlist/" + refresh_page,
+                                                success: function (msg) {
+                                                    if (msg == '') {
+                                                        refresh_page = 0;
+                                                        alert("没有更多内容了！");
+                                                    } else {
+                                                        $("#giftlist").html(msg);
+                                                        refresh_page = refresh_page + 3;
+                                                    }
+                                                }
+                                            });
 
-            function sendmsg() {
-                $.ajax({
-                    type: "POST",
-                    url: "{SITE_URL}index.php?message/ajaxsend",
-                    data: $("#sendform").serialize(),
-                    success: function (msg) {
-                        $("#editor_content").val("");
-                    }
-                });
-            }
-            function loadmsg() {
-                $("#content_item").scrollTop(10000);
-                $("#content_item").load("{SITE_URL}index.php?message/ajaxloadmsg/{$fromuid}");
+                                        });
+                                    });
+                                    function save_expert_info() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "{SITE_URL}index.php?expert/ajaxsaveinfo",
+                                            data: $("#expert_info_form").serialize(),
+                                            success: function (msg) {
+                                                alert("信息保存成功！");
+                                            }
+                                        });
+                                    }
+                                    function exchange(id, credit) {
+                                        var usercredit = "{$user['credit2']}";
+                                        if (credit > usercredit) {
+                                            alert("抱歉!您的财富值不够!");
+                                            return false;
+                                        }
+                                        if (!confirm("确定赠送该礼品？完成赠送后会消耗您" + credit + "健康币!")) {
+                                            return false;
+                                        }
+                                        
+                                        
+                                        
+                                    }
 
-            }
-            function closeme() {
-                if (!confirm("确认关闭当前页面?")) {
-                    return false;
-                }
-                var browserName = navigator.appName;
-                if (browserName == "Netscape") {
-                    window.open('', '_parent', '');
-                    window.close();
-                } else if (browserName == "Microsoft Internet Explorer") {
-                    window.opener = "whocares";
-                    window.close();
-                }
-            }
-            setInterval(loadmsg, 1000);
+                                    function sendmsg() {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "{SITE_URL}index.php?message/ajaxsend",
+                                            data: $("#sendform").serialize(),
+                                            success: function (msg) {
+                                                $("#editor_content").val("");
+                                            }
+                                        });
+                                    }
+                                    function loadmsg() {
+                                        $("#content_item").scrollTop(10000);
+                                        $("#content_item").load("{SITE_URL}index.php?message/ajaxloadmsg/{$fromuid}");
+
+                                    }
+                                    function closeme() {
+                                        if (!confirm("确认关闭当前页面?")) {
+                                            return false;
+                                        }
+                                        var browserName = navigator.appName;
+                                        if (browserName == "Netscape") {
+                                            window.open('', '_parent', '');
+                                            window.close();
+                                        } else if (browserName == "Microsoft Internet Explorer") {
+                                            window.opener = "whocares";
+                                            window.close();
+                                        }
+                                    }
+                                    setInterval(loadmsg, 1000);
         </script>
     </body>
 </html>
