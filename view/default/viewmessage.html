@@ -165,8 +165,8 @@
                                 <div class="giftinfo clearfix">
                                     <a class="pic" href="#" target="_blank"><img width="38" height="50" src="{SITE_URL}{$gift['image']}"></a>
                                     <h3>{$gift['title']}</h3>
-                                    <p>价格:{$gift['credit']}健康币</p>
-                                    <div class="handsel"><input type="button" value="赠送" class="button3" onclick="exchange({$gift['id']}, {$gift['credit']});" /></div>
+                                    <p>价格:{$gift['credit']}</p>
+                                    <div class="handsel"><input type="button" value="赠送" class="button3" onclick="exchange({$gift['id']},{$gift['credit']},{$myauth['uid']});" /></div>
                                     <div class="clr"></div>
                                 </div>
                                 <!--{/loop}-->
@@ -239,7 +239,7 @@
                                             }
                                         });
                                     }
-                                    function exchange(id, credit) {
+                                    function exchange(id,credit,to_uid) {
                                         var usercredit = "{$user['credit2']}";
                                         if (credit > usercredit) {
                                             alert("抱歉!您的财富值不够!");
@@ -248,9 +248,20 @@
                                         if (!confirm("确定赠送该礼品？完成赠送后会消耗您" + credit + "健康币!")) {
                                             return false;
                                         }
-                                        
-                                        
-                                        
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "{SITE_URL}index.php?gift/ajaxexchange",
+                                            data: "giftid="+id+"&to_uid="+to_uid,
+                                            success: function (msg) {
+                                                if(msg=='ok'){
+                                                    alert("礼物赠送成功！");
+                                                }else{
+                                                    alert("礼物赠送失败，请稍后再试！");
+                                                }
+                                            }
+                                        });
+                                                                                
                                     }
 
                                     function sendmsg() {

@@ -36,6 +36,17 @@ class expertcontrol extends base {
         include template("expert_comment");
     }
 
+
+    function ongift(){
+        $this->load('gift');
+        $userid = intval($this->get[2]);
+        $member = $_ENV['user']->get_by_uid($userid, 2);
+        $levelcount = $_ENV['expert']->get_level_count($userid);
+        $giftlist = $_ENV['gift']->get_by_touid($userid);
+        include template("expert_gift");
+
+    }
+
     function onadvisory() {
         $navtitle = "在线咨询";
         $myauth = $_ENV['user']->get_auth($this->user['uid']);

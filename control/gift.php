@@ -87,8 +87,24 @@ class giftcontrol extends base {
     }
     
     function onajaxexchange(){
-        $giftid = ;
-        $this->credit($this->user['uid'],0, );
+        $giftid = intval($this->post['giftid']);
+        $to_uid = intval($this->post['to_uid']);
+        $to_user = $_ENV['user']->get_by_uid($to_uid);
+        if(!$to_user){
+            exit('error');
+        }
+        $gift = $_ENV['gift']->get($giftid);
+        if ($this->user['credit2'] < $gift['credit']) {
+            exit('error');
+        }
+        $this->load("message");
+        $description = "恭喜！你刚刚收到 ".$this->user['username']." 赠送的礼物 ".$gift['title'].", 健康币 +".$gift['credit']."< br />";
+        $_ENV['message']->add($setting['site_name'].'管理员',0, $to_user['uid'], '您刚刚收到礼物' . $gift['title'], $description);
+        $_ENV['gift']->addlog($this->user['uid'],$to_uid,$giftid,$gift['credit']);
+        $this->credit($this->user['uid'], 0, -$gift['credit']);
+        $this->credit($to_user['uid'], 0, +$gift['credit']);
+        $this->db->query("UPDATE ".DB_TABLEPRE."user SET gifts=gifts+1 WHERE uid=".$to_uid);
+        exit('ok');
     }
 
 }

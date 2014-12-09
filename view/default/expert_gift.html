@@ -39,20 +39,23 @@
             <div id="qa-tabcard">
                 <ul>
                     <li><a href="{url user/space/$member['uid']}">问答记录</a></li>
-                    <li   class="on">用户评价</li>
+                    <li><a href="{url expert/comment/$member['uid']}">用户评价</a></li>
                     <li><a href="#">感谢信</a></li>
-                    <li><a href="{url expert/gift/$member['uid']}">收到的礼物</a></li>
+                    <li class="on">收到的礼物</li>
                 </ul>
             </div>
             <div class="question-mod">
-                <ul class="qlist">
-                    <!--{loop $commentlist $comment}-->
-                    <li>
-                        {$comment['content']}
-                        <p class="count">{$comment['author']}&nbsp;评价于&nbsp;{$comment['format_time']}</p>
-                    </li>
-                    <!--{/loop}-->
-                </ul>
+                    <ul class="gift-list clearfix">
+                <!--{loop $giftlist $gift}-->
+                <li>
+                    <img width="138" height="138" src="{SITE_URL}{$gift['image']}" alt="{$gift['title']}" onclick="show_desc('{$gift[title]}', {$gift['id']});"/>
+                    <a class="name" title="{$gift['title']}"  href="javascript:void(0);" >{$gift['title']}</a>
+                    <span>(售价：{$gift['credit']}健康币）</span>
+                    <div style="display:none" id="{$gift['id']}_desc">{$gift['description']}</div>
+                    <span>
+                </li>                
+                <!--{/loop}-->
+            </ul>
             </div>
         </div>
     </div>

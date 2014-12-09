@@ -36,6 +36,16 @@ class giftmodel {
         return $giftlist;
     }
 
+    function get_by_touid($uid,$start=0,$limit=16){
+        $giftlist = array();
+        $query = $this->db->query("SELECT g.title,g.image,g.id,gl.credit,gl.create_time FROM " . DB_TABLEPRE . "gift AS g,".DB_TABLEPRE."giftlog AS gl  WHERE g.id=gl.gift_id AND gl.to_uid=$uid ORDER BY gl.create_time DESC LIMIT $start,$limit");
+        while ($gift = $this->db->fetch_array($query)) {
+            $gift['time'] = tdate($gift['create_time'], 3, 0);
+            $giftlist[] = $gift;
+        }
+        return $giftlist;
+    }
+
     function get_by_range_name($ranges, $name = '', $start = 0, $limit = 10) {
         $giftlist = array();
         $rangesql = '';
@@ -65,9 +75,8 @@ class giftmodel {
         $this->db->query("UPDATE " . DB_TABLEPRE . "gift SET `available`=$available WHERE `id`in ($id)");
     }
 
-    function addlog($uid, $gid, $username, $realname, $email, $phone, $address, $postcode, $giftname, $qq, $notes, $credit) {
-
-        $this->db->query("INSERT INTO " . DB_TABLEPRE . "giftlog SET `uid`=$uid,`gid`=$gid,`notes`='$notes',`email`='$email',`qq`='$qq',`phone`='$phone',`postcode`='$postcode',`address`='$address',`username`='$username',`realname`='$realname',`giftname`='$giftname',`credit`=$credit,`time`=" . $this->base->time);
+    function addlog($from_uid,$to_uid,$gift_id,$credit) {
+        $this->db->query("INSERT INTO " . DB_TABLEPRE . "giftlog(`id`,from_uid,to_uid,gift_id,credit,create_time) VALUES (null,$from_uid,$to_uid,$gift_id,$credit,{$this->base->time})");
     }
 
     function getlog($logid) {
