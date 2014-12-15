@@ -442,7 +442,7 @@ caption, th {text-align: left;}
 .cls-qa-table td {color: #888888;}
 .cls-qa-table table .s0 {text-align: left;}
 .cls-qa-table table .s1 {width: 60px;}
-.cls-qa-table table .s2 {width: 120px;}
+.cls-qa-table table .s2 {width: 125px;}
 th{font-style: normal;font-weight: 400;color:#1abdc4;}
 .cls-qa-table .title {color: #333333;font-family: SimSun;font-size: 14px;position: relative;text-align: left;}
 .cls-qa-table .title .type {color:#999;}
@@ -514,7 +514,7 @@ th{font-style: normal;font-weight: 400;color:#1abdc4;}
 
 
 /*提问框*/
-.inputbox .qtitle {background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width: 670px;}
+.inputbox .qtitle {background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width: 647px;}
 .inputbox .adopt_text {height:20px;background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #D6D6D6;border-radius: 2px 2px 2px 2px;box-shadow: 1px 1px 1px #F8F8F8 inset;float: left;font-size: 16px;height: 22px;line-height: 22px;outline: 0 none;overflow: hidden;padding: 12px;resize: none;width:430px;}
 .inputbox .qtitle:hover,.inputbox .adopt_text  {border: 2px solid #1abdc4;padding:11px;}
 .inputbox h3{margin-top:20px;}

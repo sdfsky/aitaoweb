@@ -28,7 +28,7 @@
                     <div class="expert_action" >
                         <span>感谢信：{$member['letters']}封 <input type="button" class="btn_expert_space" value="写感谢信" /></span> 
                         <span style="margin-left: 20px;">礼物：{$member['gifts']}件 <input type="button" class="btn_expert_space" value="赠送礼物" /></span>
-                        <p><input type="submit" name="submit" class="normal-button flright" value="提交问题"></p>
+                        <p><input type="button" name="tiwen" class="normal-button flright" onclick="javascript:document.location='{url question/add/$member['uid']}'" value="向专家提问"></p>
                         <div class="clr"></div>
                     </div>
                 </div>
